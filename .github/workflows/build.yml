@@ -1,0 +1,31 @@
+name: Build and test vda5050_msgs
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  industrial_ci:
+    name: Build and test
+    strategy:
+      matrix:
+        env:
+          - ICI_JOB_NAME: gcc
+            ROS_DISTRO: jazzy
+          - ICI_JOB_NAME: clang
+            ROS_DISTRO: jazzy
+            ADDITIONAL_DEBS: clang lld
+            CC: "clang"
+            CXX: "clang++"
+    runs-on: ubuntu-latest
+    container:
+      image: ros:jazzy-ros-core
+    steps:
+      - uses: actions/checkout@v4
+      - uses: 'ros-industrial/industrial_ci@master'
+        env: {{ matrix.env }}
+
+
