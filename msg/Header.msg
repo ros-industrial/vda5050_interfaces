@@ -2,7 +2,7 @@
 # across all message schemas
 
 # The header ID of the message. It is define per topic and incremented by
-# 1 wth each message sent but not necessarily received
+# 1 with each message sent but not necessarily received
 uint32 header_id
 
 # Timestamp in milliseconds in UTC indicating a specific point relative to

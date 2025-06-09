@@ -27,7 +27,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 rosidl_get_typesupport_target(cpp_typesupport_target
   ${PROJECT_NAME} rosidl_typesupport_cpp)
 
-# Create serialization/deserailization library
+# Create serialization/deserialization library
 set(json_util_files
   "src/vda5050_msgs/json_utils/connection.cpp"
   "src/vda5050_msgs/json_utils/header.cpp"
