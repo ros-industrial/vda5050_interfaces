@@ -1,0 +1,24 @@
+Language: Cpp
+BasedOnStyle: Google
+AccessModifierOffset: -2
+AlignAfterOpenBracket: AlwaysBreak
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortBlocksOnASingleLine: Empty
+BreakAfterAttributes: Always
+BreakConstructorInitializers: BeforeColon
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: true
+  AfterEnum: true
+  BeforeElse: true
+  BeforeCatch: true
+ColumnLimit: 80
+ConstructorInitializerIndentWidth: 0
+ContinuationIndentWidth: 2
+DerivePointerAlignment: false
+PointerAlignment: Left
+ReflowComments: false
