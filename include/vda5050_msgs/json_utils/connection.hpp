@@ -18,28 +18,69 @@
 #define VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP_
 
 #include <nlohmann/json.hpp>
+#include <string>
 
+#include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/msg/connection.hpp"
 
 namespace vda5050_msgs {
 
-namespace json_utils {
+namespace msg {
 
 /// \brief Convert a vda5050_msgs::msg::Connection object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const msg::Connection& msg);
+void to_json(nlohmann::json& j, const Connection& msg)
+{
+  to_json(j, msg.header);
+
+  std::string connection_state;
+  switch (msg.connection_state)
+  {
+    case Connection::CONNECTION_STATE_ONLINE:
+      connection_state = "ONLINE";
+      break;
+    case Connection::CONNECTION_STATE_OFFLINE:
+      connection_state = "OFFLINE";
+      break;
+    case Connection::CONNECTION_STATE_CONNECTIONBROKEN:
+      connection_state = "CONNECTIONBROKEN";
+      break;
+    default:
+      // TODO(sauk): Change this to throw an error
+      connection_state = "UNKNOWN";
+      break;
+  }
+  j["connectionState"] = connection_state;
+}
 
 /// \brief Populate a vda5050_msgs::msg::Connection object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized connection data
 /// \param msg Reference to the Connection message to populate
-void from_json(nlohmann::json& j, msg::Connection& msg);
+void from_json(const nlohmann::json& j, Connection& msg)
+{
+  from_json(j, msg.header);
 
-}  // namespace json_utils
+  auto connection_state = j.at("connectionState");
+  if (connection_state == "ONLINE")
+  {
+    msg.connection_state = Connection::CONNECTION_STATE_ONLINE;
+  }
+  else if (connection_state == "OFFLINE")
+  {
+    msg.connection_state = Connection::CONNECTION_STATE_OFFLINE;
+  }
+  else if (connection_state == "CONNECTIONBROKEN")
+  {
+    msg.connection_state = Connection::CONNECTION_STATE_CONNECTIONBROKEN;
+  }
+}
+
+}  // namespace msg
 }  // namespace vda5050_msgs
 
 #endif  // VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP_

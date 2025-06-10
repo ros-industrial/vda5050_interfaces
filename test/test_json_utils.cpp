@@ -23,7 +23,7 @@
 
 #include "generator/generator.hpp"
 
-using namespace vda5050_msgs;
+using namespace vda5050_msgs::msg;
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<msg::Header, msg::Connection>;
@@ -41,12 +41,10 @@ protected:
   void round_trip_test(const T& original)
   {
     // Serialize the original object into JSON
-    nlohmann::json serialized_data;
-    json_utils::to_json(serialized_data, original);
+    nlohmann::json serialized_data = original;
 
     // Deserialize the JSON object back into an object of type T
-    T deserialized_object;
-    json_utils::from_json(serialized_data, deserialized_object);
+    T deserialized_object = serialized_data;
 
     EXPECT_EQ(original, deserialized_object)
       << "Serialization round-trip failed for type: " << typeid(T).name()

@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+#ifndef TEST__GENERATOR__GENERATOR_HPP_
+#define TEST__GENERATOR__GENERATOR_HPP_
+
 #include <limits>
 #include <random>
 #include <string>
@@ -131,3 +134,5 @@ private:
   /// \brief Distribution for VDA 5050 connectionState
   std::uniform_int_distribution<uint8_t> connection_state_dist_;
 };
+
+#endif  // TEST__GENERATOR__GENERATOR_HPP_

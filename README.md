@@ -58,7 +58,6 @@ Link the JSON utility library in your `CMakeLists.txt`:
 target_link_libraries(example
   PUBLIC
     ${vda5050_msgs_LIBRARIES}
-    vda5050_msgs::json_utils
 )
 
 target_include_directories(example
@@ -95,12 +94,10 @@ header.manufacturer = "Manufacturer";
 header.serial_number = "S0001";
 
 // Serialize to JSON
-nlohmann::json j;
-vda5050_msgs::json_utils::to_json(j, header);
+nlohmann::json j = header;
 
 // Deserialize from JSON
-vda5050_msgs::msg::Header header_d;
-vda5050_msgs::json_utils::from_json(j, header_d);
+vda5050_msgs::msg::Header header_deserialized = j;
 ```
 
 ## Support
