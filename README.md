@@ -1,4 +1,4 @@
-# `vda5050_msgs`
+# vda5050_msgs
 
 This package provides ROS 2 message definitions and JSON serialization/deserialization
 utlities for the [VDA 5050](https://www.vda.de/en/topics/automotive-industry/vda-5050)
@@ -28,7 +28,7 @@ Use with caution in production environments.
 
 - `vda5050_msgs::msg::Connection`
 
-`vda5050_msgs::msg::Header` is a shared field across all VDA 5050 messages.
+- `vda5050_msgs::msg::Header` is a shared field across all VDA 5050 messages.
 
 ## Usage
 

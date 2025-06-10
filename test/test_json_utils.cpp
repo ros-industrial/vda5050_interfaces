@@ -70,4 +70,3 @@ TYPED_TEST(SerializationTest, RoundTrip)
     this->round_trip_test(random_object);
   }
 }
-

@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+#include <limits>
 #include <random>
+#include <string>
 #include <vda5050_msgs/msg/connection.hpp>
 #include <vda5050_msgs/msg/header.hpp>
 
@@ -129,4 +131,3 @@ private:
   /// \brief Distribution for VDA 5050 connectionState
   std::uniform_int_distribution<uint8_t> connection_state_dist_;
 };
-

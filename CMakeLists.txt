@@ -73,8 +73,39 @@ ament_export_dependencies(
 )
 
 if(BUILD_TESTING)
+  find_package(ament_cmake_cppcheck REQUIRED)
+  ament_cppcheck()
+
+  find_package(ament_cmake_cpplint REQUIRED)
+  set(cpplint_exclude_paths
+    "${CMAKE_CURRENT_SOURCE_DIR}/test/"
+  )
+  set(cpplint_filters
+    "-whitespace/newline"
+    "-build/namespaces"
+  )
+  set(cpplint_root_paths
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/"
+  )
+
+  ament_cpplint(
+    EXCLUDE "${cpplint_exclude_paths}"
+    FILTERS "${cpplint_filters}"
+    ROOT "${cpplint_root_paths}"
+  )
+
+  find_package(ament_cmake_clang_format REQUIRED)
+  ament_clang_format(
+    CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/.clang-format"
+  )
+
+  find_package(ament_cmake_copyright REQUIRED)
+  ament_copyright()
+
   find_package(ament_cmake_gtest REQUIRED)
   find_package(rosidl_generator_cpp REQUIRED)
+
   ament_add_gtest(${PROJECT_NAME}_test test/test_json_utils.cpp)
   target_include_directories(${PROJECT_NAME}_test
     PUBLIC

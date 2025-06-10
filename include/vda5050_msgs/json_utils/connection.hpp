@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP
-#define VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP
+#ifndef VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP_
+#define VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP_
 
 #include <nlohmann/json.hpp>
 
@@ -42,5 +42,4 @@ void from_json(nlohmann::json& j, msg::Connection& msg);
 }  // namespace json_utils
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP
-
+#endif  // VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP_
