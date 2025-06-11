@@ -38,8 +38,6 @@ constexpr const char* ISO8601_FORMAT = "%Y-%m-%dT%H:%M:%S";
 /// \param msg Reference to the message object to serialize
 void to_json(nlohmann::json& j, const Header& msg)
 {
-  // j["headerId"] = msg.header_id;
-
   system_clock::time_point tp{milliseconds(msg.timestamp)};
 
   std::time_t time_sec = system_clock::to_time_t(tp);
@@ -49,12 +47,6 @@ void to_json(nlohmann::json& j, const Header& msg)
   std::ostringstream oss;
   oss << std::put_time(std::gmtime(&time_sec), ISO8601_FORMAT);
   oss << "." << std::setw(3) << std::setfill('0') << millisec << "Z";
-
-  // j["timestamp"] = oss.str();
-
-  // j["version"] = msg.version;
-  // j["manufacturer"] = msg.manufacturer;
-  // j["serialNumber"] = msg.serial_number;
 
   j = nlohmann::json{
     {"headerId", msg.header_id},
