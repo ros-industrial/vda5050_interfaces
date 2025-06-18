@@ -1,5 +1,7 @@
 /**
- * Copyright (C) 2025 ROS Industrial Consortium Asia Pacific
+ * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
+ * Advanced Remanufacturing and Technology Centre
+ * A*STAR Research Entities (Co. Registration No. 199702110H)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,24 +38,18 @@ void to_json(nlohmann::json& j, const Connection& msg)
 {
   to_json(j, msg.header);
 
-  std::string connection_state;
-  switch (msg.connection_state)
+  if (
+    msg.connection_state == Connection::CONNECTION_STATE_ONLINE ||
+    msg.connection_state == Connection::CONNECTION_STATE_OFFLINE ||
+    msg.connection_state == Connection::CONNECTION_STATE_CONNECTIONBROKEN)
   {
-    case Connection::CONNECTION_STATE_ONLINE:
-      connection_state = "ONLINE";
-      break;
-    case Connection::CONNECTION_STATE_OFFLINE:
-      connection_state = "OFFLINE";
-      break;
-    case Connection::CONNECTION_STATE_CONNECTIONBROKEN:
-      connection_state = "CONNECTIONBROKEN";
-      break;
-    default:
-      // TODO(sauk): Change this to throw an error
-      connection_state = "UNKNOWN";
-      break;
+    j["connectionState"] = msg.connection_state;
   }
-  j["connectionState"] = connection_state;
+  else
+  {
+    throw std::runtime_error(
+      "Serialization error: Unexpected connection state");
+  }
 }
 
 /// \brief Populate a vda5050_msgs::msg::Connection object from a
@@ -65,18 +61,17 @@ void from_json(const nlohmann::json& j, Connection& msg)
 {
   from_json(j, msg.header);
 
-  auto connection_state = j.at("connectionState");
-  if (connection_state == "ONLINE")
+  auto connection_state = j.at("connectionState").get<std::string>();
+  if (
+    connection_state == Connection::CONNECTION_STATE_ONLINE ||
+    connection_state == Connection::CONNECTION_STATE_OFFLINE ||
+    connection_state == Connection::CONNECTION_STATE_CONNECTIONBROKEN)
   {
-    msg.connection_state = Connection::CONNECTION_STATE_ONLINE;
+    msg.connection_state = connection_state;
   }
-  else if (connection_state == "OFFLINE")
+  else
   {
-    msg.connection_state = Connection::CONNECTION_STATE_OFFLINE;
-  }
-  else if (connection_state == "CONNECTIONBROKEN")
-  {
-    msg.connection_state = Connection::CONNECTION_STATE_CONNECTIONBROKEN;
+    throw std::runtime_error("JSON parsing error: Unexpected connectionState.");
   }
 }
 

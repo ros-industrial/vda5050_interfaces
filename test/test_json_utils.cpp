@@ -1,5 +1,7 @@
 /**
- * Copyright (C) 2025 ROS Industrial Consortium Asia Pacific
+ * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
+ * Advanced Remanufacturing and Technology Centre
+ * A*STAR Research Entities (Co. Registration No. 199702110H)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +19,10 @@
 #include <gtest/gtest.h>
 
 #include <rosidl_runtime_cpp/traits.hpp>
-#include <vda5050_msgs/json_utils/connection.hpp>
-#include <vda5050_msgs/json_utils/header.hpp>
-#include <vda5050_msgs/msg/connection.hpp>
 
 #include "generator/generator.hpp"
+#include "vda5050_msgs/json_utils/connection.hpp"
+#include "vda5050_msgs/json_utils/header.hpp"
 
 using namespace vda5050_msgs::msg;
 

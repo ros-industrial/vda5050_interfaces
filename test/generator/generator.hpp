@@ -1,5 +1,7 @@
 /**
- * Copyright (C) 2025 ROS Industrial Consortium Asia Pacific
+ * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
+ * Advanced Remanufacturing and Technology Centre
+ * A*STAR Research Entities (Co. Registration No. 199702110H)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +22,10 @@
 #include <limits>
 #include <random>
 #include <string>
-#include <vda5050_msgs/msg/connection.hpp>
-#include <vda5050_msgs/msg/header.hpp>
+#include <vector>
+
+#include "vda5050_msgs/msg/connection.hpp"
+#include "vda5050_msgs/msg/header.hpp"
 
 using namespace vda5050_msgs;
 
@@ -84,9 +88,14 @@ public:
   }
 
   /// \brief Generate a random connection state value
-  uint8_t generate_connection_state()
+  std::string generate_connection_state()
   {
-    return connection_state_dist_(rng_);
+    std::vector<std::string> states = {
+      msg::Connection::CONNECTION_STATE_ONLINE,
+      msg::Connection::CONNECTION_STATE_OFFLINE,
+      msg::Connection::CONNECTION_STATE_CONNECTIONBROKEN};
+    auto state_idx = connection_state_dist_(rng_);
+    return states[state_idx];
   }
 
   /// \brief Generate a fully populated message of a supported type

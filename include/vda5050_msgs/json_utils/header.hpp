@@ -1,5 +1,7 @@
 /**
- * Copyright (C) 2025 ROS Industrial Consortium Asia Pacific
+ * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
+ * Advanced Remanufacturing and Technology Centre
+ * A*STAR Research Entities (Co. Registration No. 199702110H)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,6 +49,10 @@ void to_json(nlohmann::json& j, const Header& msg)
   std::ostringstream oss;
   oss << std::put_time(std::gmtime(&time_sec), ISO8601_FORMAT);
   oss << "." << std::setw(3) << std::setfill('0') << millisec << "Z";
+  if (oss.fail())
+  {
+    throw std::runtime_error("Failed to format timestamp for serialization.");
+  }
 
   j = nlohmann::json{
     {"headerId", msg.header_id},
@@ -63,36 +69,64 @@ void to_json(nlohmann::json& j, const Header& msg)
 /// \param msg Reference to the Header message to populate
 void from_json(const nlohmann::json& j, Header& msg)
 {
-  msg.header_id = j.at("headerId");
-
-  std::tm t = {};
-  char sep;
-  int millisec = 0;
-
-  std::string timestamp_str = j.at("timestamp");
-  std::istringstream ss(timestamp_str);
-  ss >> std::get_time(&t, ISO8601_FORMAT);
-
-  ss >> sep;
-  if (sep == '.')
+  try
   {
-    ss >> millisec;
-    if (!ss.eof())
+    msg.header_id = j.at("headerId").get<uint32_t>();
+
+    // Timestamp deserialization
+    std::tm t = {};
+    char sep;
+    int millisec = 0;
+
+    std::string timestamp_str = j.at("timestamp").get<std::string>();
+    std::istringstream ss(timestamp_str);
+    ss >> std::get_time(&t, ISO8601_FORMAT);
+
+    ss >> sep;
+    if (ss.fail() || sep != '.')
     {
-      ss.ignore(std::numeric_limits<std::streamsize>::max(), 'Z');
+      throw std::runtime_error(
+        "JSON parsing error for Header: Unexpected character after seconds in "
+        "timestamp.");
     }
+    else
+    {
+      ss >> millisec;
+      if (ss.fail())
+      {
+        throw std::runtime_error(
+          "JSON parsing error for Header: Failed to parse milliseconds from "
+          "timestamp.");
+      }
+
+      if (!ss.eof())
+      {
+        ss.ignore(std::numeric_limits<std::streamsize>::max(), 'Z');
+      }
+      else
+      {
+        throw std::runtime_error(
+          "JSON parsing error for Header: Expected 'Z' at the end of timestamp "
+          "to indicate UTC.");
+      }
+    }
+
+    // TODO(sauk): Add a check to see if the platform supports timegm
+    auto tp = system_clock::from_time_t(timegm(&t));
+    auto duration = duration_cast<milliseconds>(tp.time_since_epoch()) +
+                    milliseconds(millisec);
+
+    msg.timestamp = duration.count();
+
+    msg.version = j.at("version").get<std::string>();
+    msg.manufacturer = j.at("manufacturer").get<std::string>();
+    msg.serial_number = j.at("serialNumber").get<std::string>();
   }
-
-  // TODO(sauk): Add a check to see if the platform supports timegm
-  auto tp = system_clock::from_time_t(timegm(&t));
-  auto duration =
-    duration_cast<milliseconds>(tp.time_since_epoch()) + milliseconds(millisec);
-
-  msg.timestamp = duration.count();
-
-  msg.version = j.at("version");
-  msg.manufacturer = j.at("manufacturer");
-  msg.serial_number = j.at("serialNumber");
+  catch (const nlohmann::json::exception& e)
+  {
+    throw std::runtime_error(
+      "JSON parsing error for Header: " + std::string(e.what()));
+  }
 }
 
 }  // namespace msg
