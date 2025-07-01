@@ -1,0 +1,11 @@
+OptionalString load_id
+
+OptionalString load_type
+
+OptionalString load_position
+
+BoundingBoxReference bounding_box_reference
+
+LoadDimensions load_dimensions
+
+OptionalFloat64 weight
