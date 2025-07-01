@@ -15,8 +15,31 @@ find_package(nlohmann_json REQUIRED)
 
 # Generate VDA5050 ROS 2 messages
 set(msg_files
+  "msg/ActionState.msg"
+  "msg/AGVPosition.msg"
+  "msg/BatteryState.msg"
+  "msg/BoundingBoxReference.msg"
   "msg/Connection.msg"
+  "msg/ControlPoint.msg"
+  "msg/EdgeState.msg"
+  "msg/Error.msg"
+  "msg/ErrorReference.msg"
   "msg/Header.msg"
+  "msg/InfoReference.msg"
+  "msg/Information.msg"
+  "msg/Load.msg"
+  "msg/LoadDimensions.msg"
+  "msg/NodePosition.msg"
+  "msg/NodeState.msg"
+  "msg/OptionalBool.msg"
+  "msg/OptionalFloat64.msg"
+  "msg/OptionalString.msg"
+  "msg/OptionalUInt32.msg"
+  "msg/OptionalUInt8.msg"
+  "msg/SafetyState.msg"
+  "msg/State.msg"
+  "msg/Trajectory.msg"
+  "msg/Velocity.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
