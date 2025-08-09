@@ -22,3 +22,5 @@ ContinuationIndentWidth: 2
 DerivePointerAlignment: false
 PointerAlignment: Left
 ReflowComments: false
+SortIncludes: CaseSensitive
+IncludeBlocks: Preserve

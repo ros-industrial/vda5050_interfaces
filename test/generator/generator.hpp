@@ -27,7 +27,8 @@
 #include "vda5050_msgs/msg/connection.hpp"
 #include "vda5050_msgs/msg/header.hpp"
 
-using namespace vda5050_msgs;
+using vda5050_msgs::msg::Connection;
+using vda5050_msgs::msg::Header;
 
 /// \brief Utility class to generate random instances of VDA 5050 message types
 class RandomDataGenerator
@@ -91,8 +92,7 @@ public:
   std::string generate_connection_state()
   {
     std::vector<std::string> states = {
-      msg::Connection::ONLINE, msg::Connection::OFFLINE,
-      msg::Connection::CONNECTIONBROKEN};
+      Connection::ONLINE, Connection::OFFLINE, Connection::CONNECTIONBROKEN};
     auto state_idx = connection_state_dist_(rng_);
     return states[state_idx];
   }
@@ -101,9 +101,9 @@ public:
   template <typename T>
   T generate()
   {
-    if constexpr (std::is_same_v<T, msg::Header>)
+    if constexpr (std::is_same_v<T, Header>)
     {
-      msg::Header msg;
+      Header msg;
       msg.header_id = generate_uint();
       msg.timestamp = generate_milliseconds();
       msg.version = "2.0.0";  // Fix the VDA 5050 version to 2.0.0
@@ -111,10 +111,10 @@ public:
       msg.serial_number = generate_random_string();
       return msg;
     }
-    else if constexpr (std::is_same_v<T, msg::Connection>)
+    else if constexpr (std::is_same_v<T, Connection>)
     {
-      msg::Connection msg;
-      msg.header = generate<msg::Header>();
+      Connection msg;
+      msg.header = generate<Header>();
       msg.connection_state = generate_connection_state();
       return msg;
     }
