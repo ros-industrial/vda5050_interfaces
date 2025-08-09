@@ -7,13 +7,13 @@ Header header
 string connection_state ""
 
 # ONLINE: The connection between the broker and AGV is active
-string CONNECTION_STATE_ONLINE="ONLINE"
+string ONLINE="ONLINE"
 
 # OFFLINE: The connection between AGV and broker has gone offline in a
 # coordinated way
-string CONNECTION_STATE_OFFLINE="OFFLINE"
+string OFFLINE="OFFLINE"
 
 # CONNECTIONBROKEN: The connection between AGV and broker has ended
 # unexpectedly (e.g. used in MQTT last-will-message)
-string CONNECTION_STATE_CONNECTIONBROKEN="CONNECTIONBROKEN"
+string CONNECTIONBROKEN="CONNECTIONBROKEN"
 

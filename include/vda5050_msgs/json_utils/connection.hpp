@@ -41,9 +41,9 @@ void to_json(nlohmann::json& j, const Connection& msg)
   to_json(j, msg.header);
 
   if (
-    msg.connection_state == Connection::CONNECTION_STATE_ONLINE ||
-    msg.connection_state == Connection::CONNECTION_STATE_OFFLINE ||
-    msg.connection_state == Connection::CONNECTION_STATE_CONNECTIONBROKEN)
+    msg.connection_state == Connection::ONLINE ||
+    msg.connection_state == Connection::OFFLINE ||
+    msg.connection_state == Connection::CONNECTIONBROKEN)
   {
     j["connectionState"] = msg.connection_state;
   }
@@ -67,9 +67,9 @@ void from_json(const nlohmann::json& j, Connection& msg)
 
   auto connection_state = j.at("connectionState").get<std::string>();
   if (
-    connection_state == Connection::CONNECTION_STATE_ONLINE ||
-    connection_state == Connection::CONNECTION_STATE_OFFLINE ||
-    connection_state == Connection::CONNECTION_STATE_CONNECTIONBROKEN)
+    connection_state == Connection::ONLINE ||
+    connection_state == Connection::OFFLINE ||
+    connection_state == Connection::CONNECTIONBROKEN)
   {
     msg.connection_state = connection_state;
   }

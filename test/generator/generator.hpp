@@ -91,9 +91,8 @@ public:
   std::string generate_connection_state()
   {
     std::vector<std::string> states = {
-      msg::Connection::CONNECTION_STATE_ONLINE,
-      msg::Connection::CONNECTION_STATE_OFFLINE,
-      msg::Connection::CONNECTION_STATE_CONNECTIONBROKEN};
+      msg::Connection::ONLINE, msg::Connection::OFFLINE,
+      msg::Connection::CONNECTIONBROKEN};
     auto state_idx = connection_state_dist_(rng_);
     return states[state_idx];
   }
