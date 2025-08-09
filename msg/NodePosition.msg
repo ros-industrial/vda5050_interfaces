@@ -1,4 +1,5 @@
-# Defines a position, in world coordinate system, on a map of a floor
+# Defines a position on a map (on a floor in world coordinate system. Part of
+# the state message
 
 # X-position of the AGV in meters on the map in world coordinate system
 #

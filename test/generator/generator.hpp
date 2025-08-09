@@ -22,6 +22,7 @@
 #include <string>
 #include <vda5050_msgs/msg/connection.hpp>
 #include <vda5050_msgs/msg/header.hpp>
+#include <vda5050_msgs/msg/state.hpp>
 
 using namespace vda5050_msgs;
 

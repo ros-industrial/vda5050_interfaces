@@ -170,6 +170,11 @@ void from_json(const nlohmann::json& j, ControlPoint& msg)
 }
 
 //=============================================================================
+/// \brief Convert a vda5050_msgs::msg::Trajectory object to a
+/// nlohmann::json object
+///
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the message object to serialize
 void to_json(nlohmann::json& j, const Trajectory& msg)
 {
   j["knotVector"] = msg.knot_vector;
@@ -182,9 +187,30 @@ void to_json(nlohmann::json& j, const Trajectory& msg)
 }
 
 //=============================================================================
-void from_json(const nlohmann::json& j, Trajectory& msg) {}
+/// \brief Populate a vda5050_msgs::msg::Trajectory object from a
+/// nlohmann::json object
+///
+/// \param j Reference to the JSON object containing serialized data
+/// \param msg Reference to the message object to populate
+void from_json(const nlohmann::json& j, Trajectory& msg)
+{
+  msg.knot_vector = j.at("knotVector").get<std::vector<double>>();
+  msg.control_points = j.at("controlPoints").get<std::vector<ControlPoint>>();
+  msg.value_initialized = true;
+
+  if (j.contains("degree"))
+  {
+    msg.degree.value = j.at("degree").get<double>();
+    msg.degree.value_initialized = true;
+  }
+}
 
 //=============================================================================
+/// \brief Convert a vda5050_msgs::msg::EdgeState object to a
+/// nlohmann::json object
+///
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the message object to serialize
 void to_json(nlohmann::json& j, const EdgeState& msg)
 {
   j["edgeId"] = msg.edge_id;
@@ -203,9 +229,35 @@ void to_json(nlohmann::json& j, const EdgeState& msg)
 }
 
 //=============================================================================
-void from_json(const nlohmann::json& j, EdgeState& msg) {}
+/// \brief Populate a vda5050_msgs::msg::EdgeState object from a
+/// nlohmann::json object
+///
+/// \param j Reference to the JSON object containing serialized data
+/// \param msg Reference to the message object to populate
+void from_json(const nlohmann::json& j, EdgeState& msg)
+{
+  msg.edge_id = j.at("edgeId").get<std::string>();
+  msg.sequence_id = j.at("sequenceId").get<int32_t>();
+  msg.released = j.at("released").get<bool>();
+
+  if (j.contains("edgeDescription"))
+  {
+    msg.edge_description.value = j.at("edgeDescription").get<std::string>();
+    msg.edge_description.value_initialized = true;
+  }
+
+  if (j.contains("trajectory"))
+  {
+    msg.trajectory = j.at("trajectory").get<Trajectory>();
+  }
+}
 
 //=============================================================================
+/// \brief Convert a vda5050_msgs::msg::AGVPosition object to a
+/// nlohmann::json object
+///
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the message object to serialize
 void to_json(nlohmann::json& j, const AGVPosition& msg)
 {
   j["x"] = msg.x;
@@ -231,6 +283,11 @@ void to_json(nlohmann::json& j, const AGVPosition& msg)
 }
 
 //=============================================================================
+/// \brief Populate a vda5050_msgs::msg::EdgeState object from a
+/// nlohmann::json object
+///
+/// \param j Reference to the JSON object containing serialized data
+/// \param msg Reference to the message object to populate
 void from_json(const nlohmann::json& j, AGVPosition& msg) {}
 
 //=============================================================================

@@ -19,6 +19,7 @@
 #include <rosidl_runtime_cpp/traits.hpp>
 #include <vda5050_msgs/json_utils/connection.hpp>
 #include <vda5050_msgs/json_utils/header.hpp>
+#include <vda5050_msgs/json_utils/state.hpp>
 #include <vda5050_msgs/msg/connection.hpp>
 
 #include "generator/generator.hpp"

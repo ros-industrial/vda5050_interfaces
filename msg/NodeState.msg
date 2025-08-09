@@ -5,7 +5,7 @@
 # Field type: Required
 string node_id
 
-# A sequence ID to differentiate to multiple node with the same ID
+# A sequence ID to differentiate multiple nodes with the same ID
 #
 # Field type: Required
 int32 sequence_id 0
