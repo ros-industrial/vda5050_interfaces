@@ -26,10 +26,6 @@
 
 #include "vda5050_msgs/msg/header.hpp"
 
-using std::chrono::duration_cast;
-using std::chrono::milliseconds;
-using std::chrono::system_clock;
-
 namespace vda5050_msgs {
 
 namespace msg {
@@ -45,6 +41,10 @@ constexpr const char* ISO8601_FORMAT = "%Y-%m-%dT%H:%M:%S";
 /// \throws std::runtime_error If failed to serialize timestamp
 void to_json(nlohmann::json& j, const Header& msg)
 {
+  using std::chrono::duration_cast;
+  using std::chrono::milliseconds;
+  using std::chrono::system_clock;
+
   system_clock::time_point tp{milliseconds(msg.timestamp)};
 
   std::time_t time_sec = system_clock::to_time_t(tp);
@@ -76,6 +76,10 @@ void to_json(nlohmann::json& j, const Header& msg)
 /// \throws std::runtime_error If failed to deserialize timestamp
 void from_json(const nlohmann::json& j, Header& msg)
 {
+  using std::chrono::duration_cast;
+  using std::chrono::milliseconds;
+  using std::chrono::system_clock;
+
   try
   {
     msg.header_id = j.at("headerId").get<uint32_t>();
