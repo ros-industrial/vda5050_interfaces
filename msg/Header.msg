@@ -1,9 +1,9 @@
 # The VDA 5050 header sent with each message. These are common fields
 # across all message schemas
 
-# The header ID of the message. It is define per topic and incremented by
+# The header ID of the message. It is defined per topic and incremented by
 # 1 with each message sent but not necessarily received
-uint32 header_id
+uint32 header_id 0
 
 # Timestamp in milliseconds in UTC indicating a specific point relative to
 # a clock's 0 point
