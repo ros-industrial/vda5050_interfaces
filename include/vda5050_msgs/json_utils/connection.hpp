@@ -1,5 +1,7 @@
 /**
- * Copyright (C) 2025 ROS Industrial Consortium Asia Pacific
+ * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
+ * Advanced Remanufacturing and Technology Centre
+ * A*STAR Research Entities (Co. Registration No. 199702110H)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +19,9 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP_
 #define VDA5050_MSGS__JSON_UTILS__CONNECTION_HPP_
 
-#include <nlohmann/json.hpp>
 #include <string>
+
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/msg/connection.hpp"
@@ -32,28 +35,24 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
+///
+/// \throws std::runtime_error If failed to serialize connection_state
 void to_json(nlohmann::json& j, const Connection& msg)
 {
   to_json(j, msg.header);
 
-  std::string connection_state;
-  switch (msg.connection_state)
+  if (
+    msg.connection_state == Connection::ONLINE ||
+    msg.connection_state == Connection::OFFLINE ||
+    msg.connection_state == Connection::CONNECTIONBROKEN)
   {
-    case Connection::CONNECTION_STATE_ONLINE:
-      connection_state = "ONLINE";
-      break;
-    case Connection::CONNECTION_STATE_OFFLINE:
-      connection_state = "OFFLINE";
-      break;
-    case Connection::CONNECTION_STATE_CONNECTIONBROKEN:
-      connection_state = "CONNECTIONBROKEN";
-      break;
-    default:
-      // TODO(sauk): Change this to throw an error
-      connection_state = "UNKNOWN";
-      break;
+    j["connectionState"] = msg.connection_state;
   }
-  j["connectionState"] = connection_state;
+  else
+  {
+    throw std::runtime_error(
+      "Serialization error: Unexpected connection state");
+  }
 }
 
 /// \brief Populate a vda5050_msgs::msg::Connection object from a
@@ -61,22 +60,23 @@ void to_json(nlohmann::json& j, const Connection& msg)
 ///
 /// \param j Reference to the JSON object containing serialized connection data
 /// \param msg Reference to the Connection message to populate
+///
+/// \throws std::runtime_error If failed to deserialize connectionState
 void from_json(const nlohmann::json& j, Connection& msg)
 {
   from_json(j, msg.header);
 
-  auto connection_state = j.at("connectionState");
-  if (connection_state == "ONLINE")
+  auto connection_state = j.at("connectionState").get<std::string>();
+  if (
+    connection_state == Connection::ONLINE ||
+    connection_state == Connection::OFFLINE ||
+    connection_state == Connection::CONNECTIONBROKEN)
   {
-    msg.connection_state = Connection::CONNECTION_STATE_ONLINE;
+    msg.connection_state = connection_state;
   }
-  else if (connection_state == "OFFLINE")
+  else
   {
-    msg.connection_state = Connection::CONNECTION_STATE_OFFLINE;
-  }
-  else if (connection_state == "CONNECTIONBROKEN")
-  {
-    msg.connection_state = Connection::CONNECTION_STATE_CONNECTIONBROKEN;
+    throw std::runtime_error("JSON parsing error: Unexpected connectionState.");
   }
 }
 
