@@ -70,10 +70,25 @@ float64[<=1] distance_since_last_node
 string operating_mode
 
 # Enum values for operating mode
+#
+# AUTOMATIC: AGV is under full control of the MC with capability of
+# executing actions from it
 string OPERATING_MODE_AUTOMATIC="AUTOMATIC"
+#
+# SEMIAUTOMATIC: AGV is under control of the MC in areas like driving
+# and executing actions. The driving speeds is however controlled by the HMI
 string OPERATING_MODE_SEMIAUTOMATIC="SEMIAUTOMATIC"
+#
+# MANUAL: AGV is not under control of the MC. HMI can be used to
+# control the AGV. Only location of the AGV is sent to the MC
 string OPERATING_MODE_MANUAL="MANUAL"
+#
+# SERVICE: AGV is not under the control of the MC. Authorized
+# personnel can reconfigure the AGV
 string OPERATING_MODE_SERVICE="SERVICE"
+#
+# TEACHIN: AGV is not under the control of the MC. It is being
+# taught
 string OPERATING_MODE_TEACHIN="TEACHIN"
 
 # Array of nodes that need to be traversed for fulfilling the order
@@ -129,7 +144,7 @@ Error[] errors
 # specification when these messages are deleted
 #
 # Field type: Optional
-Information[] information
+Info[] information
 
 # Safety state information of the AGV
 #

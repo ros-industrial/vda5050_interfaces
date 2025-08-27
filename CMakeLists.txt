@@ -26,7 +26,7 @@ set(msg_files
   "msg/ErrorReference.msg"
   "msg/Header.msg"
   "msg/InfoReference.msg"
-  "msg/Information.msg"
+  "msg/Info.msg"
   "msg/Load.msg"
   "msg/LoadDimensions.msg"
   "msg/NodePosition.msg"

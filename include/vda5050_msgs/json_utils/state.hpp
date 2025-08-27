@@ -16,8 +16,11 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__STATE_HPP
-#define VDA5050_MSGS__JSON_UTILS__STATE_HPP
+#ifndef VDA5050_MSGS__JSON_UTILS__STATE_HPP_
+#define VDA5050_MSGS__JSON_UTILS__STATE_HPP_
+
+#include <string>
+#include <vector>
 
 #include <nlohmann/json.hpp>
 
@@ -767,20 +770,20 @@ void from_json(const nlohmann::json& j, InfoReference& msg)
 }
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::Information object to a
+/// \brief Convert a vda5050_msgs::msg::Info object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize infoLevel
-void to_json(nlohmann::json& j, const Information& msg)
+void to_json(nlohmann::json& j, const Info& msg)
 {
   j["infoType"] = msg.info_type;
 
   if (
-    msg.info_level == Information::INFO_LEVEL_INFO ||
-    msg.info_level == Information::INFO_LEVEL_DEBUG)
+    msg.info_level == Info::INFO_LEVEL_INFO ||
+    msg.info_level == Info::INFO_LEVEL_DEBUG)
   {
     j["infoLevel"] = msg.info_level;
   }
@@ -801,21 +804,20 @@ void to_json(nlohmann::json& j, const Information& msg)
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::Information object from a
+/// \brief Populate a vda5050_msgs::msg::Info object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
 ///
 /// \throws std::runtime_error If failed to deserialize infoLevel
-void from_json(const nlohmann::json& j, Information& msg)
+void from_json(const nlohmann::json& j, Info& msg)
 {
   msg.info_type = j.at("infoType").get<std::string>();
 
   auto info_level = j.at("infoLevel").get<std::string>();
   if (
-    info_level == Information::INFO_LEVEL_INFO ||
-    info_level == Information::INFO_LEVEL_DEBUG)
+    info_level == Info::INFO_LEVEL_INFO || info_level == Info::INFO_LEVEL_DEBUG)
   {
     msg.info_level = info_level;
   }
@@ -1039,4 +1041,4 @@ void from_json(const nlohmann::json& j, State& msg)
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__STATE_HPP
+#endif  // VDA5050_MSGS__JSON_UTILS__STATE_HPP_
