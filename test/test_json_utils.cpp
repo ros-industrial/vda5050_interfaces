@@ -25,11 +25,33 @@
 #include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/json_utils/state.hpp"
 
+using vda5050_msgs::msg::ActionState;
+using vda5050_msgs::msg::AGVPosition;
+using vda5050_msgs::msg::BatteryState;
+using vda5050_msgs::msg::BoundingBoxReference;
 using vda5050_msgs::msg::Connection;
+using vda5050_msgs::msg::ControlPoint;
+using vda5050_msgs::msg::EdgeState;
+using vda5050_msgs::msg::Error;
+using vda5050_msgs::msg::ErrorReference;
 using vda5050_msgs::msg::Header;
+using vda5050_msgs::msg::Info;
+using vda5050_msgs::msg::InfoReference;
+using vda5050_msgs::msg::Load;
+using vda5050_msgs::msg::LoadDimensions;
+using vda5050_msgs::msg::NodePosition;
+using vda5050_msgs::msg::NodeState;
+using vda5050_msgs::msg::SafetyState;
+using vda5050_msgs::msg::State;
+using vda5050_msgs::msg::Trajectory;
+using vda5050_msgs::msg::Velocity;
 
 // List of types to be tested for serialization round-trip
-using SerializableTypes = ::testing::Types<Header, Connection>;
+using SerializableTypes = ::testing::Types<
+  ActionState, AGVPosition, BatteryState, BoundingBoxReference, Connection,
+  ControlPoint, EdgeState, Error, ErrorReference, Header, Info, InfoReference,
+  Load, LoadDimensions, NodePosition, NodeState, SafetyState, State, Trajectory,
+  Velocity>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test
@@ -51,8 +73,8 @@ protected:
 
     EXPECT_EQ(original, deserialized_object)
       << "Serialization round-trip failed for type: " << typeid(T).name()
-      << "\nOriginal:\n"
-      << to_yaml(original) << "Deserialized:\n"
+      << "\n\nOriginal:\n"
+      << to_yaml(original) << "\nDeserialized:\n"
       << to_yaml(deserialized_object);
   }
 };
