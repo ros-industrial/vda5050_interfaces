@@ -239,7 +239,7 @@ void to_json(nlohmann::json& j, const Load& msg)
 
   if (!msg.load_dimensions.empty())
   {
-    j["LoadDimensions"] = msg.load_dimensions.front();
+    j["loadDimensions"] = msg.load_dimensions.front();
   }
 
   if (!msg.weight.empty())
@@ -349,6 +349,11 @@ void from_json(const nlohmann::json& j, NodePosition& msg)
     msg.allowed_deviation_theta.push_back(
       j.at("allowedDeviationTheta").get<double>());
   }
+
+  if (j.contains("mapDescription"))
+  {
+    msg.map_description.push_back(j.at("mapDescription").get<std::string>());
+  }
 }
 
 //=============================================================================
@@ -365,7 +370,7 @@ void to_json(nlohmann::json& j, const NodeState& msg)
 
   if (!msg.node_description.empty())
   {
-    j["nodeDescription"] = msg.node_description;
+    j["nodeDescription"] = msg.node_description.front();
   }
 
   if (!msg.node_position.empty())
@@ -383,7 +388,7 @@ void to_json(nlohmann::json& j, const NodeState& msg)
 void from_json(const nlohmann::json& j, NodeState& msg)
 {
   msg.node_id = j.at("nodeId").get<std::string>();
-  msg.sequence_id = j.at("sequenceId").get<int32_t>();
+  msg.sequence_id = j.at("sequenceId").get<uint32_t>();
   msg.released = j.at("released").get<bool>();
 
   if (j.contains("nodeDescription"))
@@ -471,7 +476,7 @@ void to_json(nlohmann::json& j, const EdgeState& msg)
 {
   j["edgeId"] = msg.edge_id;
   j["sequenceId"] = msg.sequence_id;
-  j["released"] = msg.sequence_id;
+  j["released"] = msg.released;
 
   if (!msg.edge_description.empty())
   {
@@ -493,7 +498,7 @@ void to_json(nlohmann::json& j, const EdgeState& msg)
 void from_json(const nlohmann::json& j, EdgeState& msg)
 {
   msg.edge_id = j.at("edgeId").get<std::string>();
-  msg.sequence_id = j.at("sequenceId").get<int32_t>();
+  msg.sequence_id = j.at("sequenceId").get<uint32_t>();
   msg.released = j.at("released").get<bool>();
 
   if (j.contains("edgeDescription"))
@@ -926,6 +931,8 @@ void to_json(nlohmann::json& j, const State& msg)
   j["edgeStates"] = msg.edge_states;
   j["actionStates"] = msg.action_states;
   j["errors"] = msg.errors;
+  j["batteryState"] = msg.battery_state;
+  j["safetyState"] = msg.safety_state;
 
   if (!msg.zone_set_id.empty())
   {
@@ -960,6 +967,11 @@ void to_json(nlohmann::json& j, const State& msg)
   if (!msg.loads.empty())
   {
     j["loads"] = msg.loads;
+  }
+
+  if (!msg.information.empty())
+  {
+    j["information"] = msg.information;
   }
 }
 
@@ -1000,6 +1012,8 @@ void from_json(const nlohmann::json& j, State& msg)
   msg.edge_states = j.at("edgeStates").get<std::vector<EdgeState>>();
   msg.action_states = j.at("actionStates").get<std::vector<ActionState>>();
   msg.errors = j.at("errors").get<std::vector<Error>>();
+  msg.battery_state = j.at("batteryState").get<BatteryState>();
+  msg.safety_state = j.at("safetyState").get<SafetyState>();
 
   if (j.contains("zoneSetId"))
   {
@@ -1035,6 +1049,11 @@ void from_json(const nlohmann::json& j, State& msg)
   if (j.contains("loads"))
   {
     msg.loads = j.at("loads").get<std::vector<Load>>();
+  }
+
+  if (j.contains("information"))
+  {
+    msg.information = j.at("information").get<std::vector<Info>>();
   }
 }
 
