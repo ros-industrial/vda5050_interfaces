@@ -10,7 +10,7 @@ string edge_id
 # A sequence ID to differentiate multiple edges with the same ID
 #
 # Field type: Required
-int32 sequence_id
+uint32 sequence_id
 
 # Additional edge information
 #

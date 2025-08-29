@@ -10,7 +10,7 @@ string node_id
 # A sequence ID to differentiate multiple nodes with the same ID
 #
 # Field type: Required
-int32 sequence_id 0
+uint32 sequence_id 0
 
 # Additional node information
 #
