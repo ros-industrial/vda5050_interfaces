@@ -9,10 +9,16 @@ namespace vda5050_msgs {
 
 namespace msg {
 
-    void to_json(nlohmann::json& j, const InstantAction& msg)
+    /// \brief Convert a vda5050_msgs::msg::ActionParameterValue object to a nlohmann::json object
+    /// \param j 
+    /// \param msg 
+    void to_json(nlohmann::json& j, const ActionParameterValue& msg)
     {
         to_json(j, msg.header);
-        j["actions"] = msg.actions;
+
+        if (
+            
+        )
     }
 
 } // namespace msg
