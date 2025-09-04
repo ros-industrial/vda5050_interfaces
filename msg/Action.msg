@@ -29,10 +29,15 @@ string SOFT="SOFT"
 # HARD: no other action can be performed while this action is running
 string HARD="HARD"
 
-
+# Additional information on the action
+#
 # Field Type: Optional
 string[<=1] actionDescription
 
+# Array of actionParameter objects for the indicated action. 
+# If not defined, the action has no parameters
+# eg: deviceId, loadId, external Triggers
+# 
 # Field Type: Optional
-actionParameter[] actionParameters 
+ActionParameter[] actionParameters 
 
