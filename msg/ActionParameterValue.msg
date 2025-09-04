@@ -27,11 +27,8 @@ float64 float_value
 
 string string_value
 
-# TODO: could reuse actionParameter object?
-# Currently none of the predefined action parameters use an Object type
-# but it would be good to have as an option if users need to come up with 
-# custom action definitions
-
+# Homogenous arrays
+#
 bool[] bool_array_value
 
 int64[] integer_array_value
@@ -40,4 +37,5 @@ float64[] double_array_value
 
 string[] string_array_value
 
-#TODO: What about heterogenous arrays?
+# TODO: What about heterogenous arrays?
+# TODO: Enable objects to be stored
