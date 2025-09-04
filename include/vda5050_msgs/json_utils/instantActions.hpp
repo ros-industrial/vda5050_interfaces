@@ -53,7 +53,25 @@ namespace msg {
         {
             throw std::runtime_error("JSON parsing error: Unexpected type.");
         }
+    }
 
+
+    /// @brief 
+    /// @param j 
+    /// @param msg 
+    void to_json(nlohmann::json& j, const ActionParameter& msg)
+    {
+        j["key"] = msg.key;
+        j["value"] = msg.value;
+    }
+
+    /// @brief 
+    /// @param j 
+    /// @param msg 
+    void from_json(nlohmann::json& j, const ActionParameter& msg)
+    {
+        auto key = j.at("key").get<std::string>();
+        auto value = j.at("value").get<>(ActionParameterValue);
     }
 
 } // namespace msg
