@@ -110,7 +110,6 @@ public:
     return index_dist(rng_);
   }
 
-
   /// @brief Generte a random blocking type value
   /// @return 
   std::string generate_random_blocking_type()
@@ -127,7 +126,11 @@ public:
   /// @return 
   uint8_t generate_random_action_parameter_value_type()
   {
+    std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
 
+    auto state_idx = generate_random_index(states.size());
+
+    return states[state_idx];
   }
 
 
@@ -151,6 +154,18 @@ public:
       msg.header = generate<Header>();
       msg.connection_state = generate_connection_state();
       return msg;
+    }
+    else if constexpr (std::is_same_v<T, ActionParameterValue>)
+    {
+      ActionParameterValue msg;
+      msg.type = generate_random_action_parameter_value_type();
+      msg.value = generate_random_string(); 
+    }
+    else if constexpr (std::is_same_v<T, ActionParameter>)
+    {
+      ActionParameter msg;
+      msg.key = generate_random_string();
+      msg.value
     }
     else
     {
