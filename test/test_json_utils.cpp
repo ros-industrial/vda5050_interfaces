@@ -27,10 +27,6 @@
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;
-using vda5050_msgs::msg::InstantAction;
-using vda5050_msgs::msg::Action;
-using vda5050_msgs::msg::ActionParameter;
-using vda5050_msgs::msg::ActionParameterValue;
 
 
 // List of types to be tested for serialization round-trip
