@@ -29,6 +29,10 @@
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;
+using vda5050_msgs::msg::InstantAction;
+using vda5050_msgs::msg::Action;
+using vda5050_msgs::msg::ActionParameter;
+using vda5050_msgs::msg::ActionParameterValue;
 
 /// \brief Utility class to generate random instances of VDA 5050 message types
 class RandomDataGenerator
@@ -96,6 +100,36 @@ public:
     auto state_idx = connection_state_dist_(rng_);
     return states[state_idx];
   }
+
+  /// @brief Generate a random index for enum selection
+  /// @param size 
+  /// @return 
+  uint8_t generate_random_index(size_t size)
+  {
+    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
+    return index_dist(rng_);
+  }
+
+
+  /// @brief Generte a random blocking type value
+  /// @return 
+  std::string generate_random_blocking_type()
+  {
+    std::vector<std::string> states = {Action::NONE, Action::SOFT, Action::HARD};
+
+    auto state_idx = generate_random_index(states.size());
+
+    return states[state_idx];
+  }
+
+  /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
+  /// @brief Generate a random ActionParameterValue type
+  /// @return 
+  uint8_t generate_random_action_parameter_value_type()
+  {
+
+  }
+
 
   /// \brief Generate a fully populated message of a supported type
   template <typename T>
