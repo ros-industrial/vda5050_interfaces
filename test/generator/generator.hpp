@@ -151,7 +151,6 @@ public:
     return states[state_idx];
   }
 
-
   /// \brief Generate a fully populated message of a supported type
   template <typename T>
   T generate()
