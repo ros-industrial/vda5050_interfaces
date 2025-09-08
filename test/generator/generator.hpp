@@ -105,19 +105,17 @@ public:
     return states[state_idx];
   }
 
-  /// @brief Generate a random index for enum selection
-  /// @param size 
-  /// @return 
+  /// \brief Generate a random index for enum selection
+  /// \param size 
   uint8_t generate_random_index(size_t size)
   {
     std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
     return index_dist(rng_);
   }
 
-  /// @brief Generate a random vector of type T
-  /// @tparam T The random type that the vector is filled with
-  /// @param size 
-  /// @return 
+  /// \brief Generate a random vector of type T
+  /// \param T The random type that the vector is filled with
+  /// \param size 
   template <typename T>
   std::vector<T> generate_random_vector(const uint8_t size)
   {
@@ -129,14 +127,15 @@ public:
     return vec;
   }
 
+  /// \brief 
+  /// \return 
   uint8_t generate_random_size()
   {
     return size_dist_(rng_);
   }
 
-
-  /// @brief Generte a random blocking type value
-  /// @return 
+  /// \brief Generte a random blocking type value
+  /// \return 
   std::string generate_random_blocking_type()
   {
     std::vector<std::string> states = {Action::NONE, Action::SOFT, Action::HARD};
@@ -146,9 +145,9 @@ public:
     return states[state_idx];
   }
 
-  /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
-  /// @brief Generate a random ActionParameterValue type
-  /// @return
+  /// TODO: \shawnkchan KIV to rename this function. Made it more verbose to be clear
+  /// \brief Generate a random ActionParameterValue type
+  /// \return
   uint8_t generate_random_action_parameter_value_type()
   {
     std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
