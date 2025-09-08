@@ -26,6 +26,10 @@
 
 #include "vda5050_msgs/msg/connection.hpp"
 #include "vda5050_msgs/msg/header.hpp"
+#include "vda5050_msgs/msg/instant_action.hpp"
+#include "vda5050_msgs/msg/action.hpp"
+#include "vda5050_msgs/msg/action_parameter.hpp"
+#include "vda5050_msgs/msg/action_parameter_value.hpp"
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;
@@ -110,6 +114,27 @@ public:
     return index_dist(rng_);
   }
 
+  /// @brief Generate a random vector of type T
+  /// @tparam T The random type that the vector is filled with
+  /// @param size 
+  /// @return 
+  template <typename T>
+  std::vector<T> generate_random_vector(const uint8_t size)
+  {
+    std::vector<T> vec(size);
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+    {
+      *it = generate<T>();
+    }
+    return vec;
+  }
+
+  uint8_t generate_random_size()
+  {
+    return size_dist_(rng_);
+  }
+
+
   /// @brief Generte a random blocking type value
   /// @return 
   std::string generate_random_blocking_type()
@@ -123,7 +148,7 @@ public:
 
   /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
   /// @brief Generate a random ActionParameterValue type
-  /// @return 
+  /// @return
   uint8_t generate_random_action_parameter_value_type()
   {
     std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
@@ -159,13 +184,32 @@ public:
     {
       ActionParameterValue msg;
       msg.type = generate_random_action_parameter_value_type();
-      msg.value = generate_random_string(); 
+      msg.value = generate_random_string();
+      return msg; 
     }
     else if constexpr (std::is_same_v<T, ActionParameter>)
     {
       ActionParameter msg;
       msg.key = generate_random_string();
-      msg.value
+      msg.value = generate<ActionParameterValue>();
+      return msg;
+    }
+    else if constexpr (std::is_same_v<T, Action>)
+    {
+      Action msg;
+      msg.action_type = generate_random_string();
+      msg.action_id = generate_random_string();
+      msg.blocking_type = generate_random_blocking_type();
+      msg.action_description.push_back(generate_random_string());
+      msg.action_parameters = generate_random_vector<ActionParameter>(generate_random_size());
+      return msg;
+    }
+    else if constexpr (std::is_same_v<T, InstantAction>)
+    {
+      InstantAction msg;
+      msg.header = generate<Header>();
+      msg.actions = generate_random_vector<Action>(generate_random_size());
+      return msg;
     }
     else
     {
@@ -190,6 +234,9 @@ private:
 
   /// \brief Distribution for VDA 5050 connectionState
   std::uniform_int_distribution<uint8_t> connection_state_dist_;
+
+  /// \brief Distribution for random vector size 
+  std::uniform_int_distribution<uint8_t> size_dist_;
 };
 
 #endif  // TEST__GENERATOR__GENERATOR_HPP_

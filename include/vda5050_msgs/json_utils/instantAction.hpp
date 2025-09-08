@@ -1,3 +1,5 @@
+#include <string>
+
 #include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/header.hpp"
@@ -56,6 +58,9 @@ namespace msg {
         {
             throw std::runtime_error("JSON parsing error: Unexpected type.");
         }
+
+        auto value = j.at("value").get<std::string>();
+        msg.value = value;
     }
 
 
@@ -101,7 +106,7 @@ namespace msg {
 
         if (!msg.action_description.empty())
         {
-            j["actionDescription"] = msg.action_description;
+            j["actionDescription"] = msg.action_description.front();
         }
 
         if (!msg.action_parameters.empty())
@@ -136,8 +141,8 @@ namespace msg {
 
         if (j.contains("actionDescription"))
         {
-            auto action_description = j.at("actionDescription").get<std::string>();
-            msg.action_description.push_back(action_description);
+            // auto action_description = j.at("actionDescription").get<std::string>();
+            msg.action_description.push_back(j.at("actionDescription").get<std::string>());
         }
 
         if (j.contains("actionParameters"))
