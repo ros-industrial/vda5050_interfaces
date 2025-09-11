@@ -110,7 +110,7 @@ boolean rotationAllowed
 # Field type: Optional
 float64 maxRotationSpeed
 
-# The Trajectory JSON Object for this edge as a Non-Uniform Rational B-Spline (NURBS).
+# The Trajectory object for this edge as a Non-Uniform Rational B-Spline (NURBS).
 # Defines the path that the AGV should move between the start node and end node
 # of the edge.
 # This field can be omitted if the AGV cannot process trajectories or if the AGV
