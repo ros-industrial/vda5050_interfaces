@@ -49,17 +49,17 @@ string edge_description
 # Speed is defined by the fastest measurement of the vehicle.
 #
 # Field type: Optional
-float64 max_speed
+float64[<=1] max_speed
 
 # Permitted maximum height [m] of the vehicle including load on the edge.
 #
 # Field type: Optional
-float64 max_height
+float64[<=1] max_height
 
 # Permitted minimal height [m] of the load handling device on the edge.
 #
 # Field type: Optional
-float64 min_height
+float64[<=1] min_height
 
 # Orientation of the AGV on the edge [rad]
 # If the AGV starts in a different orientation, rotate the vehicle on the edge to
@@ -71,7 +71,7 @@ float64 min_height
 # If a trajectory is defined for the edge, apply the orientation to the trajectory.
 #
 # Field type: Optional
-float64 orientation
+float64[<=1] orientation
 
 # Defines if the orientation field is interpreted relative to the global
 # project specific map coordinate system or tangential to the edge.
@@ -93,20 +93,20 @@ string TANGENTIAL="TANGENTIAL"
 # To be defined initially (vehicle-individual).
 #
 # Field type: Optional
-string direction
+string[<=1] direction
 
 # "true" indicates that rotation is allowed on the edge.
 # "false" indicates that rotation is not allowed on the edge.
 # No limit, if not set.
 #
 # Field type: Optional
-bool rotation_allowed
+bool[<=1] rotation_allowed
 
 # The maximum rotation speed [rad/s].
 # No limit, if not set.
 #
 # Field type: Optional
-float64 max_rotation_speed
+float64[<=1] max_rotation_speed
 
 # The Trajectory object for this edge as a Non-Uniform Rational B-Spline (NURBS).
 # Defines the path that the AGV should move between the start node and end node
@@ -115,10 +115,10 @@ float64 max_rotation_speed
 # plans its own trajectory.
 #
 # Field type: Optional
-Trajectory trajectory
+Trajectory[<=1] trajectory
 
 # Length of the path from the start node to the end node [m].
 # Used by line-guided AGVs to decrease their speed before reaching a stop position.
 # 
 # Field type: Optional
-float64 length
+float64[<=1] length
