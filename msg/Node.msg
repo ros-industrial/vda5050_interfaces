@@ -1,5 +1,4 @@
-# TODO: @shawnkchan Check description Node object
-# Defines the schema for a single node in an order
+# A message describing a single node in an Order message.
 
 # Unique node identification
 #
