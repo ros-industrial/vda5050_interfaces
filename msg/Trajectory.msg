@@ -22,4 +22,5 @@ ControlPoint[] controlPoints
 #
 # Default value is 1 if not defined.
 # Field type: Optional
-float64 degree
+# TODO: @shawnkchan should the default value be a float?
+float64 degree 1

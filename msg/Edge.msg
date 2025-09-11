@@ -80,7 +80,7 @@ float64 orientation
 # 
 # Default value: TANGENTIAL
 # Field type: Optional
-# TODO: Check if we can use the enum parameter or if it must be the string.
+# TODO: @shawnkchan Check if we can use the enum parameter or if it must be the string.
 string orientationType TANGENTIAL
 
 # Enum values for orientationType

@@ -1,4 +1,4 @@
-# TODO: Check description Node object
+# TODO: @shawnkchan Check description Node object
 # Defines the schema for a single node in an order
 
 # Unique node identification
