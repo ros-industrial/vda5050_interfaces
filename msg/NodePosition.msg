@@ -17,7 +17,7 @@ float64 y
 # Example: if an AGV uses an elevator, the node reappears on the target floor map.
 #
 # Field type: Required
-string mapId
+string map_id
 
 # Absolute orientation [rad] of the AGV at the node.
 # Range: [-Pi ... Pi]
@@ -34,7 +34,7 @@ float64[<=1] theta
 # If > 0: node is considered traversed if the AGV passes within this radius.
 #
 # Field type: Optional
-float64 allowedDeviationXY
+float64 allowed_deviation_xy
 
 # Allowed deviation for theta angle [rad].
 # Range: [0 ... Pi]
@@ -42,9 +42,9 @@ float64 allowedDeviationXY
 #   theta - allowedDeviationTheta  to  theta + allowedDeviationTheta
 #
 # Field type: Optional
-float64 allowedDeviationTheta
+float64 allowed_deviation_theta
 
 # Additional information about the map.
 #
 # Field type: Optional
-string mapDescription
+string map_description

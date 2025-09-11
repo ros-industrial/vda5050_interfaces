@@ -9,13 +9,13 @@ Header header
 # to the same order.
 #
 # Field type: Required
-string orderId
+string order_id
 
 # Order update identification used to identify multiple order messages that 
 # belong to the same order.
 #
 # Field type: Required
-uint32 orderUpdateId
+uint32 order_update_id
 
 # An array of Node messages to be traversed for fulfilling the order.
 # A valid order consists of at least one Node. 
@@ -34,4 +34,4 @@ Edge[] edges
 # If no zones are used, leave empty.
 #
 # Field type: Optional
-string[<=1] zoneSetId
+string[<=1] zone_set_id

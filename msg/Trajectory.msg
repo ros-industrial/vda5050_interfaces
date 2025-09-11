@@ -7,13 +7,13 @@
 # Size = number of control points + degree + 1
 #
 # Field type: Required
-float64[] knotVector
+float64[] knot_vector
 
 # List of control points that define the NURBS curve, including the beginning and end points.
 # Each entry is a ControlPoint message.
 #
 # Field type: Required
-ControlPoint[] controlPoints
+ControlPoint[] control_points
 
 # Degree of the NURBS curve.
 # Range: [1 ... infinity]

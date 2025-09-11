@@ -21,6 +21,12 @@ set(msg_files
   "msg/Action.msg"
   "msg/ActionParameter.msg"
   "msg/ActionParameterValue.msg"
+  "msg/Order.msg"
+  "msg/Node.msg"
+  "msg/Edge.msg"
+  "msg/NodePosition.msg"
+  "msg/ControlPoint.msg"
+  "msg/Trajectory.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}

@@ -4,24 +4,24 @@
 # Unique edge identification.
 #
 # Field type: Required
-string edgeId
+string edge_id
 
 # Number to track the sequence of nodes and edges in an order, simplifying updates.
 # Distinguishes between nodes/edges that may be revisited in the same order.
 # Resets when a new orderId is issued.
 #
 # Field type: Required
-int32 sequenceId
+int32 sequence_id
 
 # The nodeId of the start node for this edge.
 #
 # Field type: Required
-string startNodeId
+string start_node_id
 
 # The nodeId of the end node for this edge.
 # 
 # Field type: Required
-string endNodeId
+string end_node_id
 
 # Indicates if the edge is part of the base or horizon.
 # "true" indicates that edge belongs to the base.
@@ -43,23 +43,23 @@ Action[] actions
 # Additional information about the edge.
 #
 # Field type: Optional
-string edgeDescription
+string edge_description
 
 # Permitted maximum speed [m/s] on the edge.
 # Speed is defined by the fastest measurement of the vehicle.
 #
 # Field type: Optional
-float64 maxSpeed
+float64 max_speed
 
 # Permitted maximum height [m] of the vehicle including load on the edge.
 #
 # Field type: Optional
-float64 maxHeight
+float64 max_height
 
 # Permitted minimal height [m] of the load handling device on the edge.
 #
 # Field type: Optional
-float64 minHeight
+float64 min_height
 
 # Orientation of the AGV on the edge [rad]
 # If the AGV starts in a different orientation, rotate the vehicle on the edge to
@@ -79,9 +79,9 @@ float64 orientation
 # 
 # Default value: TANGENTIAL
 # Field type: Optional
-string orientationType "TANGENTIAL"
+string orientation_type "TANGENTIAL"
 
-# Enum values for orientationType
+# Enum values for orientation_type
 #
 # GLOBAL: relative to the global project specific map coordinate system.
 string GLOBAL="GLOBAL"
@@ -100,13 +100,13 @@ string direction
 # No limit, if not set.
 #
 # Field type: Optional
-boolean rotationAllowed
+bool rotation_allowed
 
 # The maximum rotation speed [rad/s].
 # No limit, if not set.
 #
 # Field type: Optional
-float64 maxRotationSpeed
+float64 max_rotation_speed
 
 # The Trajectory object for this edge as a Non-Uniform Rational B-Spline (NURBS).
 # Defines the path that the AGV should move between the start node and end node
@@ -121,4 +121,4 @@ Trajectory trajectory
 # Used by line-guided AGVs to decrease their speed before reaching a stop position.
 # 
 # Field type: Optional
-float64 Length
+float64 length
