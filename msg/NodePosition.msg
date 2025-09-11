@@ -1,4 +1,3 @@
-# NodePosition message
 # Defines the position of a node on a map in a project-specific world coordinate system
 
 # X-position [m] on the map in reference to the map coordinate system.
