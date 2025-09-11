@@ -23,9 +23,11 @@
 #include "generator/generator.hpp"
 #include "vda5050_msgs/json_utils/connection.hpp"
 #include "vda5050_msgs/json_utils/header.hpp"
+#include "vda5050_msgs/json_utils/instantAction.hpp"
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;
+
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<Header, Connection>;
