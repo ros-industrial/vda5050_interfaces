@@ -66,7 +66,6 @@ float64 minHeight
 # the desired orientation if rotationAllowed is true.
 # If rotationAllowed is false, rotate before entering the edge.
 # If it is not possible to rotate before entering the edge, reject the order.
-#
 # If no trajectory is defined, apply the rotation to the direct path betwen the two
 # connecting nodes of the edge .
 # If a trajectory is defined for the edge, apply the orientation to the trajectory.
@@ -80,8 +79,7 @@ float64 orientation
 # 
 # Default value: TANGENTIAL
 # Field type: Optional
-# TODO: @shawnkchan Check if we can use the enum parameter or if it must be the string.
-string orientationType TANGENTIAL
+string orientationType "TANGENTIAL"
 
 # Enum values for orientationType
 #
