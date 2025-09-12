@@ -124,7 +124,6 @@ namespace msg {
         msg.action_id = action_id;
 
         auto blocking_type = j.at("blockingType").get<std::string>();
-
         if (blocking_type == Action::NONE || blocking_type == Action::SOFT || blocking_type == Action::HARD)
         {
             msg.blocking_type = blocking_type;

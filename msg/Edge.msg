@@ -43,7 +43,7 @@ Action[] actions
 # Additional information about the edge.
 #
 # Field type: Optional
-string edge_description
+string[<=1] edge_description
 
 # Permitted maximum speed [m/s] on the edge.
 # Speed is defined by the fastest measurement of the vehicle.

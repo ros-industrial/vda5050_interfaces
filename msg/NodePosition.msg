@@ -20,7 +20,7 @@ float64 y
 string map_id
 
 # Absolute orientation [rad] of the AGV at the node.
-# Range: [-Pi ... Pi]
+# Range: [-Pi, Pi]
 # Optional: vehicle can plan the path itself.
 # If defined, the AGV must assume this orientation at the node.
 # If previous edge disallows rotation, the AGV must rotate at this node.
@@ -34,17 +34,17 @@ float64[<=1] theta
 # If > 0: node is considered traversed if the AGV passes within this radius.
 #
 # Field type: Optional
-float64 allowed_deviation_xy
+float64[<=1] allowed_deviation_xy
 
 # Allowed deviation for theta angle [rad].
-# Range: [0 ... Pi]
+# Range: [0, Pi]
 # Defines acceptable range for an AGV's heading at this node:
 #   theta - allowedDeviationTheta  to  theta + allowedDeviationTheta
 #
 # Field type: Optional
-float64 allowed_deviation_theta
+float64[<=1] allowed_deviation_theta
 
 # Additional information about the map.
 #
 # Field type: Optional
-string map_description
+string[<=1] map_description
