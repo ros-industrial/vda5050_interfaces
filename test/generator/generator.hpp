@@ -30,6 +30,7 @@
 #include "vda5050_msgs/msg/action.hpp"
 #include "vda5050_msgs/msg/action_parameter.hpp"
 #include "vda5050_msgs/msg/action_parameter_value.hpp"
+#include "vda5050_msgs/msg/order.hpp"
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;
@@ -37,6 +38,12 @@ using vda5050_msgs::msg::InstantAction;
 using vda5050_msgs::msg::Action;
 using vda5050_msgs::msg::ActionParameter;
 using vda5050_msgs::msg::ActionParameterValue;
+using vda5050_msgs::msg::Order;
+using vda5050_msgs::msg::ControlPoint;
+using vda5050_msgs::msg::Edge;
+using vda5050_msgs::msg::Node;
+using vda5050_msgs::msg::NodePosition;
+using vda5050_msgs::msg::Trajectory;
 
 /// \brief Utility class to generate random instances of VDA 5050 message types
 class RandomDataGenerator
@@ -68,6 +75,18 @@ public:
   uint32_t generate_uint()
   {
     return uint_dist_(rng_);
+  }
+
+  /// \brief Generate a random 64-bit floating-point number
+  double generate_random_float()
+  {
+    return float_dist_(rng_);
+  }
+
+  /// \brief Generate a random boolean value
+  bool generate_random_bool()
+  {
+    return bool_dist_(rng_);
   }
 
   /// \brief Generate a random alphanumerical string with length upto 50
@@ -112,6 +131,17 @@ public:
     return index_dist(rng_);
   }
 
+  /// \brief Generate a random vector of type float64
+  std::vector<double> generate_random_float_vector(const uint8_t size)
+  {
+    std::vector<double> vec(size);
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+    {
+      *it = generate_random_float();
+    }
+    return vec;
+  }
+
   /// \brief Generate a random vector of type T
   template <typename T>
   std::vector<T> generate_random_vector(const uint8_t size)
@@ -151,64 +181,131 @@ public:
     return states[state_idx];
   }
 
+  std::string generate_random_orientation_type()
+  {
+    std::vector<std::string> states = {Edge::TANGENTIAL, Edge::GLOBAL};
+
+    auto state_idx = generate_random_index(states.size());
+
+    return states[state_idx];
+  }
+
   /// \brief Generate a fully populated message of a supported type
   template <typename T>
   T generate()
   {
+    T msg;
     if constexpr (std::is_same_v<T, Header>)
     {
-      Header msg;
       msg.header_id = generate_uint();
       msg.timestamp = generate_milliseconds();
       msg.version = "2.0.0";  // Fix the VDA 5050 version to 2.0.0
       msg.manufacturer = generate_random_string();
       msg.serial_number = generate_random_string();
-      return msg;
     }
     else if constexpr (std::is_same_v<T, Connection>)
     {
-      Connection msg;
       msg.header = generate<Header>();
       msg.connection_state = generate_connection_state();
-      return msg;
     }
     else if constexpr (std::is_same_v<T, ActionParameterValue>)
     {
-      ActionParameterValue msg;
       msg.type = generate_random_action_parameter_value_type();
       msg.value = generate_random_string();
-      return msg; 
     }
     else if constexpr (std::is_same_v<T, ActionParameter>)
     {
-      ActionParameter msg;
       msg.key = generate_random_string();
       msg.value = generate<ActionParameterValue>();
-      return msg;
     }
     else if constexpr (std::is_same_v<T, Action>)
     {
-      Action msg;
       msg.action_type = generate_random_string();
       msg.action_id = generate_random_string();
       msg.blocking_type = generate_random_blocking_type();
       msg.action_description.push_back(generate_random_string());
       msg.action_parameters = generate_random_vector<ActionParameter>(generate_random_size());
-      return msg;
     }
     else if constexpr (std::is_same_v<T, InstantAction>)
     {
-      InstantAction msg;
       msg.header = generate<Header>();
       msg.actions = generate_random_vector<Action>(generate_random_size());
-      return msg;
     }
+
+    else if constexpr (std::is_same_v<T, ControlPoint>)
+    {
+      msg.x = generate_random_float();
+      msg.y = generate_random_float();
+      msg.weight = 1.0; /// TODO (@shawnkchan): Should this be randomized?
+    }
+
+    else if constexpr (std::is_same_v<T, NodePosition>)
+    {
+      msg.x = generate_random_float();
+      msg.y = generate_random_float();
+      msg.map_id = generate_random_string();
+      msg.theta.push_back(generate_random_float());
+      msg.allowed_deviation_xy.push_back(generate_random_float());
+      msg.allowed_deviation_theta.push_back(generate_random_float());
+      msg.map_description.push_back(generate_random_string());
+    }
+
+    else if constexpr (std::is_same_v<T, Node>)
+    {
+      msg.node_id = generate_random_string();
+      msg.sequence_id = generate_uint();
+      msg.released = generate_random_bool();
+      msg.actions = generate_random_vector<Action>(generate_random_size());
+      msg.node_position.push_back(generate<NodePosition>());
+      msg.node_description.push_back(generate_random_string());
+     
+    }
+
+    else if constexpr (std::is_same_v<T, Trajectory>)
+    {
+      msg.knot_vector = generate_random_float_vector(generate_random_size());
+      msg.control_points = generate_random_vector<ControlPoint>(generate_random_size());
+      msg.degree = 1.0; /// TODO (@shawnkchan): Should this be randomized?
+    }
+
+    else if constexpr (std::is_same_v<T, Edge>)
+    {
+      msg.edge_id = generate_random_string();
+      msg.sequence_id = generate_uint();
+      msg.start_node_id = generate_random_string();
+      msg.end_node_id = generate_random_string();
+      msg.released = generate_random_bool();
+      msg.actions = generate_random_vector<Action>(generate_random_size());
+      msg.edge_description.push_back(generate_random_string());
+      msg.max_speed.push_back(generate_random_float());
+      msg.max_height.push_back(generate_random_float());
+      msg.min_height.push_back(generate_random_float());
+      msg.orientation.push_back(generate_random_float());
+      msg.orientation_type = generate_random_orientation_type();
+      msg.direction.push_back(generate_random_string());
+      msg.rotation_allowed.push_back(generate_random_bool());
+      msg.max_rotation_speed.push_back(generate_random_float());
+      msg.trajectory.push_back(generate<Trajectory>());
+      msg.length.push_back(generate_random_float());
+    }
+
+    else if constexpr (std::is_same_v<T, Order>)
+    {
+      msg.header = generate<Header>();
+      msg.order_id = generate_random_string();
+      msg.order_update_id = generate_uint();
+      msg.nodes = generate_random_vector<Node>(generate_random_size());
+      msg.edges = generate_random_vector<Edge>(generate_random_size());
+      msg.zone_set_id.push_back(generate_random_string());
+    }
+
     else
     {
       throw std::runtime_error(
         "No random data generator defined for this custom type: " +
         std::string(typeid(T).name()));
     }
+    return msg;
   }
 
 private:
@@ -217,6 +314,13 @@ private:
 
   /// \brief Distribution for unsigned 32-bit integers
   std::uniform_int_distribution<uint32_t> uint_dist_;
+
+  /// \brief Distribution for 64-bit floating-point numbers
+  std::uniform_real_distribution<double> float_dist_;
+
+  /// \brief Distribution for a boolean value
+  /// TODO (@shawnkchan): KIV  should we be bounding this between 0 and 1?
+  std::uniform_int_distribution<int> bool_dist_{0, 1};
 
   /// \brief Distribution for random string lengths
   std::uniform_int_distribution<int> string_length_dist_;

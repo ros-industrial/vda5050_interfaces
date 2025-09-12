@@ -24,6 +24,7 @@
 #include "vda5050_msgs/json_utils/connection.hpp"
 #include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/json_utils/instantAction.hpp"
+#include "vda5050_msgs/json_utils/order.hpp"
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;
@@ -31,9 +32,15 @@ using vda5050_msgs::msg::InstantAction;
 using vda5050_msgs::msg::Action;
 using vda5050_msgs::msg::ActionParameter;
 using vda5050_msgs::msg::ActionParameterValue;
+using vda5050_msgs::msg::Order;
+using vda5050_msgs::msg::Edge;
+using vda5050_msgs::msg::Node;
+using vda5050_msgs::msg::NodePosition;
+using vda5050_msgs::msg::Trajectory;
+using vda5050_msgs::msg::ControlPoint;
 
 // List of types to be tested for serialization round-trip
-using SerializableTypes = ::testing::Types<Header, Connection, InstantAction, Action, ActionParameter, ActionParameterValue>;
+using SerializableTypes = ::testing::Types<Header, Connection, InstantAction, Action, ActionParameter, ActionParameterValue, Edge, Node, NodePosition, Trajectory, ControlPoint, Order>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test

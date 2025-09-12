@@ -91,6 +91,7 @@ string TANGENTIAL="TANGENTIAL"
 
 # Sets direction at junctions for line-guided or wire-guided vehicles.
 # To be defined initially (vehicle-individual).
+# Eg: straight, left, right. 
 #
 # Field type: Optional
 string[<=1] direction

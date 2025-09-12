@@ -1,5 +1,7 @@
 #include <nlohmann/json.hpp>
 
+#include <string>
+
 #include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/json_utils/instantAction.hpp"
 #include "vda5050_msgs/msg/order.hpp"
@@ -96,7 +98,7 @@ namespace msg {
 
         if (!msg.orientation.empty())
         {
-            j["orientationType"] = msg.orientation.front();
+            j["orientation"] = msg.orientation.front();
         }
 
         if (msg.orientation_type == msg.TANGENTIAL || msg.orientation_type == msg.GLOBAL)
@@ -156,7 +158,8 @@ namespace msg {
         auto released = j.at("released").get<bool>();
         msg.released = released;
 
-        msg.actions = j.at("actions").get<std::vector<Action>>();
+        auto actions = j.at("actions").get<std::vector<Action>>();
+        msg.actions = actions;
 
         if (j.contains("edgeDescription"))
         {
@@ -365,7 +368,7 @@ namespace msg {
     
     void from_json(const nlohmann::json& j, Order& msg)
     {
-        from_json(j.at("header"), msg.header);
+        from_json(j, msg.header);
 
         auto order_id = j.at("orderId").get<std::string>();
         msg.order_id = order_id;
@@ -374,6 +377,7 @@ namespace msg {
         msg.order_update_id = order_update_id;
 
         msg.nodes = j.at("nodes").get<std::vector<Node>>();
+        
         msg.edges = j.at("edges").get<std::vector<Edge>>();
 
         if (j.contains("zoneSetId"))
