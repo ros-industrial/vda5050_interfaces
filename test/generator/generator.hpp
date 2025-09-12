@@ -181,6 +181,7 @@ public:
     return states[state_idx];
   }
 
+  /// \brief Generate a random orientation type value 
   std::string generate_random_orientation_type()
   {
     std::vector<std::string> states = {Edge::TANGENTIAL, Edge::GLOBAL};
