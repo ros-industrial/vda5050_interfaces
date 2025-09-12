@@ -41,6 +41,7 @@ namespace msg {
     }
 
     /// \brief Convert a vda5050_msgs::msg::Trajectory object to a nlohmann::json object
+    ///
     /// \param j Reference to the JSON object to be populated
     /// \param msg Reference to the message object to serialize
     void to_json(nlohmann::json& j, const Trajectory& msg)
@@ -51,6 +52,7 @@ namespace msg {
     }
 
     /// \brief Populate a vda5050_msgs::msg::Trajectory object from a nlohmann::json object
+    ///
     /// \param j Reference to the JSON object containing serialized data
     /// \param msg Reference to the message object to populate
     void from_json(const nlohmann::json& j, Trajectory& msg)
@@ -69,6 +71,8 @@ namespace msg {
     /// 
     /// \param j Reference to the JSON object to be populated
     /// \param msg Reference to the message object to serialize
+    ///
+    /// \throws std::runtime_error If failed to serialize orientationType
     void to_json(nlohmann::json& j, const Edge& msg)
     {
         j["edgeId"] = msg.edge_id;
@@ -107,7 +111,6 @@ namespace msg {
         {
             j["orientationType"] = msg.orientation_type;
         }
-
         else
         {
             throw std::runtime_error("JSON parsing error: Unexpected orientationType.");
@@ -237,6 +240,7 @@ namespace msg {
     }
 
     /// \brief NodePosition
+    ///
     /// \param j 
     /// \param msg 
     void to_json(nlohmann::json& j, const NodePosition& msg)
@@ -267,6 +271,7 @@ namespace msg {
     }
     
     /// \brief Populate a vda5050_msgs::msg::NodePosition object from a nlohmann::json object
+    ///
     /// \param j Reference to the JSON object containing serialized data
     /// \param msg Reference to the message object to populate
     void from_json(const nlohmann::json& j, NodePosition& msg)
@@ -328,6 +333,7 @@ namespace msg {
     }
     
     /// \brief Populate a vda5050_msgs::msg::Node object from a nlohmann::json object
+    ///
     /// \param j Reference to the JSON object containing serialized data
     /// \param msg Reference to the message object to populate
     void from_json(const nlohmann::json& j, Node& msg)
@@ -357,15 +363,18 @@ namespace msg {
     }
     
     /// \brief Convert a vda5050_msgs::msg::Order object to a nlohmann::json object
+    ///
     /// \param j Reference to the JSON object to be populated
     /// \param msg Reference to the message object to serialize
     void to_json(nlohmann::json& j, const Order& msg)
     {
         to_json(j, msg.header);
+
         j["orderId"] = msg.order_id;
         j["orderUpdateId"] = msg.order_update_id;
         j["nodes"] = msg.nodes;
         j["edges"] = msg.edges;
+
         if (!msg.zone_set_id.empty())
         {
             j["zoneSetId"] = msg.zone_set_id.front();
@@ -373,6 +382,7 @@ namespace msg {
     }
 
     /// \brief Populate a vda5050_msgs::msg::Order object from a nlohmann::json object
+    ///
     /// \param j Reference to the JSON object containing serialized data
     /// \param msg Reference to the message object to populate
     void from_json(const nlohmann::json& j, Order& msg)
