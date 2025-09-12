@@ -1,4 +1,4 @@
-# A message describing a single node in an Order message.
+# Defines a single node in an Order message.
 
 # Unique node identification
 #

@@ -1,4 +1,3 @@
-# Edge message
 # Defines a directional connection between two nodes.
 
 # Unique edge identification.
