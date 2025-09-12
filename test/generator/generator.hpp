@@ -295,8 +295,8 @@ public:
       msg.header = generate<Header>();
       msg.order_id = generate_random_string();
       msg.order_update_id = generate_uint();
-      msg.nodes = generate_random_vector<Node>(generate_random_size());
-      msg.edges = generate_random_vector<Edge>(generate_random_size());
+      msg.nodes = generate_random_vector<Node>(ORDER_VECTOR_SIZE_UPPER_BOUND);
+      msg.edges = generate_random_vector<Edge>(ORDER_VECTOR_SIZE_UPPER_BOUND);
       msg.zone_set_id.push_back(generate_random_string());
     }
 
@@ -334,6 +334,9 @@ private:
 
   /// \brief Distribution for random vector size 
   std::uniform_int_distribution<uint8_t> size_dist_;
+
+  /// \brief Upper bound for order.nodes and order.edges random vector;
+  uint8_t ORDER_VECTOR_SIZE_UPPER_BOUND = 10;
 };
 
 #endif  // TEST__GENERATOR__GENERATOR_HPP_
