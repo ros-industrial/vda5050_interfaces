@@ -1,19 +1,22 @@
+#ifndef VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
+#define VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
+
+#include <string>
+
 #include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/msg/instant_action.hpp"
-
-
-#ifndef VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
-#define VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
 
 namespace vda5050_msgs {
 
 namespace msg {
 
     /// \brief Convert a vda5050_msgs::msg::ActionParameterValue object to a nlohmann::json object
+    ///
     /// \param j 
-    /// \param msg 
+    /// \param msg
+    /// 
     /// \throws std::runtime_error If failed to serialize type
     void to_json(nlohmann::json& j, const ActionParameterValue& msg)
     {
@@ -56,21 +59,26 @@ namespace msg {
         {
             throw std::runtime_error("JSON parsing error: Unexpected type.");
         }
+
+        auto value = j.at("value").get<std::string>();
+        msg.value = value;
     }
 
 
-    /// @brief convert a vda5050_msgs::msg::ActionParameter object to a nlohmann::json object
-    /// @param j Reference to a JSON object to be populated
-    /// @param msg Reference to the message object to serialize
+    /// \brief convert a vda5050_msgs::msg::ActionParameter object to a nlohmann::json object
+    ///
+    /// \param j Reference to a JSON object to be populated
+    /// \param msg Reference to the message object to serialize
     void to_json(nlohmann::json& j, const ActionParameter& msg)
     {
         j["key"] = msg.key;
         j["value"] = msg.value;
     }
 
-    /// @brief populate a vda5050_msgs::msg::ActionParameter object from a nlohmann::json object
-    /// @param j Reference to the JSON object containing serialized ActionParameter data
-    /// @param msg Reference to the ActionParameter message to populate
+    /// \brief populate a vda5050_msgs::msg::ActionParameter object from a nlohmann::json object
+    ///
+    /// \param j Reference to the JSON object containing serialized ActionParameter data
+    /// \param msg Reference to the ActionParameter message to populate
     void from_json(const nlohmann::json& j, ActionParameter& msg)
     {
         auto key = j.at("key").get<std::string>();
@@ -80,11 +88,12 @@ namespace msg {
         msg.value = value;
     }
 
-    /// @brief convert a vda5050_msgs::msg::Action object to a nlohmann::json object
-    /// @param j Reference to a JSON object to be populated
-    /// @param msg Reference to the messge object to serialize
+    /// \brief convert a vda5050_msgs::msg::Action object to a nlohmann::json object
     ///
-    /// @throws std::runtime_error If failed to serialize blockingType
+    /// \param j Reference to a JSON object to be populated
+    /// \param msg Reference to the messge object to serialize
+    ///
+    /// \throws std::runtime_error If failed to serialize blockingType
     void to_json(nlohmann::json& j, const Action& msg)
     {
         j["actionType"] = msg.action_type;
@@ -101,7 +110,7 @@ namespace msg {
 
         if (!msg.action_description.empty())
         {
-            j["actionDescription"] = msg.action_description;
+            j["actionDescription"] = msg.action_description.front();
         }
 
         if (!msg.action_parameters.empty())
@@ -111,10 +120,12 @@ namespace msg {
     }
 
 
-    /// @brief populate a vda5050_msgs::msg::Action object from a nlohmann::json object
-    /// @param j Reference to the JSON object containing serialized Action data
-    /// @param msg Reference to the Action message to populate
-    /// @throws std::runtime_error If failed to deserialize blockingType
+    /// \brief populate a vda5050_msgs::msg::Action object from a nlohmann::json object
+    ///
+    /// \param j Reference to the JSON object containing serialized Action data
+    /// \param msg Reference to the Action message to populate
+    ///
+    /// \throws std::runtime_error If failed to deserialize blockingType
     void from_json(const nlohmann::json& j, Action& msg)
     {
         auto action_type = j.at("actionType").get<std::string>();
@@ -146,9 +157,10 @@ namespace msg {
         
     }
 
-    /// @brief convert a vda5050_msgs::msg::InstantAction object to a nlohmann::json object
-    /// @param j Reference to the JSON object to be populated
-    /// @param msg Reference to the message object to serialize
+    /// \brief convert a vda5050_msgs::msg::InstantAction object to a nlohmann::json object
+    ///
+    /// \param j Reference to the JSON object to be populated
+    /// \param msg Reference to the message object to serialize
     void to_json(nlohmann::json& j, const InstantAction& msg)
     {
         to_json(j, msg.header);
@@ -156,9 +168,10 @@ namespace msg {
         j["actions"] = msg.actions;
     }
 
-    /// @brief populate a vda5050_msgs::msg::InstantAction object from a nlohmann::json object
-    /// @param j Reference to the JSON object containing serialized InstantAction data
-    /// @param msg Reference to the InstantAction object to be populated
+    /// \brief populate a vda5050_msgs::msg::InstantAction object from a nlohmann::json object
+    ///
+    /// \param j Reference to the JSON object containing serialized InstantAction data
+    /// \param msg Reference to the InstantAction object to be populated
     void from_json(const nlohmann::json& j, InstantAction& msg)
     {
         from_json(j, msg.header);
