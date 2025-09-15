@@ -16,3 +16,4 @@ string OFFLINE="OFFLINE"
 # CONNECTIONBROKEN: The connection between AGV and broker has ended
 # unexpectedly (e.g. used in MQTT last-will-message)
 string CONNECTIONBROKEN="CONNECTIONBROKEN"
+
