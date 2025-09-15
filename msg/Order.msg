@@ -1,4 +1,4 @@
-# The message schema to communicate from master control to the AGV
+# Defines the message used to communicate from master control to the AGV
 
 # Message header that contains the common fields required across all messages
 #
