@@ -11,6 +11,7 @@
   <buildtool_depend>rosidl_default_generators</buildtool_depend>
 
   <build_export_depend>nlohmann-json-dev</build_export_depend>
+  <build_export_depend>nlohmann-json-schema-validator-dev</build_export_depend>
 
   <exec_depend>rosidl_default_runtime</exec_depend>
 
