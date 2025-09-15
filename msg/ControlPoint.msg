@@ -18,3 +18,4 @@ float64 y
 # Default: 1.0
 # Field type: Optional
 float64 weight 1.0
+

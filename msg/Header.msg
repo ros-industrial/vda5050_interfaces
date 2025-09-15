@@ -20,3 +20,4 @@ string manufacturer
 
 # Serial number of the AGV
 string serial_number
+

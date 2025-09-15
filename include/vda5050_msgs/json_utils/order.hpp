@@ -409,3 +409,4 @@ namespace msg {
 } /// namespace vda5050_msgs
 
 #endif /// VDA5050_MSGS__JSON_UTILS__ORDER_HPP_
+
