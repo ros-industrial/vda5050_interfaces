@@ -6,7 +6,7 @@
 #include <string>
 
 #include "vda5050_msgs/json_utils/header.hpp"
-#include "vda5050_msgs/json_utils/instantAction.hpp"
+#include "vda5050_msgs/json_utils/instantAction.hpp" /// TODO: [@shawnkchan] Requires instantAction header from instantActions branch
 #include "vda5050_msgs/msg/order.hpp"
 
 namespace vda5050_msgs {
