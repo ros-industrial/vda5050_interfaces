@@ -16,7 +16,7 @@ float64[<=1] battery_voltage
 # State of health of the battery in percent
 #
 # Field type: Optional
-float64[<=1] battery_health
+int8[<=1] battery_health
 
 # Charging state of the AGV. True if charging is in progress
 #

@@ -48,4 +48,4 @@ string ACTION_STATUS_FAILED="FAILED"
 # Description of the result. Errors will be transmitted in errors
 #
 # Field type: Optional
-string[<=1] result_declaration
+string[<=1] result_description

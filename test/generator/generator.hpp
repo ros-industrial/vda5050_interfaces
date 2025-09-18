@@ -73,6 +73,7 @@ public:
   RandomDataGenerator()
   : rng_(std::random_device()()),
     uint_dist_(0, std::numeric_limits<uint32_t>::max()),
+    int_dist_(0, 100),
     float_dist_(
       std::numeric_limits<double>::min(), std::numeric_limits<double>::max()),
     bool_dist_(0, 1),
@@ -88,6 +89,7 @@ public:
   explicit RandomDataGenerator(uint32_t seed)
   : rng_(seed),
     uint_dist_(0, std::numeric_limits<uint32_t>::max()),
+    int_dist_(0, 100),
     float_dist_(
       std::numeric_limits<double>::min(), std::numeric_limits<double>::max()),
     bool_dist_(0, 1),
@@ -103,6 +105,12 @@ public:
   uint32_t generate_random_uint()
   {
     return uint_dist_(rng_);
+  }
+
+  /// \brief Generate a random signed 8-bit integer
+  int8_t generate_random_int()
+  {
+    return int_dist_(rng_);
   }
 
   /// \brief Generate a random 64-bit floating-point number
@@ -256,7 +264,7 @@ public:
       msg.action_type.push_back(generate_random_string());
       msg.action_description.push_back(generate_random_string());
       msg.action_status = generate_action_status();
-      msg.result_declaration.push_back(generate_random_string());
+      msg.result_description.push_back(generate_random_string());
     }
     else if constexpr (std::is_same_v<T, AGVPosition>)
     {
@@ -273,7 +281,7 @@ public:
     {
       msg.battery_charge = generate_random_percentage();
       msg.battery_voltage.push_back(generate_random_float());
-      msg.battery_health.push_back(generate_random_percentage());
+      msg.battery_health.push_back(generate_random_int());
       msg.charging = generate_random_bool();
       msg.reach.push_back(generate_random_uint());
     }
@@ -428,6 +436,8 @@ private:
 
   /// \brief Distribution for unsigned 32-bit integers
   std::uniform_int_distribution<uint32_t> uint_dist_;
+
+  std::uniform_int_distribution<int8_t> int_dist_;
 
   /// \brief Distribution for 64-bit floating-point numbers
   std::uniform_real_distribution<double> float_dist_;

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
  * Advanced Remanufacturing and Technology Centre
  * A*STAR Research Entities (Co. Registration No. 199702110H)
@@ -549,9 +549,9 @@ void to_json(nlohmann::json& j, const ActionState& msg)
     j["actionDescription"] = msg.action_description.front();
   }
 
-  if (!msg.result_declaration.empty())
+  if (!msg.result_description.empty())
   {
-    j["resultDeclaration"] = msg.result_declaration.front();
+    j["resultDescription"] = msg.result_description.front();
   }
 }
 
@@ -594,10 +594,10 @@ void from_json(const nlohmann::json& j, ActionState& msg)
       j.at("actionDescription").get<std::string>());
   }
 
-  if (j.contains("resultDeclaration"))
+  if (j.contains("resultDescription"))
   {
-    msg.result_declaration.push_back(
-      j.at("resultDeclaration").get<std::string>());
+    msg.result_description.push_back(
+      j.at("resultDescription").get<std::string>());
   }
 }
 
@@ -646,7 +646,7 @@ void from_json(const nlohmann::json& j, BatteryState& msg)
 
   if (j.contains("batteryHealth"))
   {
-    msg.battery_health.push_back(j.at("batteryHealth").get<double>());
+    msg.battery_health.push_back(j.at("batteryHealth").get<int8_t>());
   }
 
   if (j.contains("reach"))
