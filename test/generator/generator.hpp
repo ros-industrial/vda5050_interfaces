@@ -62,6 +62,18 @@ public:
     return uint_dist_(rng_);
   }
 
+  /// \brief Generate a random 64-bit floating-point number
+  double generate_random_float()
+  {
+    return float_dist_(rng_);
+  }
+
+  /// \brief Generate a random boolean value
+  bool generate_random_bool()
+  {
+    return bool_dist_(rng_);
+  }
+
   /// \brief Generate a random alphanumerical string with length upto 50
   std::string generate_random_string()
   {
@@ -86,6 +98,51 @@ public:
   int64_t generate_milliseconds()
   {
     return milliseconds_dist_(rng_);
+  }
+
+  /// \brief Generate a random connection state value
+  std::string generate_connection_state()
+  {
+    std::vector<std::string> states = {
+      Connection::ONLINE, Connection::OFFLINE, Connection::CONNECTIONBROKEN};
+    auto state_idx = connection_state_dist_(rng_);
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random index for enum selection
+  uint8_t generate_random_index(size_t size)
+  {
+    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
+    return index_dist(rng_);
+  }
+
+  /// \brief Generate a random vector of type float64
+  std::vector<double> generate_random_float_vector(const uint8_t size)
+  {
+    std::vector<double> vec(size);
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+    {
+      *it = generate_random_float();
+    }
+    return vec;
+  }
+
+  /// \brief Generate a random vector of type T
+  template <typename T>
+  std::vector<T> generate_random_vector(const uint8_t size)
+  {
+    std::vector<T> vec(size);
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+    {
+      *it = generate<T>();
+    }
+    return vec;
+  }
+
+  /// \brief
+  uint8_t generate_random_size()
+  {
+    return size_dist_(rng_);
   }
 
   /// \brief Generate a random connection state value
@@ -133,6 +190,13 @@ private:
   /// \brief Distribution for unsigned 32-bit integers
   std::uniform_int_distribution<uint32_t> uint_dist_;
 
+  /// \brief Distribution for 64-bit floating-point numbers
+  std::uniform_real_distribution<double> float_dist_;
+
+  /// \brief Distribution for a boolean value
+  /// TODO (@shawnkchan): KIV  should we be bounding this between 0 and 1?
+  std::uniform_int_distribution<int> bool_dist_{0, 1};
+
   /// \brief Distribution for random string lengths
   std::uniform_int_distribution<int> string_length_dist_;
 
@@ -141,6 +205,12 @@ private:
 
   /// \brief Distribution for VDA 5050 connectionState
   std::uniform_int_distribution<uint8_t> connection_state_dist_;
+
+  /// \brief Distribution for random vector size 
+  std::uniform_int_distribution<uint8_t> size_dist_;
+
+  /// \brief Upper bound for order.nodes and order.edges random vector;
+  uint8_t ORDER_VECTOR_SIZE_UPPER_BOUND = 10;
 };
 
 #endif  // TEST__GENERATOR__GENERATOR_HPP_
