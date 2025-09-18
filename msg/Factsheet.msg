@@ -1,19 +1,45 @@
-/**
- * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
- * Advanced Remanufacturing and Technology Centre
- * A*STAR Research Entities (Co. Registration No. 199702110H)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+# Factsheet message
+# Contains the AGV's capabilities, limits, features, and configuration 
+# as required by the VDA5050 specification.
 
- 
+# Message header that contains the common fields required across all messages
+#
+# Field type: Required
+Header header  
+
+# Parameters that generally specify the class and the capabilities of the AGV
+#
+# Field type: Required
+TypeSpecification typeSpecification  
+
+# Parameters that specify the basic physical properties of the AGV
+#
+# Field type: Required
+PhysicalParameters physicalParameters  
+
+# Limits for length of identifiers, arrays, strings, and similar in MQTT communication
+#
+# Field type: Required
+ProtocolLimits protocolLimits  
+
+# Supported features of VDA5050 protocol
+#
+# Field type: Required
+ProtocolFeatures protocolFeatures  
+
+# Detailed definition of AGV geometry
+#
+# Field type: Required
+AgvGeometry agvGeometry  
+
+# Abstract specification of load capabilities
+#
+# Field type: Required
+LoadSpecification loadSpecification  
+
+# Summary of current software and hardware versions on the vehicle 
+# and optional network information
+# 
+# Field type: Required
+VehicleConfig vehicleConfig  
+
