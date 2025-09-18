@@ -437,6 +437,7 @@ private:
   /// \brief Distribution for unsigned 32-bit integers
   std::uniform_int_distribution<uint32_t> uint_dist_;
 
+  /// \brief Distribution for signed 8-bit integers
   std::uniform_int_distribution<int8_t> int_dist_;
 
   /// \brief Distribution for 64-bit floating-point numbers
