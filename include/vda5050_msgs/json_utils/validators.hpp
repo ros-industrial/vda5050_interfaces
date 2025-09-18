@@ -5,9 +5,9 @@
 
 /// @brief Checks that a JSON object is following the specified schema
 ///
-/// @param schema The schema that the JSON object is to follow
-/// @param j Reference to the JSON object to be validated
-/// @return 
+/// @param schema The schema to validate against, as an nlohmann::json object
+/// @param j Reference to the nlohmann::json object to be validated
+/// @return EXIT_FAILURE or EXIT_SUCCESS
 int validate_schema(nlohmann::json schema, nlohmann::json& j)
 {
     nlohmann::json_schema::json_validator validator;
