@@ -7,7 +7,6 @@
 # Field type: Required
 string key
 
-# TODO: (@shawnkchan) check if this description is correct
 # Data type of value field in Order.ActionParameter
 #
 # Field type: Required
