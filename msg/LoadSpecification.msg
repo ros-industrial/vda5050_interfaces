@@ -6,10 +6,10 @@
 # If this array doesn't exist or is empty, the AGV has no load handling device.
 #
 # Field type: Optional
-string[<=1] load_positions
+string[] load_positions
 
 # Array of load sets that can be handled by the AGV.
 #
 # Field type: Optional
-LoadSet[<=1] load_sets
+LoadSet[] load_sets
 

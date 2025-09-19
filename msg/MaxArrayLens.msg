@@ -2,7 +2,7 @@
 # This message defines the maximum lengths of arrays processable by the AGV
 # according to the VDA5050 specification.
 
-#TODO: (@sauk2) Is this naming convention okay? According to the recommendations, each field should use a "." instead of an "_"
+#TODO: (@sauk2) Is this naming convention okay? According to the recommendations, each field should use a "." instead of an "_". Eg: order_nodes = order.nodes
 
 # Maximum number of nodes per order processable by the AGV.
 #
