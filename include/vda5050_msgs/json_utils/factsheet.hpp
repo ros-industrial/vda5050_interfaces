@@ -30,10 +30,10 @@ namespace vda5050_msgs {
 
 namespace msg {
 
-/// @brief Convert a vda5050_msgs::msg::FactsheetActionParameter object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::FactsheetActionParameter object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize value_data_type 
 void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
@@ -60,10 +60,10 @@ void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::FactsheetActionParameter object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::FactsheetActionParameter object
 ///
-/// @param j Reference to the JSON object containing serialized FactsheetActionParameter data
-/// @param msg Reference to the FactsheetActionParameter message to populate
+/// \param j Reference to the JSON object containing serialized FactsheetActionParameter data
+/// \param msg Reference to the FactsheetActionParameter message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize value_data_type
 void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
@@ -92,10 +92,10 @@ void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::AgvAction object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::AgvAction object to a nlohmann::json object
 /// 
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize action_scopes or blocking_types
 void to_json(nlohmann::json& j, const AgvAction& msg)
@@ -140,10 +140,10 @@ void to_json(nlohmann::json& j, const AgvAction& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::AgvAction object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::AgvAction object
 ///
-/// @param j Reference to the JSON object containing serialized AgvAction data
-/// @param msg Reference to the AgvAction message to populate
+/// \param j Reference to the JSON object containing serialized AgvAction data
+/// \param msg Reference to the AgvAction message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize action_scopes or blocking_types
 void from_json(const nlohmann::json& j, AgvAction& msg)
@@ -190,10 +190,10 @@ void from_json(const nlohmann::json& j, AgvAction& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::Position object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::Position object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the Position message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the Position message object to serialize
 void to_json(nlohmann::json& j, const Position& msg)
 {
     j["x"] = msg.x;
@@ -205,10 +205,10 @@ void to_json(nlohmann::json& j, const Position& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::Position object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Position object
 ///
-/// @param j Reference to the JSON object containing serialized Position data
-/// @param msg Reference to the Position message to populate
+/// \param j Reference to the JSON object containing serialized Position data
+/// \param msg Reference to the Position message to populate
 void from_json(const nlohmann::json& j, Position& msg)
 {
     msg.x = j.at("x").get<double>();
@@ -220,10 +220,10 @@ void from_json(const nlohmann::json& j, Position& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::WheelDefinition object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::WheelDefinition object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the WheelDefinition message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the WheelDefinition message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize type field
 void to_json(nlohmann::json& j, const WheelDefinition& msg)
@@ -251,10 +251,10 @@ void to_json(nlohmann::json& j, const WheelDefinition& msg)
 
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::WheelDefinition object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::WheelDefinition object
 /// 
-/// @param j Reference to the JSON object containing serialized WheelDefinition data
-/// @param msg Reference to the WheelDefinition message to populate
+/// \param j Reference to the JSON object containing serialized WheelDefinition data
+/// \param msg Reference to the WheelDefinition message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize type field
 void from_json(const nlohmann::json& j, WheelDefinition& msg)
@@ -285,30 +285,30 @@ void from_json(const nlohmann::json& j, WheelDefinition& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::PolygonPoint object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::PolygonPoint object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the PolygonPoint message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the PolygonPoint message object to serialize
 void to_json(nlohmann::json& j, const PolygonPoint& msg)
 {
     j["x"] = msg.x;
     j["y"] = msg.y;
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::PolygonPoint object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::PolygonPoint object
 /// 
-/// @param j Reference to the JSON object containing serialized PolygonPoint data
-/// @param msg Reference to the PolygonPoint message to populate
+/// \param j Reference to the JSON object containing serialized PolygonPoint data
+/// \param msg Reference to the PolygonPoint message to populate
 void from_json(const nlohmann::json& j, PolygonPoint& msg)
 {
     msg.x = j.at("x").get<double>();
     msg.y = j.at("y").get<double>();
 }
 
-/// @brief Convert a vda5050_msgs::msg::Envelope2d object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::Envelope2d object to a nlohmann::json object
 /// 
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the Envelope2d message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the Envelope2d message object to serialize
 void to_json(nlohmann::json& j, const Envelope2d& msg)
 {
     j["set"] = msg.set;
@@ -320,10 +320,10 @@ void to_json(nlohmann::json& j, const Envelope2d& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::Envelope2d object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Envelope2d object
 /// 
-///@param j Reference to the JSON object containing serialized Envelope2d data
-/// @param msg Reference to the Envelope2d message to populate
+///\param j Reference to the JSON object containing serialized Envelope2d data
+/// \param msg Reference to the Envelope2d message to populate
 void from_json(const nlohmann::json& j, Envelope2d& msg)
 {
     msg.set = j.at("set").get<std::string>();
@@ -335,10 +335,10 @@ void from_json(const nlohmann::json& j, Envelope2d& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::Envelope3d object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::Envelope3d object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the Envelope3d message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the Envelope3d message object to serialize
 void to_json(nlohmann::json& j, const Envelope3d& msg)
 {
     j["set"] = msg.set;
@@ -360,10 +360,10 @@ void to_json(nlohmann::json& j, const Envelope3d& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::Envelope3d object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Envelope3d object
 ///
-/// @param j Reference to the JSON object containing serialized Envelope3d data
-/// @param msg Reference to the Envelope3d message to populate
+/// \param j Reference to the JSON object containing serialized Envelope3d data
+/// \param msg Reference to the Envelope3d message to populate
 void from_json(const nlohmann::json& j, Envelope3d& msg)
 {
     msg.set = j.at("set").get<std::string>();
@@ -385,10 +385,10 @@ void from_json(const nlohmann::json& j, Envelope3d& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::AgvGeometry object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::AgvGeometry object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the AgvGeometry message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the AgvGeometry message object to serialize
 void to_json(nlohmann::json& j, const AgvGeometry& msg)
 {
     if (!msg.wheel_definitions.empty())
@@ -407,10 +407,10 @@ void to_json(nlohmann::json& j, const AgvGeometry& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::AgvGeometry object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::AgvGeometry object
 ///
-/// @param j Reference to the JSON object containing serialized AgvGeometry data
-/// @param msg Reference to the AgvGeometry message to populate
+/// \param j Reference to the JSON object containing serialized AgvGeometry data
+/// \param msg Reference to the AgvGeometry message to populate
 void from_json(const nlohmann::json& j, AgvGeometry& msg)
 {
     if (j.contains("wheelDefinitions"))
@@ -495,10 +495,10 @@ void from_json(const nlohmann::json& j, LoadDimensions& msg)
   }
 }
 
-/// @brief Convert a vda5050_msgs::msg::LoadSet object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::LoadSet object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the LoadSet message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the LoadSet message object to serialize
 void to_json(nlohmann::json& j, const LoadSet& msg)
 {
     j["setName"] = msg.set_name;
@@ -585,10 +585,10 @@ void to_json(nlohmann::json& j, const LoadSet& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::LoadSet object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::LoadSet object
 ///
-/// @param j Reference to the JSON object containing serialized LoadSet data
-/// @param msg Reference to the LoadSet message to populate
+/// \param j Reference to the JSON object containing serialized LoadSet data
+/// \param msg Reference to the LoadSet message to populate
 void from_json(const nlohmann::json& j, LoadSet& msg)
 {
     auto set_name = j.at("setName").get<std::string>();
@@ -678,10 +678,10 @@ void from_json(const nlohmann::json& j, LoadSet& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::LoadSpecification object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::LoadSpecification object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the LoadSpecification message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the LoadSpecification message object to serialize
 void to_json(nlohmann::json& j, const LoadSpecification& msg)
 {
     if (!msg.load_positions.empty())
@@ -695,10 +695,10 @@ void to_json(nlohmann::json& j, const LoadSpecification& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::LoadSpecification object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::LoadSpecification object
 ///
-/// @param j Reference to the JSON object containing serialized LoadSpecification data 
-/// @param msg Reference to the LoadSpecification message to populate
+/// \param j Reference to the JSON object containing serialized LoadSpecification data 
+/// \param msg Reference to the LoadSpecification message to populate
 void from_json(const nlohmann::json& j, LoadSpecification& msg)
 {
     if (j.contains("loadPositions"))
@@ -712,10 +712,10 @@ void from_json(const nlohmann::json& j, LoadSpecification& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::MaxArrayLens object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::MaxArrayLens object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the MaxArrayLens message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the MaxArrayLens message object to serialize
 void to_json(nlohmann::json& j, const MaxArrayLens& msg)
 {
     j["orderNodes"] = msg.order_nodes;
@@ -736,10 +736,10 @@ void to_json(nlohmann::json& j, const MaxArrayLens& msg)
     j["informationInfoReferences"] = msg.information_info_references;
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::MaxArrayLens object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::MaxArrayLens object
 ///
-/// @param j Reference to the JSON object containing serialized MaxArrayLens data 
-/// @param msg Reference to the MaxArrayLens message to populate
+/// \param j Reference to the JSON object containing serialized MaxArrayLens data 
+/// \param msg Reference to the MaxArrayLens message to populate
 void from_json(const nlohmann::json& j, MaxArrayLens& msg)
 {
     msg.order_nodes = j.at("orderNodes").get<uint32_t>();
@@ -760,10 +760,10 @@ void from_json(const nlohmann::json& j, MaxArrayLens& msg)
     msg.information_info_references = j.at("informationInfoReferences").get<uint32_t>();
 }
 
-/// @brief Convert a vda5050_msgs::msg::MaxStringLens object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::MaxStringLens object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the MaxStringLens message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the MaxStringLens message object to serialize
 void to_json(nlohmann::json& j, const MaxStringLens& msg)
 {
     if (!msg.msg_len.empty())
@@ -802,10 +802,10 @@ void to_json(nlohmann::json& j, const MaxStringLens& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::MaxStringLens object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::MaxStringLens object
 /// 
-/// @param j Reference to the JSON object containing serialized MaxStringLens data 
-/// @param msg Reference to the MaxStringLens message to populate 
+/// \param j Reference to the JSON object containing serialized MaxStringLens data 
+/// \param msg Reference to the MaxStringLens message to populate 
 void from_json(const nlohmann::json& j, MaxStringLens& msg)
 {
     if (j.contains("msgLen"))
@@ -844,10 +844,10 @@ void from_json(const nlohmann::json& j, MaxStringLens& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::Network object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::Network object to a nlohmann::json object
 /// 
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the Network message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the Network message object to serialize
 void to_json(nlohmann::json& j, const Network& msg)
 {
     if (!msg.dns_servers.empty())
@@ -876,10 +876,10 @@ void to_json(nlohmann::json& j, const Network& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::Network object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Network object
 /// 
-/// @param j Reference to the JSON object containing serialized Network data 
-/// @param msg Reference to the Network message to populate
+/// \param j Reference to the JSON object containing serialized Network data 
+/// \param msg Reference to the Network message to populate
 void from_json(const nlohmann::json& j, Network& msg)
 {
     if (j.contains("dnsServers"))
@@ -908,10 +908,10 @@ void from_json(const nlohmann::json& j, Network& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::OptionalParameters object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::OptionalParameters object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the OptionalParameters message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the OptionalParameters message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize support field
 void to_json(nlohmann::json& j, const OptionalParameters& msg)
@@ -933,10 +933,10 @@ void to_json(nlohmann::json& j, const OptionalParameters& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::OptionalParameters object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::OptionalParameters object
 ///
-/// @param j Reference to the JSON object containing serialized OptionalParameters data
-/// @param msg Reference to the OptionalParameters message to populate
+/// \param j Reference to the JSON object containing serialized OptionalParameters data
+/// \param msg Reference to the OptionalParameters message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize support field
 void from_json(const nlohmann::json& j, OptionalParameters& msg)
@@ -959,10 +959,10 @@ void from_json(const nlohmann::json& j, OptionalParameters& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::PhysicalParameters object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::PhysicalParameters object to a nlohmann::json object
 /// 
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the PhysicalParameters message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the PhysicalParameters message object to serialize
 void to_json(nlohmann::json& j, const PhysicalParameters& msg)
 {
     j["speedMin"] = msg.speed_min;
@@ -985,10 +985,10 @@ void to_json(nlohmann::json& j, const PhysicalParameters& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::PhysicalParameters object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::PhysicalParameters object
 ///
-/// @param j Reference to the JSON object containing serialized PhysicalParameters data 
-/// @param msg Reference to the PhysicalParameters message to populate
+/// \param j Reference to the JSON object containing serialized PhysicalParameters data 
+/// \param msg Reference to the PhysicalParameters message to populate
 void from_json(const nlohmann::json& j, PhysicalParameters& msg)
 {
     msg.speed_min = j.at("speedMin").get<double>();
@@ -1011,30 +1011,30 @@ void from_json(const nlohmann::json& j, PhysicalParameters& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::ProtocolFeatures object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::ProtocolFeatures object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the ProtocolFeatures message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the ProtocolFeatures message object to serialize
 void to_json(nlohmann::json& j, const ProtocolFeatures& msg)
 {
     j["optionalParameters"] = msg.optional_parameters;
     j["agvActions"] = msg.agv_actions;
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::ProtocolFeatures object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::ProtocolFeatures object
 ///
-/// @param j Reference to the JSON object containing serialized ProtocolFeatures data 
-/// @param msg Reference to the ProtocolFeatures message to populate
+/// \param j Reference to the JSON object containing serialized ProtocolFeatures data 
+/// \param msg Reference to the ProtocolFeatures message to populate
 void from_json(const nlohmann::json& j, ProtocolFeatures& msg)
 {
     msg.optional_parameters = j.at("optionalParameters").get<std::vector<OptionalParameters>>();
     msg.agv_actions = j.at("agvActions").get<std::vector<AgvAction>>();
 }
 
-/// @brief Convert a vda5050_msgs::msg::ProtocolLimits object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::ProtocolLimits object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the ProtocolLimits message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the ProtocolLimits message object to serialize
 void to_json(nlohmann::json& j, const ProtocolLimits& msg)
 {
     j["maxStringLens"] = msg.max_string_lens;
@@ -1042,10 +1042,10 @@ void to_json(nlohmann::json& j, const ProtocolLimits& msg)
     j["timing"] = msg.timing;
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::ProtocolLimits object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::ProtocolLimits object
 ///
-/// @param j Reference to the JSON object containing serialized ProtocolLimits data 
-/// @param msg Reference to the ProtocolLimits message to populate
+/// \param j Reference to the JSON object containing serialized ProtocolLimits data 
+/// \param msg Reference to the ProtocolLimits message to populate
 void from_json(const nlohmann::json& j, ProtocolLimits& msg)
 {
     msg.max_string_lens = j.at("maxStringLens").get<MaxStringLens>();
@@ -1053,10 +1053,10 @@ void from_json(const nlohmann::json& j, ProtocolLimits& msg)
     msg.timing = j.at("timing").get<Timing>();
 }
 
-/// @brief Convert a vda5050_msgs::msg::Timing object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::Timing object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the Timing message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the Timing message object to serialize
 void to_json(nlohmann::json& j, const Timing& msg)
 {
     j["minOrderInterval"] = msg.min_order_interval;
@@ -1073,10 +1073,10 @@ void to_json(nlohmann::json& j, const Timing& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::Timing object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Timing object
 /// 
-/// @param j Reference to the JSON object containing serialized Timing data
-/// @param msg Reference to the Timing message to populate
+/// \param j Reference to the JSON object containing serialized Timing data
+/// \param msg Reference to the Timing message to populate
 void from_json(const nlohmann::json& j, Timing& msg)
 {
     msg.min_order_interval = j.at("minOrderInterval").get<double>();
@@ -1093,10 +1093,10 @@ void from_json(const nlohmann::json& j, Timing& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::TypeSpecification object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::TypeSpecification object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the TypeSpecification message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the TypeSpecification message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize agv_kinematic or agv_class field
 void to_json(nlohmann::json& j, const TypeSpecification& msg)
@@ -1132,10 +1132,10 @@ void to_json(nlohmann::json& j, const TypeSpecification& msg)
 
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::TypeSpecification object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::TypeSpecification object
 ///
-/// @param j Reference to the JSON object containing serialized TypeSpecification data
-/// @param msg Reference to the TypeSpecification message to populate
+/// \param j Reference to the JSON object containing serialized TypeSpecification data
+/// \param msg Reference to the TypeSpecification message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize agv_kinematic or agv_class field
 void from_json(const nlohmann::json& j, TypeSpecification& msg)
@@ -1172,10 +1172,10 @@ void from_json(const nlohmann::json& j, TypeSpecification& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::VehicleConfig object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::VehicleConfig object to a nlohmann::json object
 /// 
-/// @param j Reference to the JSON object to be populated
-/// @param msg Reference to the VehicleConfig message object to serialize
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the VehicleConfig message object to serialize
 void to_json(nlohmann::json& j, const VehicleConfig& msg)
 {
     if (!msg.versions.empty())
@@ -1189,10 +1189,10 @@ void to_json(nlohmann::json& j, const VehicleConfig& msg)
     }
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::VehicleConfig object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::VehicleConfig object
 ///
-/// @param j Reference to the JSON object containing serialized VehicleConfig data 
-/// @param msg Reference to the VehicleConfig message to populate
+/// \param j Reference to the JSON object containing serialized VehicleConfig data 
+/// \param msg Reference to the VehicleConfig message to populate
 void from_json(const nlohmann::json& j, VehicleConfig& msg)
 {
     if (j.contains("versions"))
@@ -1206,30 +1206,30 @@ void from_json(const nlohmann::json& j, VehicleConfig& msg)
     }
 }
 
-/// @brief Convert a vda5050_msgs::msg::VersionInfo object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::VersionInfo object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the VersionInfo message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the VersionInfo message object to serialize
 void to_json(nlohmann::json& j, const VersionInfo& msg)
 {
     j["key"] = msg.key;
     j["value"] = msg.value;
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::VersionInfo object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::VersionInfo object
 /// 
-/// @param j Reference to the JSON object containing serialized VersionInfo data 
-/// @param msg Reference to the VersionInfo message to populate
+/// \param j Reference to the JSON object containing serialized VersionInfo data 
+/// \param msg Reference to the VersionInfo message to populate
 void from_json(const nlohmann::json& j, VersionInfo& msg)
 {
     msg.key = j.at("key").get<std::string>();
     msg.value = j.at("value").get<std::string>();
 }
 
-/// @brief  Convert a vda5050_msgs::msg::Factsheet object to a nlohmann::json object
+/// \brief  Convert a vda5050_msgs::msg::Factsheet object to a nlohmann::json object
 ///
-/// @param j Reference to the JSON object to be populated 
-/// @param msg Reference to the Factsheet message object to serialize
+/// \param j Reference to the JSON object to be populated 
+/// \param msg Reference to the Factsheet message object to serialize
 void to_json(nlohmann::json& j, const Factsheet& msg)
 {
     to_json(j, msg.header);
@@ -1242,10 +1242,10 @@ void to_json(nlohmann::json& j, const Factsheet& msg)
     j["vehicleConfig"] = msg.vehicle_config;
 }
 
-/// @brief Convert a nlohmann::json object to a vda5050_msgs::msg::Factsheet object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Factsheet object
 ///
-/// @param j Reference to the JSON object containing serialized Factsheet data 
-/// @param msg Reference to the Factsheet message to populate
+/// \param j Reference to the JSON object containing serialized Factsheet data 
+/// \param msg Reference to the Factsheet message to populate
 void from_json(const nlohmann::json& j, Factsheet& msg)
 {
     from_json(j, msg.header);
