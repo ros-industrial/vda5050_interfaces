@@ -15,14 +15,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifndef VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
+#define VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
 
 #include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/msg/instant_actions.hpp"
-
-#ifndef VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
-#define VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
 
 namespace vda5050_msgs {
 
@@ -30,8 +29,8 @@ namespace msg {
 
 /// \brief Convert a vda5050_msgs::msg::ActionParameterValue object to a nlohmann::json object
 ///
-/// \param j
-/// \param msg
+/// \param j Reference to a JSON object to be populated
+/// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize type
 void to_json(nlohmann::json& j, const ActionParameterValue& msg)
