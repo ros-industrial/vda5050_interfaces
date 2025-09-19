@@ -12,7 +12,7 @@ string series_name
 # Field type: Required
 string agv_kinematic
 
-# TODO: (@shawnkchan) check if these are meant to be enums
+# TODO: (@sauk2) These aren't labelled as enums in the recommnedations, but they seem like it. Could I confirm that they are?
 # Enum values for agv_kinematic
 #
 # Diff: differential drive
@@ -24,7 +24,7 @@ string OMNI="OMNI"
 # Threewheel: three-wheel-driven vehicle or vehicle with similar kinematics
 string THREEWHEEL="THREEWHEEL"
 
-# TODO: (@shawnkchan) check if these are meant to be enums
+# TODO: (@sauk2) These aren't labelled as enums in the recommnedations, but they seem like it. Could I confirm that they are?
 # Simplified description of AGV class.
 # Allowed values: [FORKLIFT, CONVEYOR, TUGGER, CARRIER]
 #

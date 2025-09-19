@@ -24,13 +24,13 @@ string NODE="NODE"
 # Edge: useable on edges
 string EDGE="EDGE"
 
-# TODO: (@shawnkchan) Is this field type good enough for deconfliction? Should we deconflict the field name too?
+# TODO: (@sauk2) Is naming the field type as "FactsheetActionParameter" good enough for deconfliction?
 # Array of parameters an action has. If not defined, the action has no
 # parameters.
 # NOTE: This message is different from the one used in the Order message.
 #
 # Field type: Optional
-FactsheetActionParameter[] action_parameters
+FactsheetActionParameter[] factsheet_action_parameters
 
 # Free-form text: description of the result.
 #

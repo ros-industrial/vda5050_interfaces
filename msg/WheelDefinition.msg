@@ -45,7 +45,7 @@ float64 width
 # 
 # Default: 0.0
 # Field type: Optional
-float64[<=1] center_displacement 0.0
+float64[<=1] center_displacement [0.0]
 
 # Free-form text: can be used by the manufacturer to define constraints.
 #

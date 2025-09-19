@@ -24,7 +24,7 @@ float64 deceleration_max
 # Minimum height of AGV [m]
 #
 # Field type: Required
-float64 heightMin
+float64 height_min
 
 # Maximum height of AGV [m]
 #

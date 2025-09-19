@@ -1,5 +1,5 @@
 # NOTE: This message is different from ActionParameter.msg used in Order.msg 
-# TODO: (shawnkchan) should we rename ActionParameter.msg to OrderActionParameter.msg for consistency?
+# TODO: (sauk2) should we rename ActionParameter.msg to OrderActionParameter.msg for consistency?
 # Parameters that an action has.
 
 # Key string for the parameter

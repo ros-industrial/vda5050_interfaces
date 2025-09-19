@@ -11,5 +11,5 @@ VersionInfo[] versions
 # The listed information shall not be updated while the vehicle is operating.
 #
 # Field type: Optional
-VehicleNetwork[<=1] network
+Network[<=1] network
 
