@@ -20,7 +20,6 @@
 #define VDA5050_MSGS__JSON_UTILS__ORDER_HPP_
 
 #include <nlohmann/json.hpp>
-
 #include <string>
 
 #include "vda5050_msgs/json_utils/header.hpp"
@@ -261,8 +260,8 @@ void from_json(const nlohmann::json& j, Edge& msg)
 
 /// \brief NodePosition
 ///
-/// \param j
-/// \param msg
+/// \param j Reference to the JSON object to be populated
+/// \param msg Reference to the message object to serialize
 void to_json(nlohmann::json& j, const NodePosition& msg)
 {
   j["x"] = msg.x;
