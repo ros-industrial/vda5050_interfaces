@@ -4,22 +4,22 @@
 # Minimal controlled continuous speed of the AGV [m/s]
 #
 # Field type: Required
-float64 speedMin
+float64 speed_min
 
 # Maximum speed of the AGV [m/s]
 #
 # Field type: Required
-float64 speedMax
+float64 speed_max
 
 # Maximum acceleration with maximum load [m/s²]
 #
 # Field type: Required
-float64 accelerationMax
+float64 acceleration_max
 
 # Maximum deceleration with maximum load [m/s²]
 #
 # Field type: Required
-float64 decelerationMax
+float64 deceleration_max
 
 # Minimum height of AGV [m]
 #
@@ -29,7 +29,7 @@ float64 heightMin
 # Maximum height of AGV [m]
 #
 # Field type: Required
-float64 heightMax
+float64 height_max
 
 # Width of AGV [m]
 #
@@ -44,10 +44,10 @@ float64 length
 # Minimal controlled continuous rotation speed of the AGV [rad/s]
 #
 # Field type: Optional
-float64 angularSpeedMin
+float64[<=1] angular_speed_min
 
 # Maximum rotation speed of the AGV [rad/s]
 #
 # Field type: Optional
-float64 angularSpeedMax
+float64[<=1] angular_speed_max
 

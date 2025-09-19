@@ -4,16 +4,16 @@
 # Free text generalized series name as specifid by manufacturer
 #
 # Field type: Required
-string seriesName
+string series_name
 
 # Simplified description of AGV kinematics type.
 # Allowed values: [DIFF, OMNI, THREEWHEEL]
 #
 # Field type: Required
-string agvKinematic
+string agv_kinematic
 
 # TODO: (@shawnkchan) check if these are meant to be enums
-# Enum values for agvKinematic
+# Enum values for agv_kinematic
 #
 # Diff: differential drive
 string DIFF="DIFF"
@@ -29,9 +29,9 @@ string THREEWHEEL="THREEWHEEL"
 # Allowed values: [FORKLIFT, CONVEYOR, TUGGER, CARRIER]
 #
 # Field type: Required
-string agvClass
+string agv_class
 
-# Enum values for agvClass
+# Enum values for agv_class
 #
 # Forklift: forklift
 string FORKLIFT="FORKLIFT"
@@ -48,22 +48,22 @@ string CARRIER="CARRIER"
 # Maximum loadable mass [kg]
 #
 # Field type: Required
-float64 maxLoadMass
+float64 max_load_mass
 
 # Simplified description of localization types.
 # Example values: NATURAL, REFLECTOR, RFID, DMC, SPOT, GRID
 # 
 #Field type: Required
-string[] localizationTypes
+string[] localization_types
 
 # Path planning types supported by the AGV, sorted by priority.
 # Example values: PHYSICAL_LINE_GUIDED, VIRTUAL_LINE_GUIDED, AUTONOMOUS
 #
 # Field type: Required
-string[] navigationTypes
+string[] navigation_types
 
 # Free text human-readable description of the AGV type series
 #
 # Field type: Optional
-string[<=1] seriesDescription
+string[<=1] series_description
 
