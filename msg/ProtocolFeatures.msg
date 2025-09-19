@@ -5,11 +5,11 @@
 # by the AGV
 #
 # Field type: Required
-OptionalParameters optional_parameters
+OptionalParameters[] optional_parameters
 
 # Array of actions with parameters supported by this AGV. This includes
 # standard actions specified in VDA5050 and manufacturer-specific actions.
 #
 # Field type: Required
-AgvAction agv_actions
+AgvAction[] agv_actions
 

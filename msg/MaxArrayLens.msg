@@ -2,7 +2,8 @@
 # This message defines the maximum lengths of arrays processable by the AGV
 # according to the VDA5050 specification.
 
-#TODO: (@shawnkchan) check if this naming convention works
+#TODO: (@shawnkchan) check if this naming convention works.
+# According to the recommendations, each field should use a "." instead of an "_"
 
 # Maximum number of nodes per order processable by the AGV.
 #

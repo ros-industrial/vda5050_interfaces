@@ -7,7 +7,7 @@
 WheelDefinition[] wheel_definitions
 
 # Array of AGV envelope curves in 2D.
-# eg: the mechanical envelopes for unloaded and loaded state, the sagety fields
+# eg: the mechanical envelopes for unloaded and loaded state, the safety fields
 # for different speed cases.
 #
 # Field type: Optional

@@ -30,7 +30,7 @@ string EDGE="EDGE"
 # NOTE: This message is different from the one used in the Order message.
 #
 # Field type: Optional
-FactsheetActionParameter action_parameters
+FactsheetActionParameter[] action_parameters
 
 # Free-form text: description of the result.
 #
@@ -47,14 +47,14 @@ string[<=1] action_description
 # Field type: Optional
 string[] blocking_types 
 
-# Enum values for possible blocking types
+# Enum values for possible blocking types.
 #
-# None: action can be executed in parallel while driving
+# None: action can be executed in parallel while driving.
 string NONE="NONE"
 #
-# Soft: action can be executed in parallel but AGV cannot be driving
+# Soft: action can be executed in parallel but AGV cannot be driving.
 string SOFT="SOFT"
 #
-# Hard: action cannot be executed in parallel and AGV cannot be driving
+# Hard: action cannot be executed in parallel and AGV cannot be driving.
 string HARD="HARD"
 

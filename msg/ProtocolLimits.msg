@@ -7,7 +7,7 @@
 # Field type: Required
 MaxStringLens max_string_lens
 
-# Maximum lenghts of arrays
+# Maximum lengths of arrays
 #
 # Field type: Required
 MaxArrayLens max_array_lens
