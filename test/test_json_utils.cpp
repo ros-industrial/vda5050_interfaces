@@ -27,13 +27,13 @@
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;
-using vda5050_msgs::msg::InstantAction;
+using vda5050_msgs::msg::InstantActions;
 using vda5050_msgs::msg::Action;
 using vda5050_msgs::msg::ActionParameter;
 using vda5050_msgs::msg::ActionParameterValue;
 
 // List of types to be tested for serialization round-trip
-using SerializableTypes = ::testing::Types<Header, Connection, InstantAction, Action, ActionParameter, ActionParameterValue>;
+using SerializableTypes = ::testing::Types<Header, Connection, InstantActions, Action, ActionParameter, ActionParameterValue>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test

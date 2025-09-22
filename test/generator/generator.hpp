@@ -26,14 +26,14 @@
 
 #include "vda5050_msgs/msg/connection.hpp"
 #include "vda5050_msgs/msg/header.hpp"
-#include "vda5050_msgs/msg/instant_action.hpp"
+#include "vda5050_msgs/msg/instant_actions.hpp"
 #include "vda5050_msgs/msg/action.hpp"
 #include "vda5050_msgs/msg/action_parameter.hpp"
 #include "vda5050_msgs/msg/action_parameter_value.hpp"
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;
-using vda5050_msgs::msg::InstantAction;
+using vda5050_msgs::msg::InstantActions;
 using vda5050_msgs::msg::Action;
 using vda5050_msgs::msg::ActionParameter;
 using vda5050_msgs::msg::ActionParameterValue;
@@ -196,9 +196,9 @@ public:
       msg.action_parameters = generate_random_vector<ActionParameter>(generate_random_size());
       return msg;
     }
-    else if constexpr (std::is_same_v<T, InstantAction>)
+    else if constexpr (std::is_same_v<T, InstantActions>)
     {
-      InstantAction msg;
+      InstantActions msg;
       msg.header = generate<Header>();
       msg.actions = generate_random_vector<Action>(generate_random_size());
       return msg;
