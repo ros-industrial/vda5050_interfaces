@@ -16,4 +16,3 @@ PolygonPoint[] polygon_points
 # Field type: Optional
 string[<=1] description
 
-

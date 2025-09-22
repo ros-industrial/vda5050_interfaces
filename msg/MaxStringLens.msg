@@ -82,3 +82,4 @@ uint32[<=1] load_id_len
 #
 # Field type: Optional
 bool[<=1] id_numerical_only
+
