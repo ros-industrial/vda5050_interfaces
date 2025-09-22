@@ -10,7 +10,7 @@ string set
 # Field type: Required
 string format
 
-# TODO: (@sauk2) I assume we will leave this as a string and let the user handle the data format on their end?
+# TODO: (@sauk2) I assume we will leave this as a string and let the user handle the data format on their end? Recommendation specifies that this is a JSON type
 # 3D-envelope curve data as a string.
 # Format of this data is specified in the 'format' field, and should be
 # handled accordingly.

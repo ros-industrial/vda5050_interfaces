@@ -40,12 +40,13 @@ float64 diameter
 # Field type: Required
 float64 width
 
+# TODO: Confirm whether this should be a bounded array or not, since it has a default value
 # Nominal displacement of the wheel's center to the rotation points.
 # This field is necessary for caster wheels.
 # 
 # Default: 0.0
 # Field type: Optional
-float64[<=1] center_displacement [0.0]
+float64 center_displacement 0.0
 
 # Free-form text: can be used by the manufacturer to define constraints.
 #

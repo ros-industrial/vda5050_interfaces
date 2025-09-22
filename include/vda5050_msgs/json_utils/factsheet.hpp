@@ -51,18 +51,17 @@ void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
   }
   else
   {
-    throw std::runtime_error(
-      "Serialization error: Unexpected value_data_type");
+    throw std::runtime_error("Serialization error: Unexpected value_data_type");
   }
 
   if (!msg.description.empty())
   {
-    j["description"] = msg.description;
+    j["description"] = msg.description.front();
   }
 
   if (!msg.is_optional.empty())
   {
-    j["isOptional"] = msg.is_optional;
+    j["isOptional"] = msg.is_optional.front();
   }
 }
 
@@ -75,8 +74,7 @@ void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
 /// \throws std::runtime_error If failed to deserialize value_data_type
 void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
 {
-  auto key = j.at("key").get<std::string>();
-  msg.key = key;
+  msg.key = j.at("key").get<std::string>();
 
   auto value_data_type = j.at("valueDataType").get<std::string>();
   if (
@@ -88,8 +86,7 @@ void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
   }
   else
   {
-    throw std::runtime_error(
-      "JSON parsing error: Unexpected value_data_type");
+    throw std::runtime_error("JSON parsing error: Unexpected value_data_type");
   }
 
   if (j.contains("description"))
@@ -126,17 +123,17 @@ void to_json(nlohmann::json& j, const AgvAction& msg)
 
   if (!msg.factsheet_action_parameters.empty())
   {
-    j["factsheetActionParameters"] = msg.factsheet_action_parameters;
+    j["factsheetActionParameters"] = msg.factsheet_action_parameters.front();
   }
 
   if (!msg.result_description.empty())
   {
-    j["resultDescription"] = msg.result_description;
+    j["resultDescription"] = msg.result_description.front();
   }
 
   if (!msg.action_description.empty())
   {
-    j["actionDescription"] = msg.action_description;
+    j["actionDescription"] = msg.action_description.front();
   }
 
   if (!msg.blocking_types.empty())
@@ -163,8 +160,7 @@ void to_json(nlohmann::json& j, const AgvAction& msg)
 /// \throws std::runtime_error If failed to deserialize action_scopes or blocking_types
 void from_json(const nlohmann::json& j, AgvAction& msg)
 {
-  auto action_type = j.at("actionType").get<std::string>();
-  msg.action_type = action_type;
+  msg.action_type = j.at("actionType").get<std::string>();
 
   auto action_scopes = j.at("actionScopes").get<std::vector<std::string>>();
   for (std::string scope : action_scopes)
@@ -223,7 +219,7 @@ void to_json(nlohmann::json& j, const Position& msg)
 
   if (!msg.theta.empty())
   {
-    j["theta"] = msg.theta;
+    j["theta"] = msg.theta.front();
   }
 }
 
@@ -273,7 +269,7 @@ void to_json(nlohmann::json& j, const WheelDefinition& msg)
 
   if (!msg.constraints.empty())
   {
-    j["constraints"] = msg.constraints;
+    j["constraints"] = msg.constraints.front();
   }
 }
 
@@ -300,13 +296,10 @@ void from_json(const nlohmann::json& j, WheelDefinition& msg)
 
   msg.is_active_driven = j.at("isActiveDriven").get<bool>();
   msg.is_active_steered = j.at("isActiveSteered").get<bool>();
-
-  auto position = j.at("position").get<Position>();
-  msg.position = position;
-
+  msg.position = j.at("position").get<Position>();
   msg.diameter = j.at("diameter").get<double>();
   msg.width = j.at("width").get<double>();
-  msg.center_displacement.push_back(j.at("centerDisplacement").get<double>());
+  msg.center_displacement = j.at("centerDisplacement").get<double>();
 
   if (j.contains("constraints"))
   {
@@ -348,7 +341,7 @@ void to_json(nlohmann::json& j, const Envelope2d& msg)
 
   if (!msg.description.empty())
   {
-    j["description"] = msg.description;
+    j["description"] = msg.description.front();
   }
 }
 
@@ -380,17 +373,17 @@ void to_json(nlohmann::json& j, const Envelope3d& msg)
 
   if (!msg.data.empty())
   {
-    j["data"] = msg.data;
+    j["data"] = msg.data.front();
   }
 
   if (!msg.url.empty())
   {
-    j["url"] = msg.url;
+    j["url"] = msg.url.front();
   }
 
   if (!msg.description.empty())
   {
-    j["description"] = msg.description;
+    j["description"] = msg.description.front();
   }
 }
 
@@ -554,77 +547,77 @@ void to_json(nlohmann::json& j, const LoadSet& msg)
 
   if (!msg.bounding_box_reference.empty())
   {
-    j["boundingBoxReference"] = msg.bounding_box_reference;
+    j["boundingBoxReference"] = msg.bounding_box_reference.front();
   }
 
   if (!msg.load_dimensions.empty())
   {
-    j["loadDimensions"] = msg.load_dimensions;
+    j["loadDimensions"] = msg.load_dimensions.front();
   }
 
   if (!msg.max_weight.empty())
   {
-    j["maxWeight"] = msg.max_weight;
+    j["maxWeight"] = msg.max_weight.front();
   }
 
   if (!msg.min_load_handling_height.empty())
   {
-    j["minLoadHandlingHeight"] = msg.min_load_handling_height;
+    j["minLoadHandlingHeight"] = msg.min_load_handling_height.front();
   }
 
   if (!msg.max_load_handling_height.empty())
   {
-    j["maxLoadHandlingHeight"] = msg.max_load_handling_height;
+    j["maxLoadHandlingHeight"] = msg.max_load_handling_height.front();
   }
 
   if (!msg.min_load_handling_depth.empty())
   {
-    j["minLoadHandlingDepth"] = msg.min_load_handling_depth;
+    j["minLoadHandlingDepth"] = msg.min_load_handling_depth.front();
   }
 
   if (!msg.max_load_handling_depth.empty())
   {
-    j["maxLoadHandlingDepth"] = msg.max_load_handling_depth;
+    j["maxLoadHandlingDepth"] = msg.max_load_handling_depth.front();
   }
 
   if (!msg.min_load_handling_tilt.empty())
   {
-    j["minLoadHandlingTilt"] = msg.min_load_handling_tilt;
+    j["minLoadHandlingTilt"] = msg.min_load_handling_tilt.front();
   }
 
   if (!msg.max_load_handling_tilt.empty())
   {
-    j["maxLoadHandlingTilt"] = msg.max_load_handling_tilt;
+    j["maxLoadHandlingTilt"] = msg.max_load_handling_tilt.front();
   }
 
   if (!msg.agv_speed_limit.empty())
   {
-    j["agvSpeedLimit"] = msg.agv_speed_limit;
+    j["agvSpeedLimit"] = msg.agv_speed_limit.front();
   }
 
   if (!msg.agv_acceleration_limit.empty())
   {
-    j["agvAccelerationLimit"] = msg.agv_acceleration_limit;
+    j["agvAccelerationLimit"] = msg.agv_acceleration_limit.front();
   }
 
   if (!msg.agv_deceleration_limit.empty())
   {
-    j["agvDecelerationLimit"] = msg.agv_deceleration_limit;
+    j["agvDecelerationLimit"] = msg.agv_deceleration_limit.front();
   }
 
   if (!msg.pick_time.empty())
   {
-    j["pickTime"] = msg.pick_time;
+    j["pickTime"] = msg.pick_time.front();
   }
 
   if (!msg.drop_time.empty())
   {
-    j["dropTime"] = msg.drop_time;
+    j["dropTime"] = msg.drop_time.front();
   }
 
   if (!msg.description.empty())
   {
-    j["description"] = msg.description;
+    j["description"] = msg.description.front();
   }
 }
 
@@ -635,11 +628,8 @@ void to_json(nlohmann::json& j, const LoadSet& msg)
 /// \param msg Reference to the LoadSet message to populate
 void from_json(const nlohmann::json& j, LoadSet& msg)
 {
-  auto set_name = j.at("setName").get<std::string>();
-  msg.set_name = set_name;
-
-  auto load_type = j.at("loadType").get<std::string>();
-  msg.load_type = load_type;
+  msg.set_name = j.at("setName").get<std::string>();
+  msg.load_type = j.at("loadType").get<std::string>();
 
   if (j.contains("loadPositions"))
   {
@@ -829,37 +819,37 @@ void to_json(nlohmann::json& j, const MaxStringLens& msg)
 {
   if (!msg.msg_len.empty())
   {
-    j["msgLen"] = msg.msg_len;
+    j["msgLen"] = msg.msg_len.front();
   }
 
   if (!msg.topic_serial_len.empty())
   {
-    j["actionTypeLen"] = msg.topic_serial_len;
+    j["actionTypeLen"] = msg.topic_serial_len.front();
   }
 
   if (!msg.topic_elem_len.empty())
   {
-    j["actionScopesLen"] = msg.topic_elem_len;
+    j["actionScopesLen"] = msg.topic_elem_len.front();
   }
 
   if (!msg.id_len.empty())
   {
-    j["keyLen"] = msg.id_len;
+    j["keyLen"] = msg.id_len.front();
   }
 
   if (!msg.enum_len.empty())
   {
-    j["valueDataTypeLen"] = msg.enum_len;
+    j["valueDataTypeLen"] = msg.enum_len.front();
   }
 
   if (!msg.load_id_len.empty())
   {
-    j["setNameLen"] = msg.load_id_len;
+    j["setNameLen"] = msg.load_id_len.front();
   }
 
   if (!msg.id_numerical_only.empty())
   {
-    j["isOptionalLen"] = msg.id_numerical_only;
+    j["isOptionalLen"] = msg.id_numerical_only.front();
   }
 }
 
@@ -925,17 +915,17 @@ void to_json(nlohmann::json& j, const Network& msg)
 
   if (!msg.local_ip_address.empty())
   {
-    j["localIpAddress"] = msg.local_ip_address;
+    j["localIpAddress"] = msg.local_ip_address.front();
   }
 
   if (!msg.netmask.empty())
   {
-    j["netmask"] = msg.netmask;
+    j["netmask"] = msg.netmask.front();
   }
 
   if (!msg.default_gateway.empty())
   {
-    j["defaultGateway"] = msg.default_gateway;
+    j["defaultGateway"] = msg.default_gateway.front();
   }
 }
 
@@ -989,13 +979,12 @@ void to_json(nlohmann::json& j, const OptionalParameters& msg)
   }
   else
   {
-    throw std::runtime_error(
-      "Serialization error: Unexpected support");
+    throw std::runtime_error("Serialization error: Unexpected support");
   }
 
   if (!msg.description.empty())
   {
-    j["description"] = msg.description;
+    j["description"] = msg.description.front();
   }
 }
 
@@ -1017,8 +1006,7 @@ void from_json(const nlohmann::json& j, OptionalParameters& msg)
   }
   else
   {
-    throw std::runtime_error(
-      "JSON parsing error: Unexpected support");
+    throw std::runtime_error("JSON parsing error: Unexpected support");
   }
 
   if (j.contains("description"))
@@ -1045,12 +1033,12 @@ void to_json(nlohmann::json& j, const PhysicalParameters& msg)
 
   if (!msg.angular_speed_min.empty())
   {
-    j["angularSpeedMin"] = msg.angular_speed_min;
+    j["angularSpeedMin"] = msg.angular_speed_min.front();
   }
 
   if (!msg.angular_speed_max.empty())
   {
-    j["angularSpeedMax"] = msg.angular_speed_max;
+    j["angularSpeedMax"] = msg.angular_speed_max.front();
   }
 }
 
@@ -1140,12 +1128,12 @@ void to_json(nlohmann::json& j, const Timing& msg)
 
   if (!msg.default_state_interval.empty())
   {
-    j["defaultStateInterval"] = msg.default_state_interval;
+    j["defaultStateInterval"] = msg.default_state_interval.front();
   }
 
   if (!msg.visualization_interval.empty())
   {
-    j["visualizationInterval"] = msg.visualization_interval;
+    j["visualizationInterval"] = msg.visualization_interval.front();
   }
 }
 
@@ -1191,8 +1179,7 @@ void to_json(nlohmann::json& j, const TypeSpecification& msg)
   }
   else
   {
-    throw std::runtime_error(
-      "Serialization error: Unexpected agv_kinematic");
+    throw std::runtime_error("Serialization error: Unexpected agv_kinematic");
   }
 
   if (
@@ -1203,8 +1190,7 @@ void to_json(nlohmann::json& j, const TypeSpecification& msg)
   }
   else
   {
-    throw std::runtime_error(
-      "Serialization error: Unexpected agv_class");
+    throw std::runtime_error("Serialization error: Unexpected agv_class");
   }
 
   j["maxLoadMass"] = msg.max_load_mass;
@@ -1213,7 +1199,7 @@ void to_json(nlohmann::json& j, const TypeSpecification& msg)
 
   if (!msg.series_description.empty())
   {
-    j["seriesDescription"] = msg.series_description;
+    j["seriesDescription"] = msg.series_description.front();
   }
 }
 
@@ -1237,8 +1223,7 @@ void from_json(const nlohmann::json& j, TypeSpecification& msg)
   }
   else
   {
-    throw std::runtime_error(
-      "JSON parsing error: Unexpected agv_kinematic");
+    throw std::runtime_error("JSON parsing error: Unexpected agv_kinematic");
   }
 
   auto agv_class = j.at("agvClass").get<std::string>();
@@ -1250,8 +1235,7 @@ void from_json(const nlohmann::json& j, TypeSpecification& msg)
   }
   else
   {
-    throw std::runtime_error(
-      "JSON parsing error: Unexpected agv_class");
+    throw std::runtime_error("JSON parsing error: Unexpected agv_class");
   }
 
   msg.max_load_mass = j.at("maxLoadMass").get<double>();
@@ -1281,7 +1265,7 @@ void to_json(nlohmann::json& j, const VehicleConfig& msg)
 
   if (!msg.network.empty())
   {
-    j["network"] = msg.network;
+    j["network"] = msg.network.front();
   }
 }
 
