@@ -125,7 +125,7 @@ void to_json(nlohmann::json& j, const Action& msg)
 
   if (!msg.action_description.empty())
   {
-    j["actionDescription"] = msg.action_description;
+    j["actionDescription"] = msg.action_description.front();
   }
 
   if (!msg.action_parameters.empty())
