@@ -52,8 +52,7 @@ void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected value_data_type in "
-      "factsheet_action_parameter field");
+      "Serialization error: Unexpected value_data_type");
   }
 
   if (!msg.description.empty())
@@ -90,8 +89,7 @@ void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected value_data_type in "
-      "factsheet_action_parameter field");
+      "JSON parsing error: Unexpected value_data_type");
   }
 
   if (j.contains("description"))
@@ -121,7 +119,7 @@ void to_json(nlohmann::json& j, const AgvAction& msg)
     if (scope != "INSTANT" && scope != "NODE" && scope != "EDGE")
     {
       throw std::runtime_error(
-        "Serialization error: Unexpected scope in action_scopes field");
+        "Serialization error: Unexpected scope in action_scopes");
     }
   }
   j["actionScopes"] = msg.action_scopes;
@@ -148,7 +146,7 @@ void to_json(nlohmann::json& j, const AgvAction& msg)
       if (type != "NONE" && type != "SOFT" && type != "HARD")
       {
         throw std::runtime_error(
-          "Serialization error: Unexpected type in blocking_types field");
+          "Serialization error: Unexpected type in blocking_types");
       }
     }
 
@@ -174,7 +172,7 @@ void from_json(const nlohmann::json& j, AgvAction& msg)
     if (scope != "INSTANT" && scope != "NODE" && scope != "EDGE")
     {
       throw std::runtime_error(
-        "Serialization error: Unexpected scope in action_scopes field");
+        "JSON parsing error: Unexpected scope in action_scopes");
     }
   }
   msg.action_scopes = action_scopes;
@@ -206,7 +204,7 @@ void from_json(const nlohmann::json& j, AgvAction& msg)
       if (type != "NONE" && type != "SOFT" && type != "HARD")
       {
         throw std::runtime_error(
-          "Serialization error: Unexpected type in blocking_types field");
+          "JSON parsing error: Unexpected type in blocking_types");
       }
     }
     msg.blocking_types = blocking_types;
@@ -263,7 +261,7 @@ void to_json(nlohmann::json& j, const WheelDefinition& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected type in wheel_definition field");
+      "Serialization error: Unexpected type in wheel_definition");
   }
 
   j["isActiveDriven"] = msg.is_active_driven;
@@ -297,7 +295,7 @@ void from_json(const nlohmann::json& j, WheelDefinition& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected type in wheel_definition field");
+      "JSON parsing error: Unexpected type in wheel_definition");
   }
 
   msg.is_active_driven = j.at("isActiveDriven").get<bool>();
@@ -992,7 +990,7 @@ void to_json(nlohmann::json& j, const OptionalParameters& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected support in optional_parameters field");
+      "Serialization error: Unexpected support");
   }
 
   if (!msg.description.empty())
@@ -1020,7 +1018,7 @@ void from_json(const nlohmann::json& j, OptionalParameters& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected support in optional_parameters field");
+      "JSON parsing error: Unexpected support");
   }
 
   if (j.contains("description"))
@@ -1194,8 +1192,7 @@ void to_json(nlohmann::json& j, const TypeSpecification& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected agv_kinematic in type_specification "
-      "field");
+      "Serialization error: Unexpected agv_kinematic");
   }
 
   if (
@@ -1207,7 +1204,7 @@ void to_json(nlohmann::json& j, const TypeSpecification& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected agv_class in type_specification field");
+      "Serialization error: Unexpected agv_class");
   }
 
   j["maxLoadMass"] = msg.max_load_mass;
@@ -1241,8 +1238,7 @@ void from_json(const nlohmann::json& j, TypeSpecification& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected agv_kinematic in type_specification "
-      "field");
+      "JSON parsing error: Unexpected agv_kinematic");
   }
 
   auto agv_class = j.at("agvClass").get<std::string>();
@@ -1255,7 +1251,7 @@ void from_json(const nlohmann::json& j, TypeSpecification& msg)
   else
   {
     throw std::runtime_error(
-      "Serialization error: Unexpected agv_class in type_specification field");
+      "JSON parsing error: Unexpected agv_class");
   }
 
   msg.max_load_mass = j.at("maxLoadMass").get<double>();
