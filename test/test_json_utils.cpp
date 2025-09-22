@@ -23,7 +23,7 @@
 #include "generator/generator.hpp"
 #include "vda5050_msgs/json_utils/connection.hpp"
 #include "vda5050_msgs/json_utils/header.hpp"
-#include "vda5050_msgs/json_utils/instantAction.hpp"
+#include "vda5050_msgs/json_utils/instant_actions.hpp"
 
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::Header;

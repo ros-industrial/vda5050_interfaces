@@ -1,4 +1,4 @@
-# A message containing an instantAction information
+# A message containing an instantActions information
 #
 # Published by Master Control on the topic /instantActions to inform an AGV
 # of a set of actions to be executed as soon as they arrive
@@ -13,3 +13,4 @@ Header header
 #
 # Field Type: Required
 Action[] actions
+

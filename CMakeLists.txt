@@ -17,7 +17,7 @@ find_package(nlohmann_json REQUIRED)
 set(msg_files
   "msg/Connection.msg"
   "msg/Header.msg"
-  "msg/InstantAction.msg"
+  "msg/InstantActions.msg"
   "msg/Action.msg"
   "msg/ActionParameter.msg"
   "msg/ActionParameterValue.msg"
