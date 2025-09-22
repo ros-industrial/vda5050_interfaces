@@ -145,15 +145,6 @@ public:
     return size_dist_(rng_);
   }
 
-  /// \brief Generate a random connection state value
-  std::string generate_connection_state()
-  {
-    std::vector<std::string> states = {
-      Connection::ONLINE, Connection::OFFLINE, Connection::CONNECTIONBROKEN};
-    auto state_idx = connection_state_dist_(rng_);
-    return states[state_idx];
-  }
-
   /// \brief Generate a fully populated message of a supported type
   template <typename T>
   T generate()

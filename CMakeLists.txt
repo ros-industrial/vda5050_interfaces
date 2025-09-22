@@ -32,6 +32,7 @@ install(
 ament_export_dependencies(
   rosidl_default_runtime
   nlohmann_json
+  nlohmann_json_schema_validator
 )
 
 if(BUILD_TESTING)
@@ -73,6 +74,21 @@ if(BUILD_TESTING)
   )
   target_link_libraries(${PROJECT_NAME}_test
     nlohmann_json::nlohmann_json
+    ${cpp_typesupport_target}
+  )
+
+  ament_add_gtest(${PROJECT_NAME}_validator_test 
+  test/test_json_validators.cpp
+  
+  )
+  target_include_directories(${PROJECT_NAME}_validator_test
+    PUBLIC  
+      $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+      $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  )
+  target_link_libraries(${PROJECT_NAME}_validator_test
+    nlohmann_json::nlohmann_json
+    nlohmann_json_schema_validator
     ${cpp_typesupport_target}
   )
 endif()

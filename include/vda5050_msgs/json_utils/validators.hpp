@@ -1,7 +1,7 @@
 #include <nlohmann/json-schema.hpp>
 #include <nlohmann/json.hpp>
 #include <iostream>
-#include "include/vda5050_msgs/json_utils/schemas.hpp"
+#include "vda5050_msgs/json_utils/schemas.hpp"
 
 /// @brief Checks that a JSON object is following the specified schema
 ///
