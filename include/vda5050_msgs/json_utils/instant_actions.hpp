@@ -31,6 +31,7 @@ namespace vda5050_msgs {
 
 namespace msg {
 
+//=============================================================================
 /// \brief Convert a vda5050_msgs::msg::ActionParameterValue object to a nlohmann::json object
 ///
 /// \param j Reference to a JSON object to be populated
@@ -56,6 +57,7 @@ void to_json(nlohmann::json& j, const ActionParameterValue& msg)
   j["value"] = msg.value;
 }
 
+//=============================================================================
 /// \brief Populate a vda5050_msgs::msg::ActionParameterValue object from a nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized parameter value data
@@ -81,6 +83,7 @@ void from_json(const nlohmann::json& j, ActionParameterValue& msg)
   msg.value = j.at("value").get<std::string>();
 }
 
+//=============================================================================
 /// \brief convert a vda5050_msgs::msg::ActionParameter object to a nlohmann::json object
 ///
 /// \param j Reference to a JSON object to be populated
@@ -91,6 +94,7 @@ void to_json(nlohmann::json& j, const ActionParameter& msg)
   j["value"] = msg.value;
 }
 
+//=============================================================================
 /// \brief populate a vda5050_msgs::msg::ActionParameter object from a nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized ActionParameter data
@@ -101,6 +105,7 @@ void from_json(const nlohmann::json& j, ActionParameter& msg)
   msg.value = j.at("value").get<ActionParameterValue>();
 }
 
+//=============================================================================
 /// \brief convert a vda5050_msgs::msg::Action object to a nlohmann::json object
 ///
 /// \param j Reference to a JSON object to be populated
@@ -134,6 +139,7 @@ void to_json(nlohmann::json& j, const Action& msg)
   }
 }
 
+//=============================================================================
 /// \brief populate a vda5050_msgs::msg::Action object from a nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized Action data
@@ -170,6 +176,7 @@ void from_json(const nlohmann::json& j, Action& msg)
   }
 }
 
+//=============================================================================
 /// \brief convert a vda5050_msgs::msg::InstantAction object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
@@ -181,6 +188,7 @@ void to_json(nlohmann::json& j, const InstantActions& msg)
   j["actions"] = msg.actions;
 }
 
+//=============================================================================
 /// \brief populate a vda5050_msgs::msg::InstantAction object from a nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized InstantAction data
