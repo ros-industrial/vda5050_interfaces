@@ -48,3 +48,4 @@ float64[<=1] allowed_deviation_theta
 #
 # Field type: Optional
 string[<=1] map_description
+

@@ -17,15 +17,14 @@ find_package(nlohmann_json REQUIRED)
 set(msg_files
   "msg/Connection.msg"
   "msg/Header.msg"
-  "msg/InstantAction.msg"
   "msg/Action.msg"
   "msg/ActionParameter.msg"
   "msg/ActionParameterValue.msg"
-  "msg/Order.msg"
-  "msg/Node.msg"
-  "msg/Edge.msg"
-  "msg/NodePosition.msg"
   "msg/ControlPoint.msg"
+  "msg/Edge.msg"
+  "msg/Node.msg"
+  "msg/NodePosition.msg"
+  "msg/Order.msg"
   "msg/Trajectory.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}

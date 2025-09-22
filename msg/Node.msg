@@ -34,3 +34,4 @@ NodePosition[<=1] node_position
 #
 # Field type: Optional
 string[<=1] node_description
+

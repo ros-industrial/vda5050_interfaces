@@ -24,3 +24,4 @@ ControlPoint[] control_points
 # Field type: Optional
 # TODO: @shawnkchan should the default value be a float?
 float64 degree 1
+
