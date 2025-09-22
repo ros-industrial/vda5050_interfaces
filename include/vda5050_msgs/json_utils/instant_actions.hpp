@@ -15,6 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 #ifndef VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
 #define VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
 
