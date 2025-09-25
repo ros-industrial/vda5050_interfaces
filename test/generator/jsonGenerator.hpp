@@ -5,69 +5,67 @@
 
 #include "generator.hpp"
 
-/// \brief Utility class to generate random VDA5050 JSON objects 
+/// \brief Utility class to generate random VDA5050 JSON objects
 class RandomJSONgenerator
 {
 public:
+  /// \brief Enum values for each VDA5050 JSON object
+  enum class JsonTypes
+  {
+    Connection,
+    Order,
+    InstantActions,
+    State,
+    Visualization,
+    Factsheet
+  };
 
-    /// \brief Enum values for each VDA5050 JSON object
-    enum class JsonTypes {
-        Connection,
-        Order,
-        InstantActions,
-        State,
-        Visualization,
-        Factsheet
-    };
+  /// \brief Generate a fully populated JSON object of a supported type
+  nlohmann::json generate(const JsonTypes type)
+  {
+    nlohmann::json j;
+    RandomDataGenerator generator;
 
-    /// \brief Generate a fully populated JSON object of a supported type 
-    nlohmann::json generate(const JsonTypes type)
+    j["headerId"] = generator.generate_uint();
+    j["timestamp"] = generator.generate_random_ISO8601_timestamp();
+    j["version"] = generator.generate_random_string();
+    j["manufacturer"] = generator.generate_random_string();
+    j["serialNumber"] = generator.generate_random_string();
+
+    switch (type)
     {
-        nlohmann::json j;
-        RandomDataGenerator generator;
+      case JsonTypes::Connection:
+        /// create Connection JSON object
+        j["connectionState"] = generator.generate_connection_state();
+        break;
 
-        j["headerId"] = generator.generate_uint();
-        j["timestamp"] = generator.generate_random_ISO8601_timestamp();
-        j["version"] = generator.generate_random_string();
-        j["manufacturer"] = generator.generate_random_string();
-        j["serialNumber"] = generator.generate_random_string();        
+      case JsonTypes::Order:
+        /// TODO: (@shawnkchan) complete this once random generator for Order message is completed
+        /// create Order JSON Object
+        break;
 
-        switch (type)
-        {
-            case JsonTypes::Connection:
-                /// create Connection JSON object
-                j["connectionState"] = generator.generate_connection_state();
-                break;
+      case JsonTypes::InstantActions:
+        /// TODO: (@shawnkchan) complete this once random generator for InstantActions message is completed
+        /// create InstantActions JSON Object
+        break;
 
-            case JsonTypes::Order:
-                /// TODO: (@shawnkchan) complete this once random generator for Order message is completed
-                /// create Order JSON Object 
-                break;
+      case JsonTypes::State:
+        /// TODO: (@shawnkchan) complete this once random generator for State message is completed
+        /// create State object
+        break;
 
-            case JsonTypes::InstantActions:
-                /// TODO: (@shawnkchan) complete this once random generator for InstantActions message is completed
-                /// create InstantActions JSON Object
-                break;
+      case JsonTypes::Visualization:
+        /// TODO: (@shawnkchan) complete this once random generator for Visualization message is completed
+        /// create Visualization object
+        break;
 
-            case JsonTypes::State:
-                /// TODO: (@shawnkchan) complete this once random generator for State message is completed
-                /// create State object
-                break;
-
-            case JsonTypes::Visualization:
-                /// TODO: (@shawnkchan) complete this once random generator for Visualization message is completed
-                /// create Visualization object
-                break;
-
-            case JsonTypes::Factsheet:
-                /// TODO: (@shawnkchan) complete this once random generator for Factsheet message is completed
-                /// Factsheet
-                break;
-
-        }
-        return j;
+      case JsonTypes::Factsheet:
+        /// TODO: (@shawnkchan) complete this once random generator for Factsheet message is completed
+        /// Factsheet
+        break;
     }
-
+    return j;
+  }
 };
 
 #endif
