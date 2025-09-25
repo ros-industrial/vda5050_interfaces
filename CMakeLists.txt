@@ -77,6 +77,7 @@ if(BUILD_TESTING)
     ${cpp_typesupport_target}
   )
 
+  # TODO: (@shawnkchan) Remove this once we move validators to another repo
   ament_add_gtest(${PROJECT_NAME}_validator_test 
   test/test_json_validators.cpp
   

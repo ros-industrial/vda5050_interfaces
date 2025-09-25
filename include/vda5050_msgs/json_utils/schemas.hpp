@@ -15,7 +15,7 @@ inline constexpr auto connection_schema = R"(
             "headerId",
             "timestamp",
             "version",
-            "manufacttimurer",
+            "manufacturer",
             "serialNumber",
             "connectionState"
         ],

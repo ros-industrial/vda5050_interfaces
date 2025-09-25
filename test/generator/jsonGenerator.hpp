@@ -5,7 +5,7 @@
 
 #include "generator.hpp"
 
-/// \brief Utility class to generate random VDA 5050 JSON objects 
+/// \brief Utility class to generate random VDA5050 JSON objects 
 class RandomJSONgenerator
 {
 public:
@@ -14,7 +14,10 @@ public:
     enum class JsonTypes {
         Connection,
         Order,
-        InstantActions
+        InstantActions,
+        State,
+        Visualization,
+        Factsheet
     };
 
     /// \brief Generate a fully populated JSON object of a supported type 
@@ -24,7 +27,7 @@ public:
         RandomDataGenerator generator;
 
         j["headerId"] = generator.generate_uint();
-        j["timestamp"] = generator.generate_random_string();
+        j["timestamp"] = generator.generate_random_ISO8601_timestamp();
         j["version"] = generator.generate_random_string();
         j["manufacturer"] = generator.generate_random_string();
         j["serialNumber"] = generator.generate_random_string();        
@@ -45,6 +48,22 @@ public:
                 /// TODO: (@shawnkchan) complete this once random generator for InstantActions message is completed
                 /// create InstantActions JSON Object
                 break;
+
+            case JsonTypes::State:
+                /// TODO: (@shawnkchan) complete this once random generator for State message is completed
+                /// create State object
+                break;
+
+            case JsonTypes::Visualization:
+                /// TODO: (@shawnkchan) complete this once random generator for Visualization message is completed
+                /// create Visualization object
+                break;
+
+            case JsonTypes::Factsheet:
+                /// TODO: (@shawnkchan) complete this once random generator for Factsheet message is completed
+                /// Factsheet
+                break;
+
         }
         return j;
     }

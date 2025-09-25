@@ -74,6 +74,29 @@ public:
     return bool_dist_(rng_);
   }
 
+  /// \brief Generate a random ISO8601 formatted timestamp
+  std::string generate_random_ISO8601_timestamp()
+  {
+    constexpr const char* ISO8601_FORMAT = "%Y-%m-%dT%H:%M:%S";
+
+    int64_t timestamp = generate_milliseconds();
+    std::chrono::system_clock::time_point tp{std::chrono::milliseconds(timestamp)};
+    std::time_t time_sec = std::chrono::system_clock::to_time_t(tp);
+    auto duration = tp.time_since_epoch();
+    auto millisec = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() % 1000;
+
+    std::ostringstream oss;
+    oss << std::put_time(std::gmtime(&time_sec), ISO8601_FORMAT);
+    oss << "." << std::setw(3) << std::setfill('0') << millisec << "Z";
+
+    if (oss.fail())
+    {
+      throw std::runtime_error("Failed to generate a random ISO8601 timestamp");
+    }
+
+    return oss.str();
+  }
+
   /// \brief Generate a random alphanumerical string with length upto 50
   std::string generate_random_string()
   {
