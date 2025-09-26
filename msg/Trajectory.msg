@@ -7,7 +7,7 @@
 #
 # Range: [1, infinity)
 # Field type: Optional
-float64[<=1] degree
+float64 degree 1
 
 # Sequence of parameter values determining how the contro point affects the
 # NURBS curve

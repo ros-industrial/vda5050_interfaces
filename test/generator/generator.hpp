@@ -410,7 +410,7 @@ public:
     }
     else if constexpr (std::is_same_v<T, Trajectory>)
     {
-      msg.degree.push_back(generate_random_float());
+      msg.degree = generate_random_float();
       msg.knot_vector = generate_random_float_vector(generate_random_size());
       msg.control_points =
         generate_random_vector<ControlPoint>(generate_random_size());

@@ -42,11 +42,7 @@ void to_json(nlohmann::json& j, const Trajectory& msg)
 {
   j["knotVector"] = msg.knot_vector;
   j["controlPoints"] = msg.control_points;
-
-  if (!msg.degree.empty())
-  {
-    j["degree"] = msg.degree.front();
-  }
+  j["degree"] = msg.degree;
 }
 
 //=============================================================================
@@ -59,11 +55,7 @@ void from_json(const nlohmann::json& j, Trajectory& msg)
 {
   msg.knot_vector = j.at("knotVector").get<std::vector<double>>();
   msg.control_points = j.at("controlPoints").get<std::vector<ControlPoint>>();
-
-  if (j.contains("degree"))
-  {
-    msg.degree.push_back(j.at("degree").get<double>());
-  }
+  msg.degree = j.at("degree").get<double>();
 }
 
 }  // namespace msg
