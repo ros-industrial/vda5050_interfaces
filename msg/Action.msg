@@ -21,13 +21,13 @@ string blocking_type
 # Enum values for blockingType
 #
 # NONE: action can happen in parallel with others, including movement
-string ACTION_NONE="NONE"
+string BLOCKING_TYPE_NONE="NONE"
 #
 # SOFT: action can happen simultaneously with other actions, but not while moving
-string ACTION_SOFT="SOFT"
+string BLOCKING_TYPE_SOFT="SOFT"
 #
 # HARD: no other action can be performed while this action is running
-string ACTION_HARD="HARD"
+string BLOCKING_TYPE_HARD="HARD"
 
 # Additional information on the action
 #
