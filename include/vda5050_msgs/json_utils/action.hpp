@@ -101,7 +101,7 @@ void from_json(const nlohmann::json& j, Action& msg)
   }
 }
 
-} /// namespace vda5050_msgs
-} /// namespace msg
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif /// VDA5050_MSGS__JSON_UTILS__ACTION_HPP_
+#endif  /// VDA5050_MSGS__JSON_UTILS__ACTION_HPP_

@@ -51,7 +51,7 @@ void from_json(const nlohmann::json& j, ActionParameter& msg)
   msg.value = j.at("value").get<ActionParameterValue>();
 }
 
-} /// namespace vda5050_msgs
-} /// namespace msg
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif /// VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_HPP_
+#endif  /// VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_HPP_
