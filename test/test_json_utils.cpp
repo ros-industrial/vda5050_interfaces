@@ -21,9 +21,27 @@
 #include <rosidl_runtime_cpp/traits.hpp>
 
 #include "generator/generator.hpp"
+
+#include "vda5050_msgs/json_utils/action_state.hpp"
+#include "vda5050_msgs/json_utils/agv_position.hpp"
+#include "vda5050_msgs/json_utils/battery_state.hpp"
+#include "vda5050_msgs/json_utils/bounding_box_reference.hpp"
 #include "vda5050_msgs/json_utils/connection.hpp"
+#include "vda5050_msgs/json_utils/control_point.hpp"
+#include "vda5050_msgs/json_utils/edge_state.hpp"
+#include "vda5050_msgs/json_utils/error.hpp"
+#include "vda5050_msgs/json_utils/error_reference.hpp"
 #include "vda5050_msgs/json_utils/header.hpp"
+#include "vda5050_msgs/json_utils/info.hpp"
+#include "vda5050_msgs/json_utils/info_reference.hpp"
+#include "vda5050_msgs/json_utils/load.hpp"
+#include "vda5050_msgs/json_utils/load_dimensions.hpp"
+#include "vda5050_msgs/json_utils/node_position.hpp"
+#include "vda5050_msgs/json_utils/node_state.hpp"
+#include "vda5050_msgs/json_utils/safety_state.hpp"
 #include "vda5050_msgs/json_utils/state.hpp"
+#include "vda5050_msgs/json_utils/trajectory.hpp"
+#include "vda5050_msgs/json_utils/velocity.hpp"
 
 using vda5050_msgs::msg::ActionState;
 using vda5050_msgs::msg::AGVPosition;
