@@ -35,6 +35,7 @@ set(msg_files
   "msg/State.msg"
   "msg/Trajectory.msg"
   "msg/Velocity.msg"
+  "msg/Visualization.msg"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}

@@ -43,6 +43,7 @@
 #include "vda5050_msgs/msg/state.hpp"
 #include "vda5050_msgs/msg/trajectory.hpp"
 #include "vda5050_msgs/msg/velocity.hpp"
+#include "vda5050_msgs/msg/visualization.hpp"
 
 using vda5050_msgs::msg::ActionState;
 using vda5050_msgs::msg::AGVPosition;
@@ -64,6 +65,7 @@ using vda5050_msgs::msg::SafetyState;
 using vda5050_msgs::msg::State;
 using vda5050_msgs::msg::Trajectory;
 using vda5050_msgs::msg::Velocity;
+using vda5050_msgs::msg::Visualization;
 
 /// \brief Utility class to generate random instances of VDA 5050 message types
 class RandomDataGenerator
@@ -420,6 +422,12 @@ public:
       msg.vx.push_back(generate_random_float());
       msg.vy.push_back(generate_random_float());
       msg.omega.push_back(generate_random_float());
+    }
+    else if constexpr (std::is_same_v<T, Visualization>)
+    {
+      msg.header = generate<Header>();
+      msg.agv_position.push_back(generate<AGVPosition>());
+      msg.velocity.push_back(generate<Velocity>());
     }
     else
     {
