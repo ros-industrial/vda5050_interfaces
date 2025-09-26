@@ -42,7 +42,7 @@ float64[<=1] allowed_deviation_theta
 # Unique ID of the map in which the AGV is currently operating
 #
 # Field type: Required
-string map_id ""
+string map_id
 
 # Additional map information
 #

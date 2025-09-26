@@ -23,7 +23,7 @@ float64 theta
 # Unique ID of the map in which the position is referenced
 #
 # Field type: Required
-string map_id ""
+string map_id
 
 # Additional information about the map
 #

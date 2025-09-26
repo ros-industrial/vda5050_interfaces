@@ -21,7 +21,7 @@ string[<=1] action_description
 # Current progress of the action
 #
 # Field type: Required
-string action_status ""
+string action_status
 
 # Enum values for actionStatus
 #

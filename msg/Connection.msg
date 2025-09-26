@@ -4,7 +4,7 @@
 Header header
 
 # The connection state of the AGV
-string connection_state ""
+string connection_state
 
 # Enum values for connectionState
 #
