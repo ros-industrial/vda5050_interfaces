@@ -39,11 +39,11 @@ namespace msg {
 void to_json(nlohmann::json& j, const ActionParameterValue& msg)
 {
   if (
-    msg.type == ActionParameterValue::ARRAY ||
-    msg.type == ActionParameterValue::BOOL ||
-    msg.type == ActionParameterValue::NUMBER ||
-    msg.type == ActionParameterValue::STRING ||
-    msg.type == ActionParameterValue::OBJECT)
+    msg.type == ActionParameterValue::TYPE_ARRAY ||
+    msg.type == ActionParameterValue::TYPE_BOOL ||
+    msg.type == ActionParameterValue::TYPE_NUMBER ||
+    msg.type == ActionParameterValue::TYPE_STRING ||
+    msg.type == ActionParameterValue::TYPE_OBJECT)
   {
     j["type"] = msg.type;
   }
@@ -66,10 +66,11 @@ void from_json(const nlohmann::json& j, ActionParameterValue& msg)
 {
   auto type = j.at("type").get<uint8_t>();
   if (
-    type == ActionParameterValue::ARRAY || type == ActionParameterValue::BOOL ||
-    type == ActionParameterValue::NUMBER ||
-    type == ActionParameterValue::STRING ||
-    type == ActionParameterValue::OBJECT)
+    type == ActionParameterValue::TYPE_ARRAY ||
+    type == ActionParameterValue::TYPE_BOOL ||
+    type == ActionParameterValue::TYPE_NUMBER ||
+    type == ActionParameterValue::TYPE_STRING ||
+    type == ActionParameterValue::TYPE_OBJECT)
   {
     msg.type = type;
   }

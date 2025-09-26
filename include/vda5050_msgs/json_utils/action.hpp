@@ -43,8 +43,9 @@ void to_json(nlohmann::json& j, const Action& msg)
   j["actionId"] = msg.action_id;
 
   if (
-    msg.blocking_type == Action::NONE || msg.blocking_type == Action::SOFT ||
-    msg.blocking_type == Action::HARD)
+    msg.blocking_type == Action::BLOCKING_TYPE_NONE ||
+    msg.blocking_type == Action::BLOCKING_TYPE_SOFT ||
+    msg.blocking_type == Action::BLOCKING_TYPE_HARD)
   {
     j["blockingType"] = msg.blocking_type;
   }
@@ -78,8 +79,9 @@ void from_json(const nlohmann::json& j, Action& msg)
 
   auto blocking_type = j.at("blockingType").get<std::string>();
   if (
-    blocking_type == Action::NONE || blocking_type == Action::SOFT ||
-    blocking_type == Action::HARD)
+    blocking_type == Action::BLOCKING_TYPE_NONE ||
+    blocking_type == Action::BLOCKING_TYPE_SOFT ||
+    blocking_type == Action::BLOCKING_TYPE_HARD)
   {
     msg.blocking_type = blocking_type;
   }
