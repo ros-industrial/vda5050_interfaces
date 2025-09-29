@@ -273,7 +273,6 @@ public:
     return states[state_idx];
   }
 
-  /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
   /// \brief Generate a random ActionParameterValue type
   uint8_t generate_random_action_parameter_value_type()
   {
