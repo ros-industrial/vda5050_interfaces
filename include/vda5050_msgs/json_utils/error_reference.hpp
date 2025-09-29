@@ -16,46 +16,44 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
-#define VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
+#ifndef VDA5050_MSGS__JSON_UTILS__ERROR_REFERENCE_HPP_
+#define VDA5050_MSGS__JSON_UTILS__ERROR_REFERENCE_HPP_
 
 #include <string>
-#include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/action.hpp"
-#include "vda5050_msgs/json_utils/header.hpp"
-#include "vda5050_msgs/msg/instant_actions.hpp"
+#include "vda5050_msgs/msg/error_reference.hpp"
 
 namespace vda5050_msgs {
 
 namespace msg {
+
 //=============================================================================
-/// \brief convert a vda5050_msgs::msg::InstantAction object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::ErrorReference object to a
+/// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const InstantActions& msg)
+void to_json(nlohmann::json& j, const ErrorReference& msg)
 {
-  to_json(j, msg.header);
-
-  j["actions"] = msg.actions;
+  j["referenceKey"] = msg.reference_key;
+  j["referenceValue"] = msg.reference_value;
 }
 
 //=============================================================================
-/// \brief populate a vda5050_msgs::msg::InstantAction object from a nlohmann::json object
+/// \brief Populate a vda5050_msgs::msg::ErrorReference object from a
+/// nlohmann::json object
 ///
-/// \param j Reference to the JSON object containing serialized InstantAction data
-/// \param msg Reference to the InstantAction object to be populated
-void from_json(const nlohmann::json& j, InstantActions& msg)
+/// \param j Reference to the JSON object containing serialized data
+/// \param msg Reference to the message object to populate
+void from_json(const nlohmann::json& j, ErrorReference& msg)
 {
-  from_json(j, msg.header);
-
-  msg.actions = j.at("actions").get<std::vector<Action>>();
+  msg.reference_key = j.at("referenceKey").get<std::string>();
+  msg.reference_value = j.at("referenceValue").get<std::string>();
 }
 
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__ERROR_REFERENCE_HPP_

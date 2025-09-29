@@ -32,6 +32,7 @@ namespace msg {
 
 constexpr const char* ISO8601_FORMAT = "%Y-%m-%dT%H:%M:%S";
 
+//=============================================================================
 /// \brief Convert a vda5050_msgs::msg::Header object to a
 /// nlohmann::json object
 ///
@@ -67,6 +68,7 @@ void to_json(nlohmann::json& j, const Header& msg)
     {"serialNumber", msg.serial_number}};
 }
 
+//=============================================================================
 /// \brief Populate a vda5050_msgs::msg::Header object from a
 /// nlohmann::json object
 ///

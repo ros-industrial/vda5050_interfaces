@@ -16,46 +16,42 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
-#define VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
+#ifndef VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_HPP_
+#define VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_HPP_
 
 #include <string>
-#include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/action.hpp"
-#include "vda5050_msgs/json_utils/header.hpp"
-#include "vda5050_msgs/msg/instant_actions.hpp"
+#include "vda5050_msgs/json_utils/action_parameter_value.hpp"
+#include "vda5050_msgs/msg/action_parameter.hpp"
 
 namespace vda5050_msgs {
 
 namespace msg {
 //=============================================================================
-/// \brief convert a vda5050_msgs::msg::InstantAction object to a nlohmann::json object
+/// \brief convert a vda5050_msgs::msg::ActionParameter object to a nlohmann::json object
 ///
-/// \param j Reference to the JSON object to be populated
+/// \param j Reference to a JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const InstantActions& msg)
+void to_json(nlohmann::json& j, const ActionParameter& msg)
 {
-  to_json(j, msg.header);
-
-  j["actions"] = msg.actions;
+  j["key"] = msg.key;
+  j["value"] = msg.value;
 }
 
 //=============================================================================
-/// \brief populate a vda5050_msgs::msg::InstantAction object from a nlohmann::json object
+/// \brief populate a vda5050_msgs::msg::ActionParameter object from a nlohmann::json object
 ///
-/// \param j Reference to the JSON object containing serialized InstantAction data
-/// \param msg Reference to the InstantAction object to be populated
-void from_json(const nlohmann::json& j, InstantActions& msg)
+/// \param j Reference to the JSON object containing serialized ActionParameter data
+/// \param msg Reference to the ActionParameter message to populate
+void from_json(const nlohmann::json& j, ActionParameter& msg)
 {
-  from_json(j, msg.header);
-
-  msg.actions = j.at("actions").get<std::vector<Action>>();
+  msg.key = j.at("key").get<std::string>();
+  msg.value = j.at("value").get<ActionParameterValue>();
 }
 
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
+#endif  /// VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_HPP_

@@ -16,46 +16,52 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
-#define VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
-
-#include <string>
-#include <vector>
+#ifndef VDA5050_MSGS__JSON_UTILS__LOAD_DIMENSIONS_HPP_
+#define VDA5050_MSGS__JSON_UTILS__LOAD_DIMENSIONS_HPP_
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/action.hpp"
-#include "vda5050_msgs/json_utils/header.hpp"
-#include "vda5050_msgs/msg/instant_actions.hpp"
+#include "vda5050_msgs/msg/load_dimensions.hpp"
 
 namespace vda5050_msgs {
 
 namespace msg {
+
 //=============================================================================
-/// \brief convert a vda5050_msgs::msg::InstantAction object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::LoadDimensions object to a
+/// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const InstantActions& msg)
+void to_json(nlohmann::json& j, const LoadDimensions& msg)
 {
-  to_json(j, msg.header);
+  j["length"] = msg.length;
+  j["width"] = msg.width;
 
-  j["actions"] = msg.actions;
+  if (!msg.height.empty())
+  {
+    j["height"] = msg.height.front();
+  }
 }
 
 //=============================================================================
-/// \brief populate a vda5050_msgs::msg::InstantAction object from a nlohmann::json object
+/// \brief Populate a vda5050_msgs::msg::LoadDimensions object from a
+/// nlohmann::json object
 ///
-/// \param j Reference to the JSON object containing serialized InstantAction data
-/// \param msg Reference to the InstantAction object to be populated
-void from_json(const nlohmann::json& j, InstantActions& msg)
+/// \param j Reference to the JSON object containing serialized data
+/// \param msg Reference to the message object to populate
+void from_json(const nlohmann::json& j, LoadDimensions& msg)
 {
-  from_json(j, msg.header);
+  msg.length = j.at("length").get<double>();
+  msg.width = j.at("width").get<double>();
 
-  msg.actions = j.at("actions").get<std::vector<Action>>();
+  if (j.contains("height"))
+  {
+    msg.height.push_back(j.at("height").get<double>());
+  }
 }
 
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__INSTANT_ACTIONS_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__LOAD_DIMENSIONS_HPP_
