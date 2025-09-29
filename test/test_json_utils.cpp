@@ -71,10 +71,10 @@ using vda5050_msgs::msg::Velocity;
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<
-  ActionState, AGVPosition, BatteryState, BoundingBoxReference, Connection,
-  ControlPoint, EdgeState, Error, ErrorReference, Header, Info, InfoReference,
+  Action, ActionParameter, ActionParameterValue, ActionState, AGVPosition, BatteryState, BoundingBoxReference, Connection,
+  ControlPoint, EdgeState, Error, ErrorReference, Header, Info, InfoReference, InstantActions,
   Load, LoadDimensions, NodePosition, NodeState, SafetyState, State, Trajectory,
-  Velocity, InstantActions, Action, ActionParameter, ActionParameterValue>;
+  Velocity>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test
