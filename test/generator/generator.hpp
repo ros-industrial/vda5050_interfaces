@@ -24,6 +24,9 @@
 #include <string>
 #include <vector>
 
+#include "vda5050_msgs/msg/action.hpp"
+#include "vda5050_msgs/msg/action_parameter.hpp"
+#include "vda5050_msgs/msg/action_parameter_value.hpp"
 #include "vda5050_msgs/msg/action_state.hpp"
 #include "vda5050_msgs/msg/agv_position.hpp"
 #include "vda5050_msgs/msg/battery_state.hpp"
@@ -35,6 +38,7 @@
 #include "vda5050_msgs/msg/header.hpp"
 #include "vda5050_msgs/msg/info.hpp"
 #include "vda5050_msgs/msg/info_reference.hpp"
+#include "vda5050_msgs/msg/instant_actions.hpp"
 #include "vda5050_msgs/msg/load.hpp"
 #include "vda5050_msgs/msg/load_dimensions.hpp"
 #include "vda5050_msgs/msg/node_position.hpp"
@@ -43,11 +47,10 @@
 #include "vda5050_msgs/msg/state.hpp"
 #include "vda5050_msgs/msg/trajectory.hpp"
 #include "vda5050_msgs/msg/velocity.hpp"
-#include "vda5050_msgs/msg/instant_actions.hpp"
-#include "vda5050_msgs/msg/action.hpp"
-#include "vda5050_msgs/msg/action_parameter.hpp"
-#include "vda5050_msgs/msg/action_parameter_value.hpp"
 
+using vda5050_msgs::msg::Action;
+using vda5050_msgs::msg::ActionParameter;
+using vda5050_msgs::msg::ActionParameterValue;
 using vda5050_msgs::msg::ActionState;
 using vda5050_msgs::msg::AGVPosition;
 using vda5050_msgs::msg::BatteryState;
@@ -60,6 +63,7 @@ using vda5050_msgs::msg::ErrorReference;
 using vda5050_msgs::msg::Header;
 using vda5050_msgs::msg::Info;
 using vda5050_msgs::msg::InfoReference;
+using vda5050_msgs::msg::InstantActions;
 using vda5050_msgs::msg::Load;
 using vda5050_msgs::msg::LoadDimensions;
 using vda5050_msgs::msg::NodePosition;
@@ -68,10 +72,6 @@ using vda5050_msgs::msg::SafetyState;
 using vda5050_msgs::msg::State;
 using vda5050_msgs::msg::Trajectory;
 using vda5050_msgs::msg::Velocity;
-using vda5050_msgs::msg::InstantActions;
-using vda5050_msgs::msg::Action;
-using vda5050_msgs::msg::ActionParameter;
-using vda5050_msgs::msg::ActionParameterValue;
 
 /// \brief Utility class to generate random instances of VDA 5050 message types
 class RandomDataGenerator
@@ -264,7 +264,9 @@ public:
   /// \brief Generte a random blocking type value
   std::string generate_random_blocking_type()
   {
-    std::vector<std::string> states = {Action::BLOCKING_TYPE_NONE, Action::BLOCKING_TYPE_SOFT, Action::BLOCKING_TYPE_HARD};
+    std::vector<std::string> states = {
+      Action::BLOCKING_TYPE_NONE, Action::BLOCKING_TYPE_SOFT,
+      Action::BLOCKING_TYPE_HARD};
 
     auto state_idx = generate_random_index(states.size());
 
@@ -275,7 +277,10 @@ public:
   /// \brief Generate a random ActionParameterValue type
   uint8_t generate_random_action_parameter_value_type()
   {
-    std::vector<uint8_t> states = {ActionParameterValue::TYPE_ARRAY, ActionParameterValue::TYPE_BOOL, ActionParameterValue::TYPE_NUMBER, ActionParameterValue::TYPE_STRING, ActionParameterValue::TYPE_OBJECT};
+    std::vector<uint8_t> states = {
+      ActionParameterValue::TYPE_ARRAY, ActionParameterValue::TYPE_BOOL,
+      ActionParameterValue::TYPE_NUMBER, ActionParameterValue::TYPE_STRING,
+      ActionParameterValue::TYPE_OBJECT};
 
     auto state_idx = generate_random_index(states.size());
 
@@ -455,7 +460,7 @@ public:
       ActionParameterValue msg;
       msg.type = generate_random_action_parameter_value_type();
       msg.value = generate_random_string();
-      return msg; 
+      return msg;
     }
     else if constexpr (std::is_same_v<T, ActionParameter>)
     {
@@ -471,7 +476,8 @@ public:
       msg.action_id = generate_random_string();
       msg.blocking_type = generate_random_blocking_type();
       msg.action_description.push_back(generate_random_string());
-      msg.action_parameters = generate_random_vector<ActionParameter>(generate_random_size());
+      msg.action_parameters =
+        generate_random_vector<ActionParameter>(generate_random_size());
       return msg;
     }
     else if constexpr (std::is_same_v<T, InstantActions>)
