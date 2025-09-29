@@ -16,9 +16,9 @@ find_package(nlohmann_json REQUIRED)
 # Generate VDA5050 ROS 2 messages
 set(msg_files
   "msg/Action.msg"
-  "msg/ActionState.msg"
   "msg/ActionParameter.msg"
   "msg/ActionParameterValue.msg"
+  "msg/ActionState.msg"
   "msg/AGVPosition.msg"
   "msg/BatteryState.msg"
   "msg/BoundingBoxReference.msg"
