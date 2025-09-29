@@ -64,13 +64,17 @@ using vda5050_msgs::msg::SafetyState;
 using vda5050_msgs::msg::State;
 using vda5050_msgs::msg::Trajectory;
 using vda5050_msgs::msg::Velocity;
+using vda5050_msgs::msg::InstantActions;
+using vda5050_msgs::msg::Action;
+using vda5050_msgs::msg::ActionParameter;
+using vda5050_msgs::msg::ActionParameterValue;
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<
   ActionState, AGVPosition, BatteryState, BoundingBoxReference, Connection,
   ControlPoint, EdgeState, Error, ErrorReference, Header, Info, InfoReference,
   Load, LoadDimensions, NodePosition, NodeState, SafetyState, State, Trajectory,
-  Velocity>;
+  Velocity, InstantActions, Action, ActionParameter, ActionParameterValue>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test
