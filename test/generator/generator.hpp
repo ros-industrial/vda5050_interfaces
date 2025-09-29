@@ -261,24 +261,10 @@ public:
     return vec;
   }
 
-  /// \brief Generate a random index for enum selection
-  uint8_t generate_random_index(size_t size)
-  {
-    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
-    return index_dist(rng_);
-  }
-
-
-  /// \brief
-  uint8_t generate_random_size()
-  {
-    return size_dist_(rng_);
-  }
-
   /// \brief Generte a random blocking type value
   std::string generate_random_blocking_type()
   {
-    std::vector<std::string> states = {Action::NONE, Action::SOFT, Action::HARD};
+    std::vector<std::string> states = {Action::BLOCKING_TYPE_NONE, Action::BLOCKING_TYPE_SOFT, Action::BLOCKING_TYPE_HARD};
 
     auto state_idx = generate_random_index(states.size());
 
@@ -289,145 +275,7 @@ public:
   /// \brief Generate a random ActionParameterValue type
   uint8_t generate_random_action_parameter_value_type()
   {
-    std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
-  /// \brief Generate a random vector of type float64
-  std::vector<double> generate_random_float_vector(const uint8_t size)
-  {
-    std::vector<double> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate_random_float();
-    }
-    return vec;
-  }
-
-  /// \brief Generate a random vector of type T
-  template <typename T>
-  std::vector<T> generate_random_vector(const uint8_t size)
-  {
-    std::vector<T> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate<T>();
-    }
-    return vec;
-  }
-
-  /// \brief Generate a random index for enum selection
-  uint8_t generate_random_index(size_t size)
-  {
-    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
-    return index_dist(rng_);
-  }
-
-  /// \brief Generate a random vector of type T
-  template <typename T>
-  std::vector<T> generate_random_vector(const uint8_t size)
-  {
-    std::vector<T> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate<T>();
-    }
-    return vec;
-  }
-
-  /// \brief
-  uint8_t generate_random_size()
-  {
-    return size_dist_(rng_);
-  }
-
-  /// \brief Generte a random blocking type value
-  std::string generate_random_blocking_type()
-  {
-    std::vector<std::string> states = {Action::NONE, Action::SOFT, Action::HARD};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
-  /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
-  /// \brief Generate a random ActionParameterValue type
-  uint8_t generate_random_action_parameter_value_type()
-  {
-    std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
-  /// \brief Generate a random vector of type float64
-  std::vector<double> generate_random_float_vector(const uint8_t size)
-  {
-    std::vector<double> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate_random_float();
-    }
-    return vec;
-  }
-
-  /// \brief Generate a random vector of type T
-  template <typename T>
-  std::vector<T> generate_random_vector(const uint8_t size)
-  {
-    std::vector<T> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate<T>();
-    }
-    return vec;
-  }
-
-  /// \brief Generate a random index for enum selection
-  uint8_t generate_random_index(size_t size)
-  {
-    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
-    return index_dist(rng_);
-  }
-
-  /// \brief Generate a random vector of type T
-  template <typename T>
-  std::vector<T> generate_random_vector(const uint8_t size)
-  {
-    std::vector<T> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate<T>();
-    }
-    return vec;
-  }
-
-  /// \brief
-  uint8_t generate_random_size()
-  {
-    return size_dist_(rng_);
-  }
-
-  /// \brief Generte a random blocking type value
-  std::string generate_random_blocking_type()
-  {
-    std::vector<std::string> states = {Action::NONE, Action::SOFT, Action::HARD};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
-  /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
-  /// \brief Generate a random ActionParameterValue type
-  uint8_t generate_random_action_parameter_value_type()
-  {
-    std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
+    std::vector<uint8_t> states = {ActionParameterValue::TYPE_ARRAY, ActionParameterValue::TYPE_BOOL, ActionParameterValue::TYPE_NUMBER, ActionParameterValue::TYPE_STRING, ActionParameterValue::TYPE_OBJECT};
 
     auto state_idx = generate_random_index(states.size());
 
