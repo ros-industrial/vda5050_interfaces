@@ -456,35 +456,27 @@ public:
     }
     else if constexpr (std::is_same_v<T, ActionParameterValue>)
     {
-      ActionParameterValue msg;
       msg.type = generate_random_action_parameter_value_type();
       msg.value = generate_random_string();
-      return msg;
     }
     else if constexpr (std::is_same_v<T, ActionParameter>)
     {
-      ActionParameter msg;
       msg.key = generate_random_string();
       msg.value = generate<ActionParameterValue>();
-      return msg;
     }
     else if constexpr (std::is_same_v<T, Action>)
     {
-      Action msg;
       msg.action_type = generate_random_string();
       msg.action_id = generate_random_string();
       msg.blocking_type = generate_random_blocking_type();
       msg.action_description.push_back(generate_random_string());
       msg.action_parameters =
         generate_random_vector<ActionParameter>(generate_random_size());
-      return msg;
     }
     else if constexpr (std::is_same_v<T, InstantActions>)
     {
-      InstantActions msg;
       msg.header = generate<Header>();
       msg.actions = generate_random_vector<Action>(generate_random_size());
-      return msg;
     }
     else
     {
