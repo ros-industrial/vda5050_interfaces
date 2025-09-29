@@ -11,7 +11,9 @@
 constexpr const char* ISO8601_FORMAT = "%Y-%m-%dT%H:%M:%S";
 
 /// \brief Utility function to check that a given string is in ISO8601 format
+/// 
 /// \param value The string to be checked
+/// 
 /// \return True if the given string follows the format
 bool is_in_ISO8601_format(const std::string& value)
 {
@@ -51,8 +53,12 @@ bool is_in_ISO8601_format(const std::string& value)
 
 /// TODO (@shawnkchan) This can probably be generalised for any other custom formats that we may need. Keeping it specific for now.
 /// \brief Format checker for a date-time field
+///
 /// \param format Name of the field whose format is to be checked
 /// \param value Value associated with the given field
+///
+/// \throw std::invalid_argument if the value in the date-time field does not follow ISO8601 format.
+/// \throw std::logic_error if the format field is not "date-time".
 static void date_time_format_checker(
   const std::string& format, const std::string& value)
 {
@@ -73,7 +79,8 @@ static void date_time_format_checker(
 ///
 /// \param schema The schema to validate against, as an nlohmann::json object
 /// \param j Reference to the nlohmann::json object to be validated
-/// \return true if schema is valid
+///
+/// \return true if schema is valid, false otherwise
 bool is_valid_schema(nlohmann::json schema, nlohmann::json& j)
 {
   nlohmann::json_schema::json_validator validator(
