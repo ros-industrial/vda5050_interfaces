@@ -32,7 +32,7 @@ namespace vda5050_msgs {
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::visualization object to a
+/// \brief Convert a vda5050_msgs::msg::Visualization object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
@@ -53,7 +53,7 @@ void to_json(nlohmann::json& j, const Visualization& msg)
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::visualization object from a
+/// \brief Populate a vda5050_msgs::msg::Visualization object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
