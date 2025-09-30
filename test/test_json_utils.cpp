@@ -34,6 +34,7 @@
 #include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/json_utils/info.hpp"
 #include "vda5050_msgs/json_utils/info_reference.hpp"
+#include "vda5050_msgs/json_utils/instant_actions.hpp"
 #include "vda5050_msgs/json_utils/load.hpp"
 #include "vda5050_msgs/json_utils/load_dimensions.hpp"
 #include "vda5050_msgs/json_utils/node_position.hpp"
@@ -44,6 +45,9 @@
 #include "vda5050_msgs/json_utils/velocity.hpp"
 #include "vda5050_msgs/json_utils/visualization.hpp"
 
+using vda5050_msgs::msg::Action;
+using vda5050_msgs::msg::ActionParameter;
+using vda5050_msgs::msg::ActionParameterValue;
 using vda5050_msgs::msg::ActionState;
 using vda5050_msgs::msg::AGVPosition;
 using vda5050_msgs::msg::BatteryState;
@@ -56,6 +60,7 @@ using vda5050_msgs::msg::ErrorReference;
 using vda5050_msgs::msg::Header;
 using vda5050_msgs::msg::Info;
 using vda5050_msgs::msg::InfoReference;
+using vda5050_msgs::msg::InstantActions;
 using vda5050_msgs::msg::Load;
 using vda5050_msgs::msg::LoadDimensions;
 using vda5050_msgs::msg::NodePosition;
@@ -68,9 +73,10 @@ using vda5050_msgs::msg::Visualization;
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<
-  ActionState, AGVPosition, BatteryState, BoundingBoxReference, Connection,
-  ControlPoint, EdgeState, Error, ErrorReference, Header, Info, InfoReference,
-  Load, LoadDimensions, NodePosition, NodeState, SafetyState, State, Trajectory,
+  Action, ActionParameter, ActionParameterValue, ActionState, AGVPosition,
+  BatteryState, BoundingBoxReference, Connection, ControlPoint, EdgeState,
+  Error, ErrorReference, Header, Info, InfoReference, InstantActions, Load,
+  LoadDimensions, NodePosition, NodeState, SafetyState, State, Trajectory,
   Velocity, Visualization>;
 
 template <typename T>
