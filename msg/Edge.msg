@@ -10,7 +10,7 @@ string edge_id
 # Resets when a new orderId is issued.
 #
 # Field type: Required
-int32 sequence_id
+uint32 sequence_id
 
 # The nodeId of the start node for this edge.
 #
