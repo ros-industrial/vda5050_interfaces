@@ -1,5 +1,5 @@
 # NOTE: This message is different from ActionParameter.msg used in Order.msg 
-# TODO: (sauk2) should we rename ActionParameter.msg to OrderActionParameter.msg for consistency?
+# TODO: (sauk2) should we rename ActionParameter.msg (in the Order message) to OrderActionParameter.msg for consistency with how we're naming it here?
 # Parameters that an action has.
 
 # Key string for the parameter
@@ -14,17 +14,17 @@ string value_data_type
 
 # Enum values for value_data_type
 #
-string BOOL="BOOL"
+string VALUE_DATA_TYPE_BOOL="BOOL"
 #
-string NUMBER="NUMBER"
+string VALUE_DATA_TYPE_NUMBER="NUMBER"
 #
-string INTEGER="INTEGER"
+string VALUE_DATA_TYPE_INTEGER="INTEGER"
 #
-string FLOAT="FLOAT"
+string VALUE_DATA_TYPE_FLOAT="FLOAT"
 #
-string OBJECT="OBJECT"
+string VALUE_DATA_TYPE_OBJECT="OBJECT"
 #
-string ARRAY="ARRAY"
+string VALUE_DATA_TYPE_ARRAY="ARRAY"
 
 # Free-form text: description of the parameter
 #

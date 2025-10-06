@@ -7,13 +7,13 @@ string type
 
 # Enum values for the wheel type
 # 
-string DRIVE="DRIVE"
+string TYPE_DRIVE="DRIVE"
 #
-string CASTER="CASTER"
+string TYPE_CASTER="CASTER"
 #
-string FIXED="FIXED"
+string TYPE_FIXED="FIXED"
 #
-string MECANUM="MECANUM"
+string TYPE_MECANUM="MECANUM"
 
 # If set to "true", the wheel is actively driven.
 #

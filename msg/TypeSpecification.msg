@@ -16,13 +16,13 @@ string agv_kinematic
 # Enum values for agv_kinematic
 #
 # Diff: differential drive
-string DIFF="DIFF"
+string AGV_KINEMATIC_DIFF="DIFF"
 #
 # Omni: omni-directional vehicle
-string OMNI="OMNI"
+string AGV_KINEMATIC_OMNI="OMNI"
 #
 # Threewheel: three-wheel-driven vehicle or vehicle with similar kinematics
-string THREEWHEEL="THREEWHEEL"
+string AGV_KINEMATIC_THREEWHEEL="THREEWHEEL"
 
 # TODO: (@sauk2) These aren't labelled as enums in the recommnedations, but they seem like it. Could I confirm that they are?
 # Simplified description of AGV class.
@@ -34,16 +34,16 @@ string agv_class
 # Enum values for agv_class
 #
 # Forklift: forklift
-string FORKLIFT="FORKLIFT"
+string AGV_CLASS_FORKLIFT="FORKLIFT"
 #
 # Conveyor: AGV with conveyors on it
-string CONVEYOR="CONVEYOR"
+string AGV_CLASS_CONVEYOR="CONVEYOR"
 #
 # Tugger: tugger
-string TUGGER="TUGGER"
+string AGV_CLASS_TUGGER="TUGGER"
 #
 # Carrier: load carrier with or without lifting unit
-string CARRIER="CARRIER"
+string AGV_CLASS_CARRIER="CARRIER"
 
 # Maximum loadable mass [kg]
 #

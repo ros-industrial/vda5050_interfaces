@@ -14,10 +14,10 @@ string support
 # Enum values for support field.
 #
 # Supported: optional parameter is supported like specified.
-string SUPPORTED="SUPPORTED"
+string SUPPORT_SUPPORTED="SUPPORTED"
 #
 # Required: optional parameter is required for proper AGV operation.
-string REQUIRED="REQUIRED"
+string SUPPORT_REQUIRED="REQUIRED"
 
 # Free-form text: description of optional parameter.
 # eg: 
