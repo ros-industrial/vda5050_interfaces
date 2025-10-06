@@ -50,11 +50,11 @@ string[] blocking_types
 # Enum values for possible blocking types.
 #
 # None: action can be executed in parallel while driving.
-string NONE="NONE"
+string BLOCKING_TYPES_NONE="NONE"
 #
 # Soft: action can be executed in parallel but AGV cannot be driving.
-string SOFT="SOFT"
+string BLOCKING_TYPE_SOFT="SOFT"
 #
 # Hard: action cannot be executed in parallel and AGV cannot be driving.
-string HARD="HARD"
+string BLOCKING_TYPES_HARD="HARD"
 
