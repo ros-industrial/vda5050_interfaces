@@ -20,8 +20,7 @@ ControlPoint[] control_points
 # Defines the number of control points that influence any given point on the curve.
 # Increasing the degree increases continuity.
 #
-# Default value is 1 if not defined.
+# Default value is 1.0 if not defined.
 # Field type: Optional
-# TODO: @shawnkchan should the default value be a float?
-float64 degree 1
+float64 degree 1.0
 
