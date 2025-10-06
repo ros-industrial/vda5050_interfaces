@@ -1,51 +1,50 @@
-# Defines the position of a node on a map in a project-specific world coordinate system
+# Defines a position on a map in world coordinate system
+#
+# Part of the state message
 
-# X-position [m] on the map in reference to the map coordinate system.
-# Precision is up to the specific implementation.
+# X-position of the AGV in meters on the map in world coordinate system
 #
 # Field type: Required
 float64 x
 
-# Y-position [m] on the map in reference to the map coordinate system.
-# Precision is up to the specific implementation.
+# Y-position of the AGV in meters on the map in world coordinate system
 #
 # Field type: Required
 float64 y
 
-# Unique identification of the map in which the position is referenced.
-# Each map must share the same project-specific global origin of coordinates.
-# Example: if an AGV uses an elevator, the node reappears on the target floor map.
+# Orientation of the AGV in radians. If provided, the AGV must assume the
+# orientation on this node
+#    - If the previous edge, disallows rotation then the AGV must rotate on the
+#      node
+#    - If the following edge has a different orientation but disallows rotation
+#      then the AGV must rotate on the node before entering the edge
+#
+# Range: [-PI, PI]
+# Field type: Optional
+float64[<=1] theta
+
+# Indicates how accurate the AGV must be to drive over a node for it to count
+# as traversed
+#    - If deviation = 0, then the AGV must traverese the node within the
+#      normal tolerance of the AGV manufacturer
+#    - If deviation > 0, then the AGV can traverse the node within the
+#      deviation radius
+#
+# Field type: Optional
+float64[<=1] allowed_deviation_x_y
+
+# Indicates the allowed deviation from orientation
+#
+# Range: [0, PI]
+# Field type: Optional
+float64[<=1] allowed_deviation_theta
+
+# Unique ID of the map in which the AGV is currently operating
 #
 # Field type: Required
 string map_id
 
-# Absolute orientation [rad] of the AGV at the node.
-# Range: [-Pi, Pi]
-# Optional: vehicle can plan the path itself.
-# If defined, the AGV must assume this orientation at the node.
-# If previous edge disallows rotation, the AGV must rotate at this node.
-# If following edge requires rotation, the AGV must rotate here before entering.
-#
-# Field type: Optional
-float64[<=1] theta
-
-# Indicates the radial distance [m] an AGV must be from a node for it to be counted as traversed.
-# If = 0: no deviation allowed (strict tolerance).
-# If > 0: node is considered traversed if the AGV passes within this radius.
-#
-# Field type: Optional
-float64[<=1] allowed_deviation_xy
-
-# Allowed deviation for theta angle [rad].
-# Range: [0, Pi]
-# Defines acceptable range for an AGV's heading at this node:
-#   theta - allowedDeviationTheta  to  theta + allowedDeviationTheta
-#
-# Field type: Optional
-float64[<=1] allowed_deviation_theta
-
-# Additional information about the map.
+# Additional map information
 #
 # Field type: Optional
 string[<=1] map_description
-

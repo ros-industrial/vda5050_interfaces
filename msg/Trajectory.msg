@@ -1,26 +1,27 @@
-# Defines the curve on which the AGV should move between startNodeId
-# and endNode in an Edge message, as a Non-Uniform Rational B-Spline (NURBS).
-
-# Knot vector for the NURBS curve.
-# Range: [0.0, 1.0]
-# Sequence of parameter values that determine where and how control points affect the curve.
-# Size = number of control points + degree + 1
+# Trajectory described as a NURBS (points defining a spline)
 #
+# Part of the state message
+
+# The number of control points that influence a point on the curve. Increasing
+# this value increases the continuity of the curve
+#
+# **Note**: The v2.0.0 specification document implies this field to be mandatory
+# while the v2.0.0 official schema assumes it to be optional. This package
+# follows the specification document
+#
+# Range: [1, infinity)
+# Default: 1.0
+# Field type: Required
+float64 degree 1.0
+
+# Sequence of parameter values determining how the contro point affects the
+# NURBS curve
+#
+# Range: [0.0, 1.0]
 # Field type: Required
 float64[] knot_vector
 
-# Array of control points that define the NURBS curve, including the beginning and end points.
-# Each entry is a ControlPoint message.
+# List of control points, from the beginning to end, defining the NURBS
 #
 # Field type: Required
 ControlPoint[] control_points
-
-# Degree of the NURBS curve.
-# Range: [1, infinity]
-# Defines the number of control points that influence any given point on the curve.
-# Increasing the degree increases continuity.
-#
-# Default value is 1.0 if not defined.
-# Field type: Optional
-float64 degree 1.0
-

@@ -8,11 +8,11 @@ uint8 type
 # Enum values for type
 #
 # Field Type: Required
-uint8 ARRAY=1
-uint8 BOOL=2
-uint8 NUMBER=3
-uint8 STRING=4
-uint8 OBJECT=5
+uint8 TYPE_ARRAY=1
+uint8 TYPE_BOOL=2
+uint8 TYPE_NUMBER=3
+uint8 TYPE_STRING=4
+uint8 TYPE_OBJECT=5
 
 # Value that this parameter holds
 #

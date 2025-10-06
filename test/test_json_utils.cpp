@@ -21,14 +21,63 @@
 #include <rosidl_runtime_cpp/traits.hpp>
 
 #include "generator/generator.hpp"
-#include "vda5050_msgs/json_utils/connection.hpp"
-#include "vda5050_msgs/json_utils/header.hpp"
 
+#include "vda5050_msgs/json_utils/action_state.hpp"
+#include "vda5050_msgs/json_utils/agv_position.hpp"
+#include "vda5050_msgs/json_utils/battery_state.hpp"
+#include "vda5050_msgs/json_utils/bounding_box_reference.hpp"
+#include "vda5050_msgs/json_utils/connection.hpp"
+#include "vda5050_msgs/json_utils/control_point.hpp"
+#include "vda5050_msgs/json_utils/edge_state.hpp"
+#include "vda5050_msgs/json_utils/error.hpp"
+#include "vda5050_msgs/json_utils/error_reference.hpp"
+#include "vda5050_msgs/json_utils/header.hpp"
+#include "vda5050_msgs/json_utils/info.hpp"
+#include "vda5050_msgs/json_utils/info_reference.hpp"
+#include "vda5050_msgs/json_utils/instant_actions.hpp"
+#include "vda5050_msgs/json_utils/load.hpp"
+#include "vda5050_msgs/json_utils/load_dimensions.hpp"
+#include "vda5050_msgs/json_utils/node_position.hpp"
+#include "vda5050_msgs/json_utils/node_state.hpp"
+#include "vda5050_msgs/json_utils/safety_state.hpp"
+#include "vda5050_msgs/json_utils/state.hpp"
+#include "vda5050_msgs/json_utils/trajectory.hpp"
+#include "vda5050_msgs/json_utils/velocity.hpp"
+#include "vda5050_msgs/json_utils/visualization.hpp"
+
+using vda5050_msgs::msg::Action;
+using vda5050_msgs::msg::ActionParameter;
+using vda5050_msgs::msg::ActionParameterValue;
+using vda5050_msgs::msg::ActionState;
+using vda5050_msgs::msg::AGVPosition;
+using vda5050_msgs::msg::BatteryState;
+using vda5050_msgs::msg::BoundingBoxReference;
 using vda5050_msgs::msg::Connection;
+using vda5050_msgs::msg::ControlPoint;
+using vda5050_msgs::msg::EdgeState;
+using vda5050_msgs::msg::Error;
+using vda5050_msgs::msg::ErrorReference;
 using vda5050_msgs::msg::Header;
+using vda5050_msgs::msg::Info;
+using vda5050_msgs::msg::InfoReference;
+using vda5050_msgs::msg::InstantActions;
+using vda5050_msgs::msg::Load;
+using vda5050_msgs::msg::LoadDimensions;
+using vda5050_msgs::msg::NodePosition;
+using vda5050_msgs::msg::NodeState;
+using vda5050_msgs::msg::SafetyState;
+using vda5050_msgs::msg::State;
+using vda5050_msgs::msg::Trajectory;
+using vda5050_msgs::msg::Velocity;
+using vda5050_msgs::msg::Visualization;
 
 // List of types to be tested for serialization round-trip
-using SerializableTypes = ::testing::Types<Header, Connection>;
+using SerializableTypes = ::testing::Types<
+  Action, ActionParameter, ActionParameterValue, ActionState, AGVPosition,
+  BatteryState, BoundingBoxReference, Connection, ControlPoint, EdgeState,
+  Error, ErrorReference, Header, Info, InfoReference, InstantActions, Load,
+  LoadDimensions, NodePosition, NodeState, SafetyState, State, Trajectory,
+  Velocity, Visualization>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test
@@ -50,8 +99,8 @@ protected:
 
     EXPECT_EQ(original, deserialized_object)
       << "Serialization round-trip failed for type: " << typeid(T).name()
-      << "\nOriginal:\n"
-      << to_yaml(original) << "Deserialized:\n"
+      << "\n\nOriginal:\n"
+      << to_yaml(original) << "\nDeserialized:\n"
       << to_yaml(deserialized_object);
   }
 };
