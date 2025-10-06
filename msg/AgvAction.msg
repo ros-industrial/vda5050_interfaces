@@ -16,13 +16,13 @@ string[] action_scopes
 # Enum values for allowed scopes in action_scopes.
 #
 # Instant: useable as an instant_action
-string INSTANT="INSTANT"
+string ACTION_SCOPES_INSTANT="INSTANT"
 #
 # Node: useable on nodes
-string NODE="NODE"
+string ACTION_SCOPES_NODE="NODE"
 #
 # Edge: useable on edges
-string EDGE="EDGE"
+string ACTION_SCOPES_EDGE="EDGE"
 
 # TODO: (@sauk2) Is naming the field type as "FactsheetActionParameter" good enough for deconfliction?
 # Array of parameters an action has. If not defined, the action has no
