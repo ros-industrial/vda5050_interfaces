@@ -23,10 +23,10 @@
 #include <string>
 #include <vector>
 
-#include "vda5050_msgs/msg/agv_geometry.hpp"
 #include "vda5050_msgs/json_utils/envelope2d.hpp"
 #include "vda5050_msgs/json_utils/envelope3d.hpp"
 #include "vda5050_msgs/json_utils/wheel_definition.hpp"
+#include "vda5050_msgs/msg/agv_geometry.hpp"
 
 namespace vda5050_msgs {
 
@@ -79,7 +79,7 @@ void from_json(const nlohmann::json& j, AgvGeometry& msg)
   }
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__AGV_GEOMETRY_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__AGV_GEOMETRY_HPP_

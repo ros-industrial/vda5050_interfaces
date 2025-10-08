@@ -19,13 +19,13 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__LOAD_SET_HPP_
 #define VDA5050_MSGS__JSON_UTILS__LOAD_SET_HPP_
 
+#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
-#include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/load_set.hpp"
-#include "vda5050_msgs/json_utils/load_dimensions.hpp"
 #include "vda5050_msgs/json_utils/bounding_box_reference.hpp"
+#include "vda5050_msgs/json_utils/load_dimensions.hpp"
+#include "vda5050_msgs/msg/load_set.hpp"
 
 namespace vda5050_msgs {
 
@@ -222,7 +222,7 @@ void from_json(const nlohmann::json& j, LoadSet& msg)
   }
 }
 
-} // namespace msg
-} // namespace vda5050_msg
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__LOAD_SET_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__LOAD_SET_HPP_

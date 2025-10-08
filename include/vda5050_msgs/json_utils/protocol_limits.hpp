@@ -21,10 +21,10 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/protocol_limits.hpp"
-#include "vda5050_msgs/json_utils/max_string_lens.hpp"
 #include "vda5050_msgs/json_utils/max_array_lens.hpp"
+#include "vda5050_msgs/json_utils/max_string_lens.hpp"
 #include "vda5050_msgs/json_utils/timing.hpp"
+#include "vda5050_msgs/msg/protocol_limits.hpp"
 
 namespace vda5050_msgs {
 
@@ -54,7 +54,7 @@ void from_json(const nlohmann::json& j, ProtocolLimits& msg)
   msg.timing = j.at("timing").get<Timing>();
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__PROTOCOL_LIMITS_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__PROTOCOL_LIMITS_HPP_

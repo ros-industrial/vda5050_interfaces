@@ -71,7 +71,7 @@ void from_json(const nlohmann::json& j, Timing& msg)
   }
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__TIMING_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__TIMING_HPP_

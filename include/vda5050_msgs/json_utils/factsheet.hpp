@@ -24,15 +24,15 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/factsheet.hpp"
-#include "vda5050_msgs/json_utils/header.hpp"
-#include "vda5050_msgs/json_utils/type_specification.hpp"
-#include "vda5050_msgs/json_utils/physical_parameters.hpp"
-#include "vda5050_msgs/json_utils/protocol_limits.hpp"
-#include "vda5050_msgs/json_utils/protocol_features.hpp"
 #include "vda5050_msgs/json_utils/agv_geometry.hpp"
+#include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/json_utils/load_specification.hpp"
+#include "vda5050_msgs/json_utils/physical_parameters.hpp"
+#include "vda5050_msgs/json_utils/protocol_features.hpp"
+#include "vda5050_msgs/json_utils/protocol_limits.hpp"
+#include "vda5050_msgs/json_utils/type_specification.hpp"
 #include "vda5050_msgs/json_utils/vehicle_config.hpp"
+#include "vda5050_msgs/msg/factsheet.hpp"
 
 namespace vda5050_msgs {
 

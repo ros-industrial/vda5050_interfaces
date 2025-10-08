@@ -82,8 +82,7 @@ void from_json(const nlohmann::json& j, PhysicalParameters& msg)
   }
 }
 
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-} // namespace msg
-} // namespace vda5050_msgs
-
-#endif //VDA5050_MSGS__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_
+#endif  //VDA5050_MSGS__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_

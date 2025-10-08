@@ -23,8 +23,8 @@
 #include <string>
 #include <vector>
 
-#include "vda5050_msgs/msg/wheel_definition.hpp"
 #include "vda5050_msgs/json_utils/position.hpp"
+#include "vda5050_msgs/msg/wheel_definition.hpp"
 
 namespace vda5050_msgs {
 
@@ -97,8 +97,8 @@ void from_json(const nlohmann::json& j, WheelDefinition& msg)
     msg.constraints.push_back(j.at("constraints").get<std::string>());
   }
 }
-    
-} // namespace msg
-} // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__WHEEL_DEFINITION_HPP_
+}  // namespace msg
+}  // namespace vda5050_msgs
+
+#endif  // VDA5050_MSGS__JSON_UTILS__WHEEL_DEFINITION_HPP_

@@ -24,7 +24,7 @@
 
 #include "vda5050_msgs/msg/optional_parameters.hpp"
 
-namespace vda5050_msgs{
+namespace vda5050_msgs {
 
 namespace msg {
 
@@ -81,7 +81,7 @@ void from_json(const nlohmann::json& j, OptionalParameters& msg)
   }
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__OPTIONAL_PARAMETERS_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__OPTIONAL_PARAMETERS_HPP_

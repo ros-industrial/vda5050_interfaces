@@ -51,7 +51,7 @@ void from_json(const nlohmann::json& j, PolygonPoint& msg)
   msg.y = j.at("y").get<double>();
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__POLYGON_POINT_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__POLYGON_POINT_HPP_

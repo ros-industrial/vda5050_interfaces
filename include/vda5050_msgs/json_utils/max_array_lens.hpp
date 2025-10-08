@@ -81,7 +81,7 @@ void from_json(const nlohmann::json& j, MaxArrayLens& msg)
     j.at("informationInfoReferences").get<uint32_t>();
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__MAX_ARRAY_LENS_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__MAX_ARRAY_LENS_HPP_

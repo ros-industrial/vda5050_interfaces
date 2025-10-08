@@ -97,7 +97,7 @@ void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
   }
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif /// VDA5050_MSGS__JSON_UTILS__FACTSHEET_ACTION_PARAMETER_HPP_
+#endif  /// VDA5050_MSGS__JSON_UTILS__FACTSHEET_ACTION_PARAMETER_HPP_

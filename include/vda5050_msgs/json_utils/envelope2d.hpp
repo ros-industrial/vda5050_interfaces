@@ -23,8 +23,8 @@
 #include <string>
 #include <vector>
 
-#include "vda5050_msgs/msg/envelope2d.hpp"
 #include "vda5050_msgs/json_utils/polygon_point.hpp"
+#include "vda5050_msgs/msg/envelope2d.hpp"
 
 namespace vda5050_msgs {
 
@@ -62,7 +62,7 @@ void from_json(const nlohmann::json& j, Envelope2d& msg)
   }
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__ENVELOPE_2D_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__ENVELOPE_2D_HPP_
