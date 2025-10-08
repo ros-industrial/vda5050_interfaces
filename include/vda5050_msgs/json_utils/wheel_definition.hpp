@@ -21,7 +21,6 @@
 
 #include <nlohmann/json.hpp>
 #include <string>
-#include <vector>
 
 #include "vda5050_msgs/json_utils/position.hpp"
 #include "vda5050_msgs/msg/wheel_definition.hpp"

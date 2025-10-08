@@ -19,7 +19,7 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__TIMING_HPP_
 #define VDA5050_MSGS__JSON_UTILS__TIMING_HPP_
 
-#include "nlohmann/json.hpp"
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/msg/timing.hpp"
 

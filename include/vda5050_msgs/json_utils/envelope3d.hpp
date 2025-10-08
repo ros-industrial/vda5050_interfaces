@@ -21,7 +21,6 @@
 
 #include <nlohmann/json.hpp>
 #include <string>
-#include <vector>
 
 #include "vda5050_msgs/msg/envelope3d.hpp"
 
@@ -83,4 +82,5 @@ void from_json(const nlohmann::json& j, Envelope3d& msg)
 
 }  // namespace msg
 }  // namespace vda5050_msgs
+
 #endif  // VDA5050_MSGS__JSON_UTILS__ENVELOPE_3D_HPP_

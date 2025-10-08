@@ -20,7 +20,6 @@
 #define VDA5050_MSGS__JSON_UTILS__MAX_ARRAY_LENS_HPP_
 
 #include <nlohmann/json.hpp>
-#include <string>
 
 #include "vda5050_msgs/msg/max_array_lens.hpp"
 

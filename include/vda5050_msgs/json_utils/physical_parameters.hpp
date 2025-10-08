@@ -20,7 +20,6 @@
 #define VDA5050_MSGS__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_
 
 #include <nlohmann/json.hpp>
-#include <string>
 
 #include "vda5050_msgs/msg/physical_parameters.hpp"
 

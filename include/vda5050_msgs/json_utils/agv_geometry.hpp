@@ -20,7 +20,6 @@
 #define VDA5050_MSGS__JSON_UTILS__AGV_GEOMETRY_HPP_
 
 #include <nlohmann/json.hpp>
-#include <string>
 #include <vector>
 
 #include "vda5050_msgs/json_utils/envelope2d.hpp"

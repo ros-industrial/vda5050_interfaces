@@ -20,7 +20,6 @@
 #define VDA5050_MSGS__JSON_UTILS__MAX_STRING_LENS_HPP_
 
 #include <nlohmann/json.hpp>
-#include <string>
 
 #include "vda5050_msgs/msg/max_string_lens.hpp"
 
@@ -42,32 +41,32 @@ void to_json(nlohmann::json& j, const MaxStringLens& msg)
 
   if (!msg.topic_serial_len.empty())
   {
-    j["actionTypeLen"] = msg.topic_serial_len.front();
+    j["topicSerialLen"] = msg.topic_serial_len.front();
   }
 
   if (!msg.topic_elem_len.empty())
   {
-    j["actionScopesLen"] = msg.topic_elem_len.front();
+    j["topicElemLen"] = msg.topic_elem_len.front();
   }
 
   if (!msg.id_len.empty())
   {
-    j["keyLen"] = msg.id_len.front();
+    j["idLen"] = msg.id_len.front();
   }
 
   if (!msg.enum_len.empty())
   {
-    j["valueDataTypeLen"] = msg.enum_len.front();
+    j["enumLen"] = msg.enum_len.front();
   }
 
   if (!msg.load_id_len.empty())
   {
-    j["setNameLen"] = msg.load_id_len.front();
+    j["loadIdLen"] = msg.load_id_len.front();
   }
 
   if (!msg.id_numerical_only.empty())
   {
-    j["isOptionalLen"] = msg.id_numerical_only.front();
+    j["idNumericalOnly"] = msg.id_numerical_only.front();
   }
 }
 

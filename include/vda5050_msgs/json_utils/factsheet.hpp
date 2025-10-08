@@ -19,9 +19,6 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__FACTSHEET_HPP_
 #define VDA5050_MSGS__JSON_UTILS__FACTSHEET_HPP_
 
-#include <string>
-#include <vector>
-
 #include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/agv_geometry.hpp"

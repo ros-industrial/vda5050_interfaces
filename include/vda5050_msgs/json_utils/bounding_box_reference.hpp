@@ -20,8 +20,6 @@
 #define VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
 
 #include <nlohmann/json.hpp>
-#include <string>
-#include <vector>
 
 #include "vda5050_msgs/msg/bounding_box_reference.hpp"
 

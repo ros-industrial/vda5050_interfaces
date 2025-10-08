@@ -44,7 +44,7 @@ void to_json(nlohmann::json& j, const TypeSpecification& msg)
     msg.agv_kinematic == "DIFF" || msg.agv_kinematic == "OMNI" ||
     msg.agv_kinematic == "THREEWHEEL")
   {
-    j["agvKInematic"] = msg.agv_kinematic;
+    j["agvKinematic"] = msg.agv_kinematic;
   }
   else
   {
