@@ -140,4 +140,5 @@ void from_json(const nlohmann::json& j, AgvAction& msg)
 
 } // namespace
 } // namespace
+
 #endif // VDA5050_MSGS__JSON_UTILS__AGV_ACTION_HPP_
