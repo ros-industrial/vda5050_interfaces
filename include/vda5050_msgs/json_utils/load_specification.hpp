@@ -16,8 +16,8 @@
 * limitations under the License.
 */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__LOAD_SPECIFICATIONS_HPP_ 
-#define VDA5050_MSGS__JSON_UTILS__LOAD_SPECIFICATIONS_HPP_
+#ifndef VDA5050_MSGS__JSON_UTILS__LOAD_SPECIFICATION_HPP_ 
+#define VDA5050_MSGS__JSON_UTILS__LOAD_SPECIFICATION_HPP_
 
 #include <nlohmann/json.hpp>
 #include <string>
@@ -27,6 +27,7 @@
 #include "vda5050_msgs/json_utils/load_set.hpp"
 
 namespace vda5050_msgs {
+
 namespace msg {
 
 // ============================================================================
@@ -68,4 +69,4 @@ void from_json(const nlohmann::json& j, LoadSpecification& msg)
 } // namespace msg
 } // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__LOAD_SPECIFICATIONS_HPP_
+#endif // VDA5050_MSGS__JSON_UTILS__LOAD_SPECIFICATION_HPP_
