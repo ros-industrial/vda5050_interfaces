@@ -16,54 +16,42 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
-#define VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
+#ifndef VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_HPP_
+#define VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_HPP_
+
+#include <string>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/bounding_box_reference.hpp"
+#include "vda5050_msgs/json_utils/action_parameter_value.hpp"
+#include "vda5050_msgs/msg/action_parameter.hpp"
 
 namespace vda5050_msgs {
 
 namespace msg {
-
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::BoundingBoxReference object to a
-/// nlohmann::json object
+/// \brief convert a vda5050_msgs::msg::ActionParameter object to a nlohmann::json object
 ///
-/// \param j Reference to the JSON object to be populated
+/// \param j Reference to a JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const BoundingBoxReference& msg)
+void to_json(nlohmann::json& j, const ActionParameter& msg)
 {
-  j["x"] = msg.x;
-  j["y"] = msg.y;
-  j["z"] = msg.z;
-
-  if (!msg.theta.empty())
-  {
-    j["theta"] = msg.theta.front();
-  }
+  j["key"] = msg.key;
+  j["value"] = msg.value;
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::BoundingBoxReference object from a
-/// nlohmann::json object
+/// \brief populate a vda5050_msgs::msg::ActionParameter object from a nlohmann::json object
 ///
-/// \param j Reference to the JSON object containing serialized data
-/// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, BoundingBoxReference& msg)
+/// \param j Reference to the JSON object containing serialized ActionParameter data
+/// \param msg Reference to the ActionParameter message to populate
+void from_json(const nlohmann::json& j, ActionParameter& msg)
 {
-  msg.x = j.at("x").get<double>();
-  msg.y = j.at("y").get<double>();
-  msg.z = j.at("z").get<double>();
-
-  if (j.contains("theta"))
-  {
-    msg.theta.push_back(j.at("theta").get<double>());
-  }
+  msg.key = j.at("key").get<std::string>();
+  msg.value = j.at("value").get<ActionParameterValue>();
 }
 
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_HPP_

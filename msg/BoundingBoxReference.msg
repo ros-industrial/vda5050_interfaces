@@ -24,4 +24,3 @@ float64 z
 #
 # Field type: Optional
 float64[<=1] theta
-

@@ -16,4 +16,3 @@ float64 width
 #
 # Field type: Optional
 float64[<=1] height
-

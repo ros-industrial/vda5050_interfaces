@@ -16,54 +16,69 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
-#define VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
+#ifndef VDA5050_MSGS__JSON_UTILS__EDGE_STATE_HPP_
+#define VDA5050_MSGS__JSON_UTILS__EDGE_STATE_HPP_
+
+#include <string>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/bounding_box_reference.hpp"
+#include "vda5050_msgs/msg/edge_state.hpp"
+#include "vda5050_msgs/msg/trajectory.hpp"
+
+#include "vda5050_msgs/json_utils/trajectory.hpp"
 
 namespace vda5050_msgs {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::BoundingBoxReference object to a
+/// \brief Convert a vda5050_msgs::msg::EdgeState object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const BoundingBoxReference& msg)
+void to_json(nlohmann::json& j, const EdgeState& msg)
 {
-  j["x"] = msg.x;
-  j["y"] = msg.y;
-  j["z"] = msg.z;
+  j["edgeId"] = msg.edge_id;
+  j["sequenceId"] = msg.sequence_id;
+  j["released"] = msg.released;
 
-  if (!msg.theta.empty())
+  if (!msg.edge_description.empty())
   {
-    j["theta"] = msg.theta.front();
+    j["edgeDescription"] = msg.edge_description.front();
+  }
+
+  if (!msg.trajectory.empty())
+  {
+    j["trajectory"] = msg.trajectory.front();
   }
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::BoundingBoxReference object from a
+/// \brief Populate a vda5050_msgs::msg::EdgeState object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, BoundingBoxReference& msg)
+void from_json(const nlohmann::json& j, EdgeState& msg)
 {
-  msg.x = j.at("x").get<double>();
-  msg.y = j.at("y").get<double>();
-  msg.z = j.at("z").get<double>();
+  msg.edge_id = j.at("edgeId").get<std::string>();
+  msg.sequence_id = j.at("sequenceId").get<uint32_t>();
+  msg.released = j.at("released").get<bool>();
 
-  if (j.contains("theta"))
+  if (j.contains("edgeDescription"))
   {
-    msg.theta.push_back(j.at("theta").get<double>());
+    msg.edge_description.push_back(j.at("edgeDescription").get<std::string>());
+  }
+
+  if (j.contains("trajectory"))
+  {
+    msg.trajectory.push_back(j.at("trajectory").get<Trajectory>());
   }
 }
 
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__EDGE_STATE_HPP_

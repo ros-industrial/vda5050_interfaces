@@ -16,54 +16,64 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
-#define VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
+#ifndef VDA5050_MSGS__JSON_UTILS__VISUALIZATION_HPP_
+#define VDA5050_MSGS__JSON_UTILS__VISUALIZATION_HPP_
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/bounding_box_reference.hpp"
+#include "vda5050_msgs/msg/header.hpp"
+#include "vda5050_msgs/msg/visualization.hpp"
+
+#include "vda5050_msgs/json_utils/agv_position.hpp"
+#include "vda5050_msgs/json_utils/velocity.hpp"
 
 namespace vda5050_msgs {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::BoundingBoxReference object to a
+/// \brief Convert a vda5050_msgs::msg::Visualization object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const BoundingBoxReference& msg)
+void to_json(nlohmann::json& j, const Visualization& msg)
 {
-  j["x"] = msg.x;
-  j["y"] = msg.y;
-  j["z"] = msg.z;
+  to_json(j, msg.header);
 
-  if (!msg.theta.empty())
+  if (!msg.agv_position.empty())
   {
-    j["theta"] = msg.theta.front();
+    j["agvPosition"] = msg.agv_position.front();
+  }
+
+  if (!msg.velocity.empty())
+  {
+    j["velocity"] = msg.velocity.front();
   }
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::BoundingBoxReference object from a
+/// \brief Populate a vda5050_msgs::msg::Visualization object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, BoundingBoxReference& msg)
+void from_json(const nlohmann::json& j, Visualization& msg)
 {
-  msg.x = j.at("x").get<double>();
-  msg.y = j.at("y").get<double>();
-  msg.z = j.at("z").get<double>();
+  from_json(j, msg.header);
 
-  if (j.contains("theta"))
+  if (j.contains("agvPosition"))
   {
-    msg.theta.push_back(j.at("theta").get<double>());
+    msg.agv_position.push_back(j.at("agvPosition").get<AGVPosition>());
+  }
+
+  if (j.contains("velocity"))
+  {
+    msg.velocity.push_back(j.at("velocity").get<Velocity>());
   }
 }
 
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__BOUNDING_BOX_REFERENCE_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__VISUALIZATION_HPP_

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
  * Advanced Remanufacturing and Technology Centre
  * A*STAR Research Entities (Co. Registration No. 199702110H)
@@ -27,7 +27,7 @@ namespace vda5050_msgs {
 
 namespace msg {
 
-// ============================================================================
+//=============================================================================
 /// \brief Convert a vda5050_msgs::msg::LoadDimensions object to a
 /// nlohmann::json object
 ///
@@ -44,7 +44,7 @@ void to_json(nlohmann::json& j, const LoadDimensions& msg)
   }
 }
 
-// ============================================================================
+//=============================================================================
 /// \brief Populate a vda5050_msgs::msg::LoadDimensions object from a
 /// nlohmann::json object
 ///
