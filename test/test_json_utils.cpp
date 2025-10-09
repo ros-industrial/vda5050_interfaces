@@ -109,8 +109,8 @@ using vda5050_msgs::msg::ProtocolLimits;
 using vda5050_msgs::msg::SafetyState;
 using vda5050_msgs::msg::State;
 using vda5050_msgs::msg::Timing;
-using vda5050_msgs::msg::TypeSpecification;
 using vda5050_msgs::msg::Trajectory;
+using vda5050_msgs::msg::TypeSpecification;
 using vda5050_msgs::msg::VehicleConfig;
 using vda5050_msgs::msg::Velocity;
 using vda5050_msgs::msg::VersionInfo;
@@ -119,12 +119,16 @@ using vda5050_msgs::msg::WheelDefinition;
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<
-  Action, ActionParameter, ActionParameterValue, ActionState, AgvAction, AgvGeometry, AGVPosition,
-  BatteryState, BoundingBoxReference, Connection, ControlPoint, EdgeState, Envelope2d,
-  Envelope3d, Error, ErrorReference, Factsheet, FactsheetActionParameter, Header, Info, InfoReference, InstantActions, Load,
-  LoadDimensions, LoadSet, LoadSpecification, MaxArrayLens, MaxStringLens, Network, NodePosition, NodeState, OptionalParameters, PhysicalParameters, PolygonPoint, Position,
-  ProtocolFeatures, ProtocolLimits, SafetyState, State, Timing, Trajectory, TypeSpecification, VehicleConfig,
-  Velocity, VersionInfo, Visualization WheelDefinition>;
+  Action, ActionParameter, ActionParameterValue, ActionState, AgvAction,
+  AgvGeometry, AGVPosition, BatteryState, BoundingBoxReference, Connection,
+  ControlPoint, EdgeState, Envelope2d, Envelope3d, Error, ErrorReference,
+  Factsheet, FactsheetActionParameter, Header, Info, InfoReference,
+  InstantActions, Load, LoadDimensions, LoadSet, LoadSpecification,
+  MaxArrayLens, MaxStringLens, Network, NodePosition, NodeState,
+  OptionalParameters, PhysicalParameters, PolygonPoint, Position,
+  ProtocolFeatures, ProtocolLimits, SafetyState, State, Timing, Trajectory,
+  TypeSpecification, VehicleConfig, Velocity, VersionInfo, Visualization,
+  WheelDefinition>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test
