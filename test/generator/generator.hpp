@@ -24,26 +24,62 @@
 #include <string>
 #include <vector>
 
-#include "vda5050_msgs/msg/connection.hpp"
-#include "vda5050_msgs/msg/header.hpp"
-#include "vda5050_msgs/msg/instant_action.hpp"
 #include "vda5050_msgs/msg/action.hpp"
 #include "vda5050_msgs/msg/action_parameter.hpp"
 #include "vda5050_msgs/msg/action_parameter_value.hpp"
+#include "vda5050_msgs/msg/action_state.hpp"
+#include "vda5050_msgs/msg/agv_position.hpp"
+#include "vda5050_msgs/msg/battery_state.hpp"
+#include "vda5050_msgs/msg/bounding_box_reference.hpp"
+#include "vda5050_msgs/msg/connection.hpp"
+#include "vda5050_msgs/msg/control_point.hpp"
+#include "vda5050_msgs/msg/edge_state.hpp"
+#include "vda5050_msgs/msg/error.hpp"
+#include "vda5050_msgs/msg/header.hpp"
+#include "vda5050_msgs/msg/info.hpp"
+#include "vda5050_msgs/msg/info_reference.hpp"
+#include "vda5050_msgs/msg/instant_actions.hpp"
+#include "vda5050_msgs/msg/load.hpp"
+#include "vda5050_msgs/msg/load_dimensions.hpp"
+#include "vda5050_msgs/msg/node_position.hpp"
+#include "vda5050_msgs/msg/node_state.hpp"
 #include "vda5050_msgs/msg/order.hpp"
+#include "vda5050_msgs/msg/safety_state.hpp"
+#include "vda5050_msgs/msg/state.hpp"
+#include "vda5050_msgs/msg/trajectory.hpp"
+#include "vda5050_msgs/msg/velocity.hpp"
+#include "vda5050_msgs/msg/visualization.hpp"
 
-using vda5050_msgs::msg::Connection;
-using vda5050_msgs::msg::Header;
-using vda5050_msgs::msg::InstantAction;
 using vda5050_msgs::msg::Action;
 using vda5050_msgs::msg::ActionParameter;
 using vda5050_msgs::msg::ActionParameterValue;
-using vda5050_msgs::msg::Order;
+using vda5050_msgs::msg::ActionState;
+using vda5050_msgs::msg::AGVPosition;
+using vda5050_msgs::msg::BatteryState;
+using vda5050_msgs::msg::BoundingBoxReference;
+using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::ControlPoint;
 using vda5050_msgs::msg::Edge;
+using vda5050_msgs::msg::EdgeState;
+using vda5050_msgs::msg::Error;
+using vda5050_msgs::msg::ErrorReference;
+using vda5050_msgs::msg::Header;
 using vda5050_msgs::msg::Node;
 using vda5050_msgs::msg::NodePosition;
+using vda5050_msgs::msg::Order;
 using vda5050_msgs::msg::Trajectory;
+using vda5050_msgs::msg::Info;
+using vda5050_msgs::msg::InfoReference;
+using vda5050_msgs::msg::InstantActions;
+using vda5050_msgs::msg::Load;
+using vda5050_msgs::msg::LoadDimensions;
+using vda5050_msgs::msg::NodePosition;
+using vda5050_msgs::msg::NodeState;
+using vda5050_msgs::msg::SafetyState;
+using vda5050_msgs::msg::State;
+using vda5050_msgs::msg::Trajectory;
+using vda5050_msgs::msg::Velocity;
+using vda5050_msgs::msg::Visualization;
 
 /// \brief Utility class to generate random instances of VDA 5050 message types
 class RandomDataGenerator
@@ -53,9 +89,14 @@ public:
   RandomDataGenerator()
   : rng_(std::random_device()()),
     uint_dist_(0, std::numeric_limits<uint32_t>::max()),
+    int_dist_(0, 100),
+    float_dist_(
+      std::numeric_limits<double>::min(), std::numeric_limits<double>::max()),
+    bool_dist_(0, 1),
     string_length_dist_(0, 50),
     milliseconds_dist_(0, 4000000000000L),
-    connection_state_dist_(0, 2)
+    percentage_dist_(0, 100),
+    size_dist_(0, 10)
   {
     // Nothing to do
   }
@@ -64,23 +105,41 @@ public:
   explicit RandomDataGenerator(uint32_t seed)
   : rng_(seed),
     uint_dist_(0, std::numeric_limits<uint32_t>::max()),
+    int_dist_(0, 100),
+    float_dist_(
+      std::numeric_limits<double>::min(), std::numeric_limits<double>::max()),
+    bool_dist_(0, 1),
     string_length_dist_(0, 50),
     milliseconds_dist_(0, 4000000000000L),
-    connection_state_dist_(0, 3)
+    percentage_dist_(0, 100),
+    size_dist_(0, 10)
   {
     // Nothing to do
   }
 
   /// \brief Generate a random unsigned 32-bit integer
-  uint32_t generate_uint()
+  uint32_t generate_random_uint()
   {
     return uint_dist_(rng_);
+  }
+
+  /// \brief Generate a random signed 8-bit integer
+  int8_t generate_random_int()
+  {
+    return int_dist_(rng_);
   }
 
   /// \brief Generate a random 64-bit floating-point number
   double generate_random_float()
   {
     return float_dist_(rng_);
+  }
+
+  /// \brief Generate a random index for enum selection
+  uint8_t generate_random_index(size_t size)
+  {
+    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
+    return index_dist(rng_);
   }
 
   /// \brief Generate a random boolean value
@@ -115,12 +174,190 @@ public:
     return milliseconds_dist_(rng_);
   }
 
-  /// \brief Generate a random connection state value
+  /// \brief Generate a random percentage value
+  double generate_random_percentage()
+  {
+    return percentage_dist_(rng_);
+  }
+
+  /// \brief Generate a random value for vector length
+  uint8_t generate_random_size()
+  {
+    return size_dist_(rng_);
+  }
+
+  /// \brief Generate a random connectionState value
   std::string generate_connection_state()
   {
     std::vector<std::string> states = {
       Connection::ONLINE, Connection::OFFLINE, Connection::CONNECTIONBROKEN};
-    auto state_idx = connection_state_dist_(rng_);
+    auto state_idx = generate_random_index(states.size());
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random actionStatus value
+  std::string generate_action_status()
+  {
+    std::vector<std::string> states = {
+      ActionState::ACTION_STATUS_WAITING,
+      ActionState::ACTION_STATUS_INITIALIZING,
+      ActionState::ACTION_STATUS_RUNNING, ActionState::ACTION_STATUS_PAUSED,
+      ActionState::ACTION_STATUS_FINISHED};
+    auto state_idx = generate_random_index(states.size());
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random errorLevel value
+  std::string generate_random_error_level()
+  {
+    std::vector<std::string> states = {
+      Error::ERROR_LEVEL_WARNING, Error::ERROR_LEVEL_FATAL};
+    auto state_idx = generate_random_index(states.size());
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random infoLevel value
+  std::string generate_random_info_level()
+  {
+    std::vector<std::string> states = {
+      Info::INFO_LEVEL_INFO, Info::INFO_LEVEL_DEBUG};
+    auto state_idx = generate_random_index(states.size());
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random eStop value
+  std::string generate_random_e_stop()
+  {
+    std::vector<std::string> states = {
+      SafetyState::E_STOP_AUTOACK, SafetyState::E_STOP_MANUAL,
+      SafetyState::E_STOP_REMOTE, SafetyState::E_STOP_NONE};
+    auto state_idx = generate_random_index(states.size());
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random operatingMode value
+  std::string generate_random_operating_mode()
+  {
+    std::vector<std::string> states = {
+      State::OPERATING_MODE_AUTOMATIC, State::OPERATING_MODE_SEMIAUTOMATIC,
+      State::OPERATING_MODE_MANUAL, State::OPERATING_MODE_SERVICE,
+      State::OPERATING_MODE_TEACHIN};
+    auto state_idx = generate_random_index(states.size());
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random vector of type float64
+  std::vector<double> generate_random_float_vector(const uint8_t size)
+  {
+    std::vector<double> vec(size);
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+    {
+      *it = generate_random_float();
+    }
+    return vec;
+  }
+
+  /// \brief Generate a random vector of type T
+  template <typename T>
+  std::vector<T> generate_random_vector(const uint8_t size)
+  {
+    std::vector<T> vec(size);
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+    {
+      *it = generate<T>();
+    }
+    return vec;
+  }
+
+  /// \brief Generte a random blocking type value
+  std::string generate_random_blocking_type()
+  {
+    std::vector<std::string> states = {
+      Action::BLOCKING_TYPE_NONE, Action::BLOCKING_TYPE_SOFT,
+      Action::BLOCKING_TYPE_HARD};
+
+    auto state_idx = generate_random_index(states.size());
+
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random ActionParameterValue type
+  uint8_t generate_random_action_parameter_value_type()
+  {
+    std::vector<uint8_t> states = {
+      ActionParameterValue::TYPE_ARRAY, ActionParameterValue::TYPE_BOOL,
+      ActionParameterValue::TYPE_NUMBER, ActionParameterValue::TYPE_STRING,
+      ActionParameterValue::TYPE_OBJECT};
+
+    auto state_idx = generate_random_index(states.size());
+
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random index for enum selection
+  uint8_t generate_random_index(size_t size)
+  {
+    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
+    return index_dist(rng_);
+  }
+
+  /// \brief Generate a random vector of type float64
+  std::vector<double> generate_random_float_vector(const uint8_t size)
+  {
+    std::vector<double> vec(size);
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+    {
+      *it = generate_random_float();
+    }
+    return vec;
+  }
+
+  /// \brief Generate a random vector of type T
+  template <typename T>
+  std::vector<T> generate_random_vector(const uint8_t size)
+  {
+    std::vector<T> vec(size);
+    for (auto it = vec.begin(); it != vec.end(); ++it)
+    {
+      *it = generate<T>();
+    }
+    return vec;
+  }
+
+  /// \brief
+  uint8_t generate_random_size()
+  {
+    return size_dist_(rng_);
+  }
+
+  /// \brief Generte a random blocking type value
+  std::string generate_random_blocking_type()
+  {
+    std::vector<std::string> states = {Action::NONE, Action::SOFT, Action::HARD};
+
+    auto state_idx = generate_random_index(states.size());
+
+    return states[state_idx];
+  }
+
+  /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
+  /// \brief Generate a random ActionParameterValue type
+  uint8_t generate_random_action_parameter_value_type()
+  {
+    std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
+
+    auto state_idx = generate_random_index(states.size());
+
+    return states[state_idx];
+  }
+
+  /// \brief Generate a random orientation type value 
+  std::string generate_random_orientation_type()
+  {
+    std::vector<std::string> states = {Edge::TANGENTIAL, Edge::GLOBAL};
+
+    auto state_idx = generate_random_index(states.size());
+
     return states[state_idx];
   }
 
@@ -196,18 +433,198 @@ public:
   T generate()
   {
     T msg;
-    if constexpr (std::is_same_v<T, Header>)
+    if constexpr (std::is_same_v<T, ActionState>)
     {
-      msg.header_id = generate_uint();
-      msg.timestamp = generate_milliseconds();
-      msg.version = "2.0.0";  // Fix the VDA 5050 version to 2.0.0
-      msg.manufacturer = generate_random_string();
-      msg.serial_number = generate_random_string();
+      msg.action_id = generate_random_string();
+      msg.action_type.push_back(generate_random_string());
+      msg.action_description.push_back(generate_random_string());
+      msg.action_status = generate_action_status();
+      msg.result_description.push_back(generate_random_string());
+    }
+    else if constexpr (std::is_same_v<T, AGVPosition>)
+    {
+      msg.x = generate_random_float();
+      msg.y = generate_random_float();
+      msg.theta = generate_random_float();
+      msg.map_id = generate_random_string();
+      msg.map_description.push_back(generate_random_string());
+      msg.position_initialized = generate_random_bool();
+      msg.localization_score.push_back(generate_random_float());
+      msg.deviation_range.push_back(generate_random_float());
+    }
+    else if constexpr (std::is_same_v<T, BatteryState>)
+    {
+      msg.battery_charge = generate_random_percentage();
+      msg.battery_voltage.push_back(generate_random_float());
+      msg.battery_health.push_back(generate_random_int());
+      msg.charging = generate_random_bool();
+      msg.reach.push_back(generate_random_uint());
+    }
+    else if constexpr (std::is_same_v<T, BoundingBoxReference>)
+    {
+      msg.x = generate_random_float();
+      msg.y = generate_random_float();
+      msg.z = generate_random_float();
+      msg.theta.push_back(generate_random_float());
     }
     else if constexpr (std::is_same_v<T, Connection>)
     {
       msg.header = generate<Header>();
       msg.connection_state = generate_connection_state();
+    }
+    else if constexpr (std::is_same_v<T, ControlPoint>)
+    {
+      msg.x = generate_random_float();
+      msg.y = generate_random_float();
+      msg.weight = 1.0;
+    }
+    else if constexpr (std::is_same_v<T, EdgeState>)
+    {
+      msg.edge_id = generate_random_string();
+      msg.sequence_id = generate_random_uint();
+      msg.edge_description.push_back(generate_random_string());
+      msg.released = generate_random_bool();
+      msg.trajectory.push_back(generate<Trajectory>());
+    }
+    else if constexpr (std::is_same_v<T, Error>)
+    {
+      msg.error_type = generate_random_string();
+      msg.error_references = generate_random_vector<ErrorReference>(10);
+      msg.error_description.push_back(generate_random_string());
+      msg.error_level = generate_random_error_level();
+    }
+    else if constexpr (std::is_same_v<T, ErrorReference>)
+    {
+      msg.reference_key = generate_random_string();
+      msg.reference_value = generate_random_string();
+    }
+    else if constexpr (std::is_same_v<T, Header>)
+    {
+      msg.header_id = generate_random_uint();
+      msg.timestamp = generate_milliseconds();
+      msg.version = "2.0.0";  // Fix the VDA 5050 version to 2.0.0
+      msg.manufacturer = generate_random_string();
+      msg.serial_number = generate_random_string();
+    }
+    else if constexpr (std::is_same_v<T, Info>)
+    {
+      msg.info_type = generate_random_string();
+      msg.info_references = generate_random_vector<InfoReference>(5);
+      msg.info_description.push_back(generate_random_string());
+      msg.info_level = generate_random_info_level();
+    }
+    else if constexpr (std::is_same_v<T, InfoReference>)
+    {
+      msg.reference_key = generate_random_string();
+      msg.reference_value = generate_random_string();
+    }
+    else if constexpr (std::is_same_v<T, Load>)
+    {
+      msg.load_id.push_back(generate_random_string());
+      msg.load_type.push_back(generate_random_string());
+      msg.load_position.push_back(generate_random_string());
+      msg.bounding_box_reference.push_back(generate<BoundingBoxReference>());
+      msg.load_dimensions.push_back(generate<LoadDimensions>());
+      msg.weight.push_back(generate_random_float());
+    }
+    else if constexpr (std::is_same_v<T, LoadDimensions>)
+    {
+      msg.length = generate_random_float();
+      msg.width = generate_random_float();
+      msg.height.push_back(generate_random_float());
+    }
+    else if constexpr (std::is_same_v<T, NodePosition>)
+    {
+      msg.x = generate_random_float();
+      msg.y = generate_random_float();
+      msg.theta.push_back(generate_random_float());
+      msg.allowed_deviation_x_y.push_back(generate_random_float());
+      msg.allowed_deviation_theta.push_back(generate_random_float());
+      msg.map_id = generate_random_string();
+      msg.map_description.push_back(generate_random_string());
+    }
+    else if constexpr (std::is_same_v<T, NodeState>)
+    {
+      msg.node_id = generate_random_string();
+      msg.sequence_id = generate_random_uint();
+      msg.node_description.push_back(generate_random_string());
+      msg.node_position.push_back(generate<NodePosition>());
+      msg.released = generate_random_bool();
+    }
+    else if constexpr (std::is_same_v<T, SafetyState>)
+    {
+      msg.e_stop = generate_random_e_stop();
+      msg.field_violation = generate_random_bool();
+    }
+    else if constexpr (std::is_same_v<T, State>)
+    {
+      msg.header = generate<Header>();
+      msg.order_id = generate_random_string();
+      msg.order_update_id = generate_random_uint();
+      msg.zone_set_id.push_back(generate_random_string());
+      msg.last_node_id = generate_random_string();
+      msg.last_node_sequence_id = generate_random_uint();
+      msg.driving = generate_random_bool();
+      msg.paused.push_back(generate_random_bool());
+      msg.new_base_request.push_back(generate_random_bool());
+      msg.distance_since_last_node.push_back(generate_random_float());
+      msg.operating_mode = generate_random_operating_mode();
+      msg.node_states =
+        generate_random_vector<NodeState>(generate_random_size());
+      msg.edge_states =
+        generate_random_vector<EdgeState>(generate_random_size());
+      msg.agv_position.push_back(generate<AGVPosition>());
+      msg.velocity.push_back(generate<Velocity>());
+      msg.loads = generate_random_vector<Load>(generate_random_size());
+      msg.action_states =
+        generate_random_vector<ActionState>(generate_random_size());
+      msg.battery_state = generate<BatteryState>();
+      msg.errors = generate_random_vector<Error>(generate_random_size());
+      msg.information = generate_random_vector<Info>(generate_random_size());
+      msg.safety_state = generate<SafetyState>();
+    }
+    else if constexpr (std::is_same_v<T, Trajectory>)
+    {
+      msg.degree = generate_random_float();
+      msg.knot_vector = generate_random_float_vector(generate_random_size());
+      msg.control_points =
+        generate_random_vector<ControlPoint>(generate_random_size());
+    }
+    else if constexpr (std::is_same_v<T, Velocity>)
+    {
+      msg.vx.push_back(generate_random_float());
+      msg.vy.push_back(generate_random_float());
+      msg.omega.push_back(generate_random_float());
+    }
+    else if constexpr (std::is_same_v<T, Visualization>)
+    {
+      msg.header = generate<Header>();
+      msg.agv_position.push_back(generate<AGVPosition>());
+      msg.velocity.push_back(generate<Velocity>());
+    }
+    else if constexpr (std::is_same_v<T, ActionParameterValue>)
+    {
+      msg.type = generate_random_action_parameter_value_type();
+      msg.value = generate_random_string();
+    }
+    else if constexpr (std::is_same_v<T, ActionParameter>)
+    {
+      msg.key = generate_random_string();
+      msg.value = generate<ActionParameterValue>();
+    }
+    else if constexpr (std::is_same_v<T, Action>)
+    {
+      msg.action_type = generate_random_string();
+      msg.action_id = generate_random_string();
+      msg.blocking_type = generate_random_blocking_type();
+      msg.action_description.push_back(generate_random_string());
+      msg.action_parameters =
+        generate_random_vector<ActionParameter>(generate_random_size());
+    }
+    else if constexpr (std::is_same_v<T, InstantActions>)
+    {
+      msg.header = generate<Header>();
+      msg.actions = generate_random_vector<Action>(generate_random_size());
     }
     else if constexpr (std::is_same_v<T, ActionParameterValue>)
     {
@@ -316,12 +733,14 @@ private:
   /// \brief Distribution for unsigned 32-bit integers
   std::uniform_int_distribution<uint32_t> uint_dist_;
 
+  /// \brief Distribution for signed 8-bit integers
+  std::uniform_int_distribution<int8_t> int_dist_;
+
   /// \brief Distribution for 64-bit floating-point numbers
   std::uniform_real_distribution<double> float_dist_;
 
   /// \brief Distribution for a boolean value
-  /// TODO (@shawnkchan): KIV  should we be bounding this between 0 and 1?
-  std::uniform_int_distribution<int> bool_dist_{0, 1};
+  std::uniform_int_distribution<int> bool_dist_;
 
   /// \brief Distribution for random string lengths
   std::uniform_int_distribution<int> string_length_dist_;
@@ -329,10 +748,10 @@ private:
   /// \brief Distribution for milliseconds from epoch
   std::uniform_int_distribution<int64_t> milliseconds_dist_;
 
-  /// \brief Distribution for VDA 5050 connectionState
-  std::uniform_int_distribution<uint8_t> connection_state_dist_;
+  /// \brief Distribution for random percentage values
+  std::uniform_real_distribution<double> percentage_dist_;
 
-  /// \brief Distribution for random vector size 
+  /// \brief Distribution for random vector size
   std::uniform_int_distribution<uint8_t> size_dist_;
 
   /// \brief Upper bound for order.nodes and order.edges random vector;

@@ -13,7 +13,7 @@ string action_type
 string action_id
 
 # Regulates if the action is allowed to be executed during movement and/or 
-# paralel to other actions.
+# parallel to other actions.
 #
 # Field Type: Required
 string blocking_type
@@ -21,13 +21,13 @@ string blocking_type
 # Enum values for blockingType
 #
 # NONE: action can happen in parallel with others, including movement
-string NONE="NONE"
+string BLOCKING_TYPE_NONE="NONE"
 #
-# SOFT: action can happen simultaneously with thers, but not while moving
-string SOFT="SOFT"
+# SOFT: action can happen simultaneously with other actions, but not while moving
+string BLOCKING_TYPE_SOFT="SOFT"
 #
 # HARD: no other action can be performed while this action is running
-string HARD="HARD"
+string BLOCKING_TYPE_HARD="HARD"
 
 # Additional information on the action
 #
