@@ -83,10 +83,10 @@ string orientation_type "TANGENTIAL"
 # Enum values for orientation_type
 #
 # GLOBAL: relative to the global project specific map coordinate system.
-string GLOBAL="GLOBAL"
+string ORIENTATION_TYPE_GLOBAL="GLOBAL"
 #
 # TANGENTIAL: tangential to the edge.
-string TANGENTIAL="TANGENTIAL"
+string ORIENTATION_TYPE_TANGENTIAL="TANGENTIAL"
 
 # Sets direction at junctions for line-guided or wire-guided vehicles.
 # To be defined initially (vehicle-individual).
