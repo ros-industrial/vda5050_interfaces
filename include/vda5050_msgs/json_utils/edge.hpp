@@ -23,10 +23,9 @@
 #include <string>
 #include <vector>
 
-#include "vda5050_msgs/msg/edge.hpp"
 #include "vda5050_msgs/json_utils/action.hpp"
 #include "vda5050_msgs/json_utils/trajectory.hpp"
-
+#include "vda5050_msgs/msg/edge.hpp"
 
 namespace vda5050_msgs {
 
@@ -152,7 +151,9 @@ void from_json(const nlohmann::json& j, Edge& msg)
   }
 
   auto orientation_type = j.at("orientationType").get<std::string>();
-  if (orientation_type == Edge::ORIENTATION_TYPE_TANGENTIAL || orientation_type == Edge::ORIENTATION_TYPE_GLOBAL)
+  if (
+    orientation_type == Edge::ORIENTATION_TYPE_TANGENTIAL ||
+    orientation_type == Edge::ORIENTATION_TYPE_GLOBAL)
   {
     msg.orientation_type = orientation_type;
   }
@@ -187,7 +188,7 @@ void from_json(const nlohmann::json& j, Edge& msg)
   }
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__EDGE_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__EDGE_HPP_

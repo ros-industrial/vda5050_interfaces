@@ -66,17 +66,15 @@ using vda5050_msgs::msg::EdgeState;
 using vda5050_msgs::msg::Error;
 using vda5050_msgs::msg::ErrorReference;
 using vda5050_msgs::msg::Header;
-using vda5050_msgs::msg::Node;
-using vda5050_msgs::msg::NodePosition;
-using vda5050_msgs::msg::Order;
-using vda5050_msgs::msg::Trajectory;
 using vda5050_msgs::msg::Info;
 using vda5050_msgs::msg::InfoReference;
 using vda5050_msgs::msg::InstantActions;
 using vda5050_msgs::msg::Load;
 using vda5050_msgs::msg::LoadDimensions;
+using vda5050_msgs::msg::Node;
 using vda5050_msgs::msg::NodePosition;
 using vda5050_msgs::msg::NodeState;
+using vda5050_msgs::msg::Order;
 using vda5050_msgs::msg::SafetyState;
 using vda5050_msgs::msg::State;
 using vda5050_msgs::msg::Trajectory;
@@ -296,10 +294,11 @@ public:
     return states[state_idx];
   }
 
-  /// \brief Generate a random orientation type value 
+  /// \brief Generate a random orientation type value
   std::string generate_random_orientation_type()
   {
-    std::vector<std::string> states = {Edge::ORIENTATION_TYPE_TANGENTIAL, Edge::ORIENTATION_TYPE_GLOBAL};
+    std::vector<std::string> states = {
+      Edge::ORIENTATION_TYPE_TANGENTIAL, Edge::ORIENTATION_TYPE_GLOBAL};
 
     auto state_idx = generate_random_index(states.size());
 
@@ -520,7 +519,8 @@ public:
       msg.action_id = generate_random_string();
       msg.blocking_type = generate_random_blocking_type();
       msg.action_description.push_back(generate_random_string());
-      msg.action_parameters = generate_random_vector<ActionParameter>(generate_random_size());
+      msg.action_parameters =
+        generate_random_vector<ActionParameter>(generate_random_size());
     }
     else if constexpr (std::is_same_v<T, InstantActions>)
     {
@@ -532,7 +532,7 @@ public:
     {
       msg.x = generate_random_float();
       msg.y = generate_random_float();
-      msg.weight = 1.0; /// TODO (@shawnkchan): Should this be randomized?
+      msg.weight = 1.0;  /// TODO (@shawnkchan): Should this be randomized?
     }
 
     else if constexpr (std::is_same_v<T, NodePosition>)
@@ -554,14 +554,14 @@ public:
       msg.actions = generate_random_vector<Action>(generate_random_size());
       msg.node_position.push_back(generate<NodePosition>());
       msg.node_description.push_back(generate_random_string());
-     
     }
 
     else if constexpr (std::is_same_v<T, Trajectory>)
     {
       msg.knot_vector = generate_random_float_vector(generate_random_size());
-      msg.control_points = generate_random_vector<ControlPoint>(generate_random_size());
-      msg.degree = 1.0; /// TODO (@shawnkchan): Should this be randomized?
+      msg.control_points =
+        generate_random_vector<ControlPoint>(generate_random_size());
+      msg.degree = 1.0;  /// TODO (@shawnkchan): Should this be randomized?
     }
 
     else if constexpr (std::is_same_v<T, Edge>)

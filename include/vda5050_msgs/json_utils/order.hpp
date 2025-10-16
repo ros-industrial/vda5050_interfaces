@@ -19,16 +19,16 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__ORDER_HPP_
 #define VDA5050_MSGS__JSON_UTILS__ORDER_HPP_
 
+#include <cstdint>
 #include <string>
 #include <vector>
-#include <cstdint>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/order.hpp"
+#include "vda5050_msgs/json_utils/edge.hpp"
 #include "vda5050_msgs/json_utils/header.hpp"
 #include "vda5050_msgs/json_utils/node.hpp"
-#include "vda5050_msgs/json_utils/edge.hpp"
+#include "vda5050_msgs/msg/order.hpp"
 
 namespace vda5050_msgs {
 

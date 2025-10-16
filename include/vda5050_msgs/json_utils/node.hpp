@@ -19,14 +19,14 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__NODE_HPP
 #define VDA5050_MSGS__JSON_UTILS__NODE_HPP
 
+#include <cstdint>
 #include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
-#include <cstdint>
 
-#include "vda5050_msgs/msg/node.hpp"
 #include "vda5050_msgs/json_utils/action.hpp"
 #include "vda5050_msgs/json_utils/node_position.hpp"
+#include "vda5050_msgs/msg/node.hpp"
 
 namespace vda5050_msgs {
 
@@ -77,7 +77,7 @@ void from_json(const nlohmann::json& j, Node& msg)
   }
 }
 
-} // namespace msg
-} // namespace vda5050_msgs
+}  // namespace msg
+}  // namespace vda5050_msgs
 
-#endif // VDA5050_MSGS__JSON_UTILS__NODE_HPP
+#endif  // VDA5050_MSGS__JSON_UTILS__NODE_HPP
