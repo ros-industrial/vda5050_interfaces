@@ -33,6 +33,7 @@
 #include "vda5050_msgs/msg/bounding_box_reference.hpp"
 #include "vda5050_msgs/msg/connection.hpp"
 #include "vda5050_msgs/msg/control_point.hpp"
+#include "vda5050_msgs/msg/edge.hpp"
 #include "vda5050_msgs/msg/edge_state.hpp"
 #include "vda5050_msgs/msg/error.hpp"
 #include "vda5050_msgs/msg/header.hpp"
@@ -41,6 +42,7 @@
 #include "vda5050_msgs/msg/instant_actions.hpp"
 #include "vda5050_msgs/msg/load.hpp"
 #include "vda5050_msgs/msg/load_dimensions.hpp"
+#include "vda5050_msgs/msg/node.hpp"
 #include "vda5050_msgs/msg/node_position.hpp"
 #include "vda5050_msgs/msg/node_state.hpp"
 #include "vda5050_msgs/msg/order.hpp"
@@ -294,134 +296,10 @@ public:
     return states[state_idx];
   }
 
-  /// \brief Generate a random index for enum selection
-  uint8_t generate_random_index(size_t size)
-  {
-    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
-    return index_dist(rng_);
-  }
-
-  /// \brief Generate a random vector of type float64
-  std::vector<double> generate_random_float_vector(const uint8_t size)
-  {
-    std::vector<double> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate_random_float();
-    }
-    return vec;
-  }
-
-  /// \brief Generate a random vector of type T
-  template <typename T>
-  std::vector<T> generate_random_vector(const uint8_t size)
-  {
-    std::vector<T> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate<T>();
-    }
-    return vec;
-  }
-
-  /// \brief
-  uint8_t generate_random_size()
-  {
-    return size_dist_(rng_);
-  }
-
-  /// \brief Generte a random blocking type value
-  std::string generate_random_blocking_type()
-  {
-    std::vector<std::string> states = {Action::NONE, Action::SOFT, Action::HARD};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
-  /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
-  /// \brief Generate a random ActionParameterValue type
-  uint8_t generate_random_action_parameter_value_type()
-  {
-    std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
   /// \brief Generate a random orientation type value 
   std::string generate_random_orientation_type()
   {
-    std::vector<std::string> states = {Edge::TANGENTIAL, Edge::GLOBAL};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
-  /// \brief Generate a random index for enum selection
-  uint8_t generate_random_index(size_t size)
-  {
-    std::uniform_int_distribution<uint8_t> index_dist(0, size - 1);
-    return index_dist(rng_);
-  }
-
-  /// \brief Generate a random vector of type float64
-  std::vector<double> generate_random_float_vector(const uint8_t size)
-  {
-    std::vector<double> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate_random_float();
-    }
-    return vec;
-  }
-
-  /// \brief Generate a random vector of type T
-  template <typename T>
-  std::vector<T> generate_random_vector(const uint8_t size)
-  {
-    std::vector<T> vec(size);
-    for (auto it = vec.begin(); it != vec.end(); ++it)
-    {
-      *it = generate<T>();
-    }
-    return vec;
-  }
-
-  /// \brief
-  uint8_t generate_random_size()
-  {
-    return size_dist_(rng_);
-  }
-
-  /// \brief Generte a random blocking type value
-  std::string generate_random_blocking_type()
-  {
-    std::vector<std::string> states = {Action::NONE, Action::SOFT, Action::HARD};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
-  /// TODO: @shawnkchan KIV to rename this function. Made it more verbose to be clear
-  /// \brief Generate a random ActionParameterValue type
-  uint8_t generate_random_action_parameter_value_type()
-  {
-    std::vector<uint8_t> states = {ActionParameterValue::ARRAY, ActionParameterValue::BOOL, ActionParameterValue::NUMBER, ActionParameterValue::STRING, ActionParameterValue::OBJECT};
-
-    auto state_idx = generate_random_index(states.size());
-
-    return states[state_idx];
-  }
-
-  /// \brief Generate a random orientation type value 
-  std::string generate_random_orientation_type()
-  {
-    std::vector<std::string> states = {Edge::TANGENTIAL, Edge::GLOBAL};
+    std::vector<std::string> states = {Edge::ORIENTATION_TYPE_TANGENTIAL, Edge::ORIENTATION_TYPE_GLOBAL};
 
     auto state_idx = generate_random_index(states.size());
 
@@ -644,7 +522,7 @@ public:
       msg.action_description.push_back(generate_random_string());
       msg.action_parameters = generate_random_vector<ActionParameter>(generate_random_size());
     }
-    else if constexpr (std::is_same_v<T, InstantAction>)
+    else if constexpr (std::is_same_v<T, InstantActions>)
     {
       msg.header = generate<Header>();
       msg.actions = generate_random_vector<Action>(generate_random_size());
@@ -671,7 +549,7 @@ public:
     else if constexpr (std::is_same_v<T, Node>)
     {
       msg.node_id = generate_random_string();
-      msg.sequence_id = generate_uint();
+      msg.sequence_id = generate_random_uint();
       msg.released = generate_random_bool();
       msg.actions = generate_random_vector<Action>(generate_random_size());
       msg.node_position.push_back(generate<NodePosition>());
@@ -689,7 +567,7 @@ public:
     else if constexpr (std::is_same_v<T, Edge>)
     {
       msg.edge_id = generate_random_string();
-      msg.sequence_id = generate_uint();
+      msg.sequence_id = generate_random_uint();
       msg.start_node_id = generate_random_string();
       msg.end_node_id = generate_random_string();
       msg.released = generate_random_bool();
@@ -711,7 +589,7 @@ public:
     {
       msg.header = generate<Header>();
       msg.order_id = generate_random_string();
-      msg.order_update_id = generate_uint();
+      msg.order_update_id = generate_random_uint();
       msg.nodes = generate_random_vector<Node>(ORDER_VECTOR_SIZE_UPPER_BOUND);
       msg.edges = generate_random_vector<Edge>(ORDER_VECTOR_SIZE_UPPER_BOUND);
       msg.zone_set_id.push_back(generate_random_string());
