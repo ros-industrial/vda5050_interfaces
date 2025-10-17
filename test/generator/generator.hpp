@@ -371,10 +371,9 @@ public:
   /// \brief Generate a random AGVAction blockingTypes vector
   std::vector<std::string> generate_random_agv_action_blocking_types()
   {
-    std::vector<std::string> agv_action_blocking_types(
-      generate_random_size());
+    std::vector<std::string> agv_action_blocking_types(generate_random_size());
     for (auto it = agv_action_blocking_types.begin();
-          it != agv_action_blocking_types.end(); ++it)
+         it != agv_action_blocking_types.end(); ++it)
     {
       *it = generate_random_agv_action_blocking_type();
     }
