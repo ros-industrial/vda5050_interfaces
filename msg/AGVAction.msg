@@ -24,7 +24,6 @@ string ACTION_SCOPES_NODE="NODE"
 # Edge: useable on edges
 string ACTION_SCOPES_EDGE="EDGE"
 
-# TODO: (@sauk2) Is naming the field type as "FactsheetActionParameter" good enough for deconfliction?
 # Array of parameters an action has. If not defined, the action has no
 # parameters.
 # NOTE: This message is different from the one used in the Order message.
