@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__NODE_HPP
-#define VDA5050_MSGS__JSON_UTILS__NODE_HPP
+#ifndef VDA5050_MSGS__JSON_UTILS__NODE_HPP_
+#define VDA5050_MSGS__JSON_UTILS__NODE_HPP_
 
 #include <cstdint>
 #include <string>
