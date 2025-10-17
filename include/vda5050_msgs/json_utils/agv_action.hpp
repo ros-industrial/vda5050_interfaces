@@ -31,13 +31,13 @@ namespace vda5050_msgs {
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::AgvAction object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::AGVAction object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize action_scopes or blocking_types
-void to_json(nlohmann::json& j, const AgvAction& msg)
+void to_json(nlohmann::json& j, const AGVAction& msg)
 {
   j["actionType"] = msg.action_type;
 
@@ -82,13 +82,13 @@ void to_json(nlohmann::json& j, const AgvAction& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::AgvAction object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::AGVAction object
 ///
-/// \param j Reference to the JSON object containing serialized AgvAction data
-/// \param msg Reference to the AgvAction message to populate
+/// \param j Reference to the JSON object containing serialized AGVAction data
+/// \param msg Reference to the AGVAction message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize action_scopes or blocking_types
-void from_json(const nlohmann::json& j, AgvAction& msg)
+void from_json(const nlohmann::json& j, AGVAction& msg)
 {
   msg.action_type = j.at("actionType").get<std::string>();
 

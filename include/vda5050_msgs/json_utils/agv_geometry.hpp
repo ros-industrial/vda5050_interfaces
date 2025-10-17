@@ -32,11 +32,11 @@ namespace vda5050_msgs {
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::AgvGeometry object to a nlohmann::json object
+/// \brief Convert a vda5050_msgs::msg::AGVGeometry object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
-/// \param msg Reference to the AgvGeometry message object to serialize
-void to_json(nlohmann::json& j, const AgvGeometry& msg)
+/// \param msg Reference to the AGVGeometry message object to serialize
+void to_json(nlohmann::json& j, const AGVGeometry& msg)
 {
   if (!msg.wheel_definitions.empty())
   {
@@ -55,11 +55,11 @@ void to_json(nlohmann::json& j, const AgvGeometry& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::AgvGeometry object
+/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::AGVGeometry object
 ///
-/// \param j Reference to the JSON object containing serialized AgvGeometry data
-/// \param msg Reference to the AgvGeometry message to populate
-void from_json(const nlohmann::json& j, AgvGeometry& msg)
+/// \param j Reference to the JSON object containing serialized AGVGeometry data
+/// \param msg Reference to the AGVGeometry message to populate
+void from_json(const nlohmann::json& j, AGVGeometry& msg)
 {
   if (j.contains("wheelDefinitions"))
   {

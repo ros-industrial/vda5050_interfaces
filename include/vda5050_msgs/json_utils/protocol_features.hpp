@@ -50,7 +50,7 @@ void from_json(const nlohmann::json& j, ProtocolFeatures& msg)
 {
   msg.optional_parameters =
     j.at("optionalParameters").get<std::vector<OptionalParameters>>();
-  msg.agv_actions = j.at("agvActions").get<std::vector<AgvAction>>();
+  msg.agv_actions = j.at("agvActions").get<std::vector<AGVAction>>();
 }
 
 }  // namespace msg

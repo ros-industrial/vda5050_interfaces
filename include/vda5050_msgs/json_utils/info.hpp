@@ -21,7 +21,6 @@
 
 #include <string>
 #include <vector>
-
 #include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/info_reference.hpp"

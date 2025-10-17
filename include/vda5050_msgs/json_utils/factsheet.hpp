@@ -64,7 +64,7 @@ void from_json(const nlohmann::json& j, Factsheet& msg)
     j.at("physicalParameters").get<PhysicalParameters>();
   msg.protocol_limits = j.at("protocolLimits").get<ProtocolLimits>();
   msg.protocol_features = j.at("protocolFeatures").get<ProtocolFeatures>();
-  msg.agv_geometry = j.at("agvGeometry").get<AgvGeometry>();
+  msg.agv_geometry = j.at("agvGeometry").get<AGVGeometry>();
   msg.load_specification = j.at("loadSpecification").get<LoadSpecification>();
   msg.vehicle_config = j.at("vehicleConfig").get<VehicleConfig>();
 }

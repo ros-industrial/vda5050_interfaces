@@ -30,7 +30,7 @@ ProtocolFeatures protocol_features
 # Detailed definition of AGV geometry
 #
 # Field type: Required
-AgvGeometry agv_geometry
+AGVGeometry agv_geometry
 
 # Abstract specification of load capabilities
 #

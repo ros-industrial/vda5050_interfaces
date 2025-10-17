@@ -73,8 +73,8 @@ using vda5050_msgs::msg::Action;
 using vda5050_msgs::msg::ActionParameter;
 using vda5050_msgs::msg::ActionParameterValue;
 using vda5050_msgs::msg::ActionState;
-using vda5050_msgs::msg::AgvAction;
-using vda5050_msgs::msg::AgvGeometry;
+using vda5050_msgs::msg::AGVAction;
+using vda5050_msgs::msg::AGVGeometry;
 using vda5050_msgs::msg::AGVPosition;
 using vda5050_msgs::msg::BatteryState;
 using vda5050_msgs::msg::BoundingBoxReference;
@@ -119,8 +119,8 @@ using vda5050_msgs::msg::WheelDefinition;
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<
-  Action, ActionParameter, ActionParameterValue, ActionState, AgvAction,
-  AgvGeometry, AGVPosition, BatteryState, BoundingBoxReference, Connection,
+  Action, ActionParameter, ActionParameterValue, ActionState, AGVAction,
+  AGVGeometry, AGVPosition, BatteryState, BoundingBoxReference, Connection,
   ControlPoint, EdgeState, Envelope2d, Envelope3d, Error, ErrorReference,
   Factsheet, FactsheetActionParameter, Header, Info, InfoReference,
   InstantActions, Load, LoadDimensions, LoadSet, LoadSpecification,

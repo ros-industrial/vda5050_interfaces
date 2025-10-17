@@ -11,5 +11,5 @@ OptionalParameters[] optional_parameters
 # standard actions specified in VDA5050 and manufacturer-specific actions.
 #
 # Field type: Required
-AgvAction[] agv_actions
+AGVAction[] agv_actions
 
