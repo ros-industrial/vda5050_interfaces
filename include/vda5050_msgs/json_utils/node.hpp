@@ -20,9 +20,10 @@
 #define VDA5050_MSGS__JSON_UTILS__NODE_HPP
 
 #include <cstdint>
-#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
+
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/action.hpp"
 #include "vda5050_msgs/json_utils/node_position.hpp"
