@@ -56,4 +56,3 @@ string BLOCKING_TYPE_SOFT="SOFT"
 #
 # Hard: action cannot be executed in parallel and AGV cannot be driving.
 string BLOCKING_TYPES_HARD="HARD"
-

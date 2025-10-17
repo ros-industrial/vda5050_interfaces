@@ -19,8 +19,8 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_VALUE_HPP_
 #define VDA5050_MSGS__JSON_UTILS__ACTION_PARAMETER_VALUE_HPP_
 
-#include <string>
 #include <nlohmann/json.hpp>
+#include <string>
 
 #include "vda5050_msgs/msg/action_parameter_value.hpp"
 
