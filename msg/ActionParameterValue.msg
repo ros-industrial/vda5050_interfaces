@@ -18,3 +18,4 @@ uint8 TYPE_OBJECT=5
 #
 # Field Type: Required
 string value
+
