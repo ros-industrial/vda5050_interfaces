@@ -28,6 +28,7 @@
 #include "vda5050_msgs/json_utils/bounding_box_reference.hpp"
 #include "vda5050_msgs/json_utils/connection.hpp"
 #include "vda5050_msgs/json_utils/control_point.hpp"
+#include "vda5050_msgs/json_utils/edge.hpp"
 #include "vda5050_msgs/json_utils/edge_state.hpp"
 #include "vda5050_msgs/json_utils/error.hpp"
 #include "vda5050_msgs/json_utils/error_reference.hpp"
@@ -37,8 +38,10 @@
 #include "vda5050_msgs/json_utils/instant_actions.hpp"
 #include "vda5050_msgs/json_utils/load.hpp"
 #include "vda5050_msgs/json_utils/load_dimensions.hpp"
+#include "vda5050_msgs/json_utils/node.hpp"
 #include "vda5050_msgs/json_utils/node_position.hpp"
 #include "vda5050_msgs/json_utils/node_state.hpp"
+#include "vda5050_msgs/json_utils/order.hpp"
 #include "vda5050_msgs/json_utils/safety_state.hpp"
 #include "vda5050_msgs/json_utils/state.hpp"
 #include "vda5050_msgs/json_utils/trajectory.hpp"
@@ -54,6 +57,7 @@ using vda5050_msgs::msg::BatteryState;
 using vda5050_msgs::msg::BoundingBoxReference;
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::ControlPoint;
+using vda5050_msgs::msg::Edge;
 using vda5050_msgs::msg::EdgeState;
 using vda5050_msgs::msg::Error;
 using vda5050_msgs::msg::ErrorReference;
@@ -63,8 +67,10 @@ using vda5050_msgs::msg::InfoReference;
 using vda5050_msgs::msg::InstantActions;
 using vda5050_msgs::msg::Load;
 using vda5050_msgs::msg::LoadDimensions;
+using vda5050_msgs::msg::Node;
 using vda5050_msgs::msg::NodePosition;
 using vda5050_msgs::msg::NodeState;
+using vda5050_msgs::msg::Order;
 using vda5050_msgs::msg::SafetyState;
 using vda5050_msgs::msg::State;
 using vda5050_msgs::msg::Trajectory;
@@ -74,10 +80,10 @@ using vda5050_msgs::msg::Visualization;
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<
   Action, ActionParameter, ActionParameterValue, ActionState, AGVPosition,
-  BatteryState, BoundingBoxReference, Connection, ControlPoint, EdgeState,
+  BatteryState, BoundingBoxReference, Connection, ControlPoint, Edge, EdgeState,
   Error, ErrorReference, Header, Info, InfoReference, InstantActions, Load,
-  LoadDimensions, NodePosition, NodeState, SafetyState, State, Trajectory,
-  Velocity, Visualization>;
+  LoadDimensions, Node, NodePosition, NodeState, Order, SafetyState, State,
+  Trajectory, Velocity, Visualization>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test
