@@ -353,7 +353,7 @@ public:
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }
-  
+
   /// \brief Generate a actionSopes vector
   std::vector<std::string> generate_random_action_scopes()
   {
