@@ -35,6 +35,7 @@
 #include "vda5050_msgs/msg/bounding_box_reference.hpp"
 #include "vda5050_msgs/msg/connection.hpp"
 #include "vda5050_msgs/msg/control_point.hpp"
+#include "vda5050_msgs/msg/edge.hpp"
 #include "vda5050_msgs/msg/edge_state.hpp"
 #include "vda5050_msgs/msg/envelope2d.hpp"
 #include "vda5050_msgs/msg/envelope3d.hpp"
@@ -53,9 +54,11 @@
 #include "vda5050_msgs/msg/max_array_lens.hpp"
 #include "vda5050_msgs/msg/max_string_lens.hpp"
 #include "vda5050_msgs/msg/network.hpp"
+#include "vda5050_msgs/msg/node.hpp"
 #include "vda5050_msgs/msg/node_position.hpp"
 #include "vda5050_msgs/msg/node_state.hpp"
 #include "vda5050_msgs/msg/optional_parameters.hpp"
+#include "vda5050_msgs/msg/order.hpp"
 #include "vda5050_msgs/msg/physical_parameters.hpp"
 #include "vda5050_msgs/msg/polygon_point.hpp"
 #include "vda5050_msgs/msg/position.hpp"
@@ -83,6 +86,7 @@ using vda5050_msgs::msg::BatteryState;
 using vda5050_msgs::msg::BoundingBoxReference;
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::ControlPoint;
+using vda5050_msgs::msg::Edge;
 using vda5050_msgs::msg::EdgeState;
 using vda5050_msgs::msg::Envelope2d;
 using vda5050_msgs::msg::Envelope3d;
@@ -101,9 +105,11 @@ using vda5050_msgs::msg::LoadSpecification;
 using vda5050_msgs::msg::MaxArrayLens;
 using vda5050_msgs::msg::MaxStringLens;
 using vda5050_msgs::msg::Network;
+using vda5050_msgs::msg::Node;
 using vda5050_msgs::msg::NodePosition;
 using vda5050_msgs::msg::NodeState;
 using vda5050_msgs::msg::OptionalParameters;
+using vda5050_msgs::msg::Order;
 using vda5050_msgs::msg::PhysicalParameters;
 using vda5050_msgs::msg::PolygonPoint;
 using vda5050_msgs::msg::Position;
@@ -314,9 +320,7 @@ public:
     std::vector<std::string> states = {
       Action::BLOCKING_TYPE_NONE, Action::BLOCKING_TYPE_SOFT,
       Action::BLOCKING_TYPE_HARD};
-
     auto state_idx = generate_random_index(states.size());
-
     return states[state_idx];
   }
 
@@ -327,9 +331,7 @@ public:
       ActionParameterValue::TYPE_ARRAY, ActionParameterValue::TYPE_BOOL,
       ActionParameterValue::TYPE_NUMBER, ActionParameterValue::TYPE_STRING,
       ActionParameterValue::TYPE_OBJECT};
-
     auto state_idx = generate_random_index(states.size());
-
     return states[state_idx];
   }
 
@@ -339,12 +341,19 @@ public:
     std::vector<std::string> states = {
       AGVAction::ACTION_SCOPES_EDGE, AGVAction::ACTION_SCOPES_INSTANT,
       AGVAction::ACTION_SCOPES_NODE};
-
     auto state_idx = generate_random_index(states.size());
-
     return states[state_idx];
   }
 
+  /// \brief Generate a random orientation type value
+  std::string generate_random_orientation_type()
+  {
+    std::vector<std::string> states = {
+      Edge::ORIENTATION_TYPE_TANGENTIAL, Edge::ORIENTATION_TYPE_GLOBAL};
+    auto state_idx = generate_random_index(states.size());
+    return states[state_idx];
+  }
+  
   /// \brief Generate a actionSopes vector
   std::vector<std::string> generate_random_action_scopes()
   {
@@ -362,9 +371,7 @@ public:
     std::vector<std::string> states = {
       AGVAction::BLOCKING_TYPE_SOFT, AGVAction::BLOCKING_TYPES_HARD,
       AGVAction::BLOCKING_TYPES_NONE};
-
     auto state_idx = generate_random_index(states.size());
-
     return states[state_idx];
   }
 
@@ -390,7 +397,6 @@ public:
       FactsheetActionParameter::VALUE_DATA_TYPE_INTEGER,
       FactsheetActionParameter::VALUE_DATA_TYPE_NUMBER,
       FactsheetActionParameter::VALUE_DATA_TYPE_OBJECT};
-
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }
@@ -412,7 +418,6 @@ public:
     std::vector<std::string> states = {
       OptionalParameters::SUPPORT_REQUIRED,
       OptionalParameters::SUPPORT_SUPPORTED};
-
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }
@@ -424,7 +429,6 @@ public:
       TypeSpecification::AGV_KINEMATIC_OMNI,
       TypeSpecification::AGV_KINEMATIC_DIFF,
       TypeSpecification::AGV_KINEMATIC_THREEWHEEL};
-
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }
@@ -437,7 +441,6 @@ public:
       TypeSpecification::AGV_CLASS_CONVEYOR,
       TypeSpecification::AGV_CLASS_TUGGER,
       TypeSpecification::AGV_CLASS_CARRIER};
-
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }
@@ -448,7 +451,6 @@ public:
     std::vector<std::string> states = {
       WheelDefinition::TYPE_DRIVE, WheelDefinition::TYPE_CASTER,
       WheelDefinition::TYPE_FIXED, WheelDefinition::TYPE_MECANUM};
-
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }
@@ -866,6 +868,98 @@ public:
       msg.header = generate<Header>();
       msg.actions = generate_random_vector<Action>(generate_random_size());
     }
+    else if constexpr (std::is_same_v<T, ActionParameterValue>)
+    {
+      msg.type = generate_random_action_parameter_value_type();
+      msg.value = generate_random_string();
+    }
+    else if constexpr (std::is_same_v<T, ActionParameter>)
+    {
+      msg.key = generate_random_string();
+      msg.value = generate<ActionParameterValue>();
+    }
+    else if constexpr (std::is_same_v<T, Action>)
+    {
+      msg.action_type = generate_random_string();
+      msg.action_id = generate_random_string();
+      msg.blocking_type = generate_random_blocking_type();
+      msg.action_description.push_back(generate_random_string());
+      msg.action_parameters =
+        generate_random_vector<ActionParameter>(generate_random_size());
+    }
+    else if constexpr (std::is_same_v<T, InstantActions>)
+    {
+      msg.header = generate<Header>();
+      msg.actions = generate_random_vector<Action>(generate_random_size());
+    }
+
+    else if constexpr (std::is_same_v<T, ControlPoint>)
+    {
+      msg.x = generate_random_float();
+      msg.y = generate_random_float();
+      msg.weight = 1.0;  /// TODO (@shawnkchan): Should this be randomized?
+    }
+
+    else if constexpr (std::is_same_v<T, NodePosition>)
+    {
+      msg.x = generate_random_float();
+      msg.y = generate_random_float();
+      msg.map_id = generate_random_string();
+      msg.theta.push_back(generate_random_float());
+      msg.allowed_deviation_xy.push_back(generate_random_float());
+      msg.allowed_deviation_theta.push_back(generate_random_float());
+      msg.map_description.push_back(generate_random_string());
+    }
+
+    else if constexpr (std::is_same_v<T, Node>)
+    {
+      msg.node_id = generate_random_string();
+      msg.sequence_id = generate_random_uint();
+      msg.released = generate_random_bool();
+      msg.actions = generate_random_vector<Action>(generate_random_size());
+      msg.node_position.push_back(generate<NodePosition>());
+      msg.node_description.push_back(generate_random_string());
+    }
+
+    else if constexpr (std::is_same_v<T, Trajectory>)
+    {
+      msg.knot_vector = generate_random_float_vector(generate_random_size());
+      msg.control_points =
+        generate_random_vector<ControlPoint>(generate_random_size());
+      msg.degree = 1.0;  /// TODO (@shawnkchan): Should this be randomized?
+    }
+
+    else if constexpr (std::is_same_v<T, Edge>)
+    {
+      msg.edge_id = generate_random_string();
+      msg.sequence_id = generate_random_uint();
+      msg.start_node_id = generate_random_string();
+      msg.end_node_id = generate_random_string();
+      msg.released = generate_random_bool();
+      msg.actions = generate_random_vector<Action>(generate_random_size());
+      msg.edge_description.push_back(generate_random_string());
+      msg.max_speed.push_back(generate_random_float());
+      msg.max_height.push_back(generate_random_float());
+      msg.min_height.push_back(generate_random_float());
+      msg.orientation.push_back(generate_random_float());
+      msg.orientation_type = generate_random_orientation_type();
+      msg.direction.push_back(generate_random_string());
+      msg.rotation_allowed.push_back(generate_random_bool());
+      msg.max_rotation_speed.push_back(generate_random_float());
+      msg.trajectory.push_back(generate<Trajectory>());
+      msg.length.push_back(generate_random_float());
+    }
+
+    else if constexpr (std::is_same_v<T, Order>)
+    {
+      msg.header = generate<Header>();
+      msg.order_id = generate_random_string();
+      msg.order_update_id = generate_random_uint();
+      msg.nodes = generate_random_vector<Node>(ORDER_VECTOR_SIZE_UPPER_BOUND);
+      msg.edges = generate_random_vector<Edge>(ORDER_VECTOR_SIZE_UPPER_BOUND);
+      msg.zone_set_id.push_back(generate_random_string());
+    }
+
     else
     {
       throw std::runtime_error(
@@ -902,6 +996,9 @@ private:
 
   /// \brief Distribution for random vector size
   std::uniform_int_distribution<uint8_t> size_dist_;
+
+  /// \brief Upper bound for order.nodes and order.edges random vector;
+  uint8_t ORDER_VECTOR_SIZE_UPPER_BOUND = 10;
 };
 
 #endif  // TEST__GENERATOR__GENERATOR_HPP_

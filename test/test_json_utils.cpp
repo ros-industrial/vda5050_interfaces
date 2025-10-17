@@ -32,6 +32,7 @@
 #include "vda5050_msgs/json_utils/bounding_box_reference.hpp"
 #include "vda5050_msgs/json_utils/connection.hpp"
 #include "vda5050_msgs/json_utils/control_point.hpp"
+#include "vda5050_msgs/json_utils/edge.hpp"
 #include "vda5050_msgs/json_utils/edge_state.hpp"
 #include "vda5050_msgs/json_utils/envelope2d.hpp"
 #include "vda5050_msgs/json_utils/envelope3d.hpp"
@@ -50,9 +51,11 @@
 #include "vda5050_msgs/json_utils/max_array_lens.hpp"
 #include "vda5050_msgs/json_utils/max_string_lens.hpp"
 #include "vda5050_msgs/json_utils/network.hpp"
+#include "vda5050_msgs/json_utils/node.hpp"
 #include "vda5050_msgs/json_utils/node_position.hpp"
 #include "vda5050_msgs/json_utils/node_state.hpp"
 #include "vda5050_msgs/json_utils/optional_parameters.hpp"
+#include "vda5050_msgs/json_utils/order.hpp"
 #include "vda5050_msgs/json_utils/physical_parameters.hpp"
 #include "vda5050_msgs/json_utils/polygon_point.hpp"
 #include "vda5050_msgs/json_utils/position.hpp"
@@ -80,6 +83,7 @@ using vda5050_msgs::msg::BatteryState;
 using vda5050_msgs::msg::BoundingBoxReference;
 using vda5050_msgs::msg::Connection;
 using vda5050_msgs::msg::ControlPoint;
+using vda5050_msgs::msg::Edge;
 using vda5050_msgs::msg::EdgeState;
 using vda5050_msgs::msg::Envelope2d;
 using vda5050_msgs::msg::Envelope3d;
@@ -98,9 +102,11 @@ using vda5050_msgs::msg::LoadSpecification;
 using vda5050_msgs::msg::MaxArrayLens;
 using vda5050_msgs::msg::MaxStringLens;
 using vda5050_msgs::msg::Network;
+using vda5050_msgs::msg::Node;
 using vda5050_msgs::msg::NodePosition;
 using vda5050_msgs::msg::NodeState;
 using vda5050_msgs::msg::OptionalParameters;
+using vda5050_msgs::msg::Order;
 using vda5050_msgs::msg::PhysicalParameters;
 using vda5050_msgs::msg::PolygonPoint;
 using vda5050_msgs::msg::Position;
@@ -124,8 +130,8 @@ using SerializableTypes = ::testing::Types<
   ControlPoint, EdgeState, Envelope2d, Envelope3d, Error, ErrorReference,
   Factsheet, FactsheetActionParameter, Header, Info, InfoReference,
   InstantActions, Load, LoadDimensions, LoadSet, LoadSpecification,
-  MaxArrayLens, MaxStringLens, Network, NodePosition, NodeState,
-  OptionalParameters, PhysicalParameters, PolygonPoint, Position,
+  MaxArrayLens, MaxStringLens, Network, Node, NodePosition, NodeState,
+  OptionalParameters, Order, PhysicalParameters, PolygonPoint, Position,
   ProtocolFeatures, ProtocolLimits, SafetyState, State, Timing, Trajectory,
   TypeSpecification, VehicleConfig, Velocity, VersionInfo, Visualization,
   WheelDefinition>;
