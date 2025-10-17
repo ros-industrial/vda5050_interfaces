@@ -23,12 +23,9 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/bounding_box_reference.hpp"
-#include "vda5050_msgs/msg/load.hpp"
-#include "vda5050_msgs/msg/load_dimensions.hpp"
-
 #include "vda5050_msgs/json_utils/bounding_box_reference.hpp"
 #include "vda5050_msgs/json_utils/load_dimensions.hpp"
+#include "vda5050_msgs/msg/load.hpp"
 
 namespace vda5050_msgs {
 

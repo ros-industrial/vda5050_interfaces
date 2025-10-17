@@ -23,10 +23,8 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/control_point.hpp"
-#include "vda5050_msgs/msg/trajectory.hpp"
-
 #include "vda5050_msgs/json_utils/control_point.hpp"
+#include "vda5050_msgs/msg/trajectory.hpp"
 
 namespace vda5050_msgs {
 

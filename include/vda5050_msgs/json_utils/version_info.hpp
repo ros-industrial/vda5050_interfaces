@@ -19,8 +19,9 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__VERSION_INFO_HPP_
 #define VDA5050_MSGS__JSON_UTILS__VERSION_INFO_HPP_
 
-#include <nlohmann/json.hpp>
 #include <string>
+
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/msg/version_info.hpp"
 

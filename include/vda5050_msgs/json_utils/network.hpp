@@ -19,9 +19,10 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__NETWORK_HPP_
 #define VDA5050_MSGS__JSON_UTILS__NETWORK_HPP_
 
-#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
+
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/msg/network.hpp"
 

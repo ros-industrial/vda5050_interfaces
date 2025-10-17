@@ -19,8 +19,9 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__FACTSHEET_ACTION_PARAMETER_HPP_
 #define VDA5050_MSGS__JSON_UTILS__FACTSHEET_ACTION_PARAMETER_HPP_
 
-#include <nlohmann/json.hpp>
 #include <string>
+
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/msg/factsheet_action_parameter.hpp"
 
@@ -100,4 +101,4 @@ void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  /// VDA5050_MSGS__JSON_UTILS__FACTSHEET_ACTION_PARAMETER_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__FACTSHEET_ACTION_PARAMETER_HPP_

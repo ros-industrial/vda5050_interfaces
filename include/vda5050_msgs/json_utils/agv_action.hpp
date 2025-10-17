@@ -19,9 +19,10 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__AGV_ACTION_HPP_
 #define VDA5050_MSGS__JSON_UTILS__AGV_ACTION_HPP_
 
-#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
+
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/factsheet_action_parameter.hpp"
 #include "vda5050_msgs/msg/agv_action.hpp"

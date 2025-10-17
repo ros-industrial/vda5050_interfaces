@@ -21,11 +21,10 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/header.hpp"
-#include "vda5050_msgs/msg/visualization.hpp"
-
 #include "vda5050_msgs/json_utils/agv_position.hpp"
 #include "vda5050_msgs/json_utils/velocity.hpp"
+#include "vda5050_msgs/msg/header.hpp"
+#include "vda5050_msgs/msg/visualization.hpp"
 
 namespace vda5050_msgs {
 

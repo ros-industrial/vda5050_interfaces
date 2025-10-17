@@ -19,8 +19,9 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__WHEEL_DEFINITION_HPP_
 #define VDA5050_MSGS__JSON_UTILS__WHEEL_DEFINITION_HPP_
 
-#include <nlohmann/json.hpp>
 #include <string>
+
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/json_utils/position.hpp"
 #include "vda5050_msgs/msg/wheel_definition.hpp"

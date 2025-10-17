@@ -19,9 +19,10 @@
 #ifndef VDA5050_MSGS__JSON_UTILS__TYPE_SPECIFICATION_HPP_
 #define VDA5050_MSGS__JSON_UTILS__TYPE_SPECIFICATION_HPP_
 
-#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
+
+#include <nlohmann/json.hpp>
 
 #include "vda5050_msgs/msg/type_specification.hpp"
 

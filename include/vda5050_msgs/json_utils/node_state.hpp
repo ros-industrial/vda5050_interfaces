@@ -23,10 +23,8 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/node_position.hpp"
-#include "vda5050_msgs/msg/node_state.hpp"
-
 #include "vda5050_msgs/json_utils/node_position.hpp"
+#include "vda5050_msgs/msg/node_state.hpp"
 
 namespace vda5050_msgs {
 
