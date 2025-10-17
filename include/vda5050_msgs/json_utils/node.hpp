@@ -81,4 +81,4 @@ void from_json(const nlohmann::json& j, Node& msg)
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__NODE_HPP
+#endif  // VDA5050_MSGS__JSON_UTILS__NODE_HPP_
