@@ -82,8 +82,8 @@ using SerializableTypes = ::testing::Types<
   Action, ActionParameter, ActionParameterValue, ActionState, AGVPosition,
   BatteryState, BoundingBoxReference, Connection, ControlPoint, Edge, EdgeState,
   Error, ErrorReference, Header, Info, InfoReference, InstantActions, Load,
-  LoadDimensions, Node, NodePosition, NodeState, Order, SafetyState, State, Trajectory,
-  Velocity, Visualization>;
+  LoadDimensions, Node, NodePosition, NodeState, Order, SafetyState, State,
+  Trajectory, Velocity, Visualization>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test
