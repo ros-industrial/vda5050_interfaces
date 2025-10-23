@@ -28,7 +28,7 @@ Use with caution in production environments.
 
 - `vda5050_interfaces::msg::Connection`
 
-- `vda5050_msgs::msg::Header` is a shared field across all VDA 5050 messages.
+- `vda5050_interfaces::msg::Header` is a shared field across all VDA 5050 messages.
 
 ## Usage
 
@@ -39,7 +39,7 @@ Use with caution in production environments.
 ```bash
 mkdir -p colcon_ws/src
 cd colcon_ws/src
-git clone https://github.com/ros-industrial/vda5050_msgs.git
+git clone https://github.com/ros-industrial/vda5050_interfaces.git
 ```
 
 2. Download dependencies and build the workspace
@@ -57,12 +57,12 @@ Link the JSON utility library in your `CMakeLists.txt`:
 ```
 target_link_libraries(example
   PUBLIC
-    ${vda5050_msgs_LIBRARIES}
+    ${vda5050_interfaces_LIBRARIES}
 )
 
 target_include_directories(example
   PUBLIC
-    ${vda5050_msgs_INCLUDE_DIRS}
+    ${vda5050_interfaces_INCLUDE_DIRS}
 )
 ```
 
@@ -73,10 +73,10 @@ target_include_directories(example
 
 #include <nlohmann/json.hpp>
 
-#include <vda5050_msgs/json_utils/header.hpp>
-#include <vda5050_msgs/msg/header.hpp>
+#include <vda5050_interfaces/json_utils/header.hpp>
+#include <vda5050_interfaces/msg/header.hpp>
 
-vda5050_msgs::msg::Header header;
+vda5050_interfaces::msg::Header header;
 header.header_id = 0;
 
 // Timestamp in milliseconds in UTC indicating a specific point relative to
@@ -97,7 +97,7 @@ header.serial_number = "S0001";
 nlohmann::json j = header;
 
 // Deserialize from JSON
-vda5050_msgs::msg::Header header_deserialized = j;
+vda5050_interfaces::msg::Header header_deserialized = j;
 ```
 
 ## Support
