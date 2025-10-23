@@ -16,23 +16,23 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__ERROR_HPP_
-#define VDA5050_MSGS__JSON_UTILS__ERROR_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__ERROR_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__ERROR_HPP_
 
 #include <string>
 #include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/error_reference.hpp"
-#include "vda5050_msgs/msg/error.hpp"
+#include "vda5050_interfaces/json_utils/error_reference.hpp"
+#include "vda5050_interfaces/msg/error.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::Error object to a
+/// \brief Convert a vda5050_interfaces::msg::Error object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
@@ -66,7 +66,7 @@ void to_json(nlohmann::json& j, const Error& msg)
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::Error object from a
+/// \brief Populate a vda5050_interfaces::msg::Error object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
@@ -103,6 +103,6 @@ void from_json(const nlohmann::json& j, Error& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__ERROR_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__ERROR_HPP_

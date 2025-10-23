@@ -16,88 +16,80 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__NODE_POSITION_HPP_
-#define VDA5050_MSGS__JSON_UTILS__NODE_POSITION_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__AGV_POSITION_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__AGV_POSITION_HPP_
 
 #include <string>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/node_position.hpp"
+#include "vda5050_interfaces/msg/agv_position.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::NodePosition object to a
+/// \brief Convert a vda5050_interfaces::msg::AGVPosition object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const NodePosition& msg)
+void to_json(nlohmann::json& j, const AGVPosition& msg)
 {
   j["x"] = msg.x;
   j["y"] = msg.y;
+  j["theta"] = msg.theta;
   j["mapId"] = msg.map_id;
-
-  if (!msg.theta.empty())
-  {
-    j["theta"] = msg.theta.front();
-  }
-
-  if (!msg.allowed_deviation_x_y.empty())
-  {
-    j["allowedDeviationXY"] = msg.allowed_deviation_x_y.front();
-  }
-
-  if (!msg.allowed_deviation_theta.empty())
-  {
-    j["allowedDeviationTheta"] = msg.allowed_deviation_theta.front();
-  }
+  j["positionInitialized"] = msg.position_initialized;
 
   if (!msg.map_description.empty())
   {
     j["mapDescription"] = msg.map_description.front();
   }
+
+  if (!msg.localization_score.empty())
+  {
+    j["localizationScore"] = msg.localization_score.front();
+  }
+
+  if (!msg.deviation_range.empty())
+  {
+    j["deviationRange"] = msg.deviation_range.front();
+  }
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::NodePosition object from a
+/// \brief Populate a vda5050_interfaces::msg::AGVPosition object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, NodePosition& msg)
+void from_json(const nlohmann::json& j, AGVPosition& msg)
 {
   msg.x = j.at("x").get<double>();
   msg.y = j.at("y").get<double>();
+  msg.theta = j.at("theta").get<double>();
   msg.map_id = j.at("mapId").get<std::string>();
-
-  if (j.contains("theta"))
-  {
-    msg.theta.push_back(j.at("theta").get<double>());
-  }
-
-  if (j.contains("allowedDeviationXY"))
-  {
-    msg.allowed_deviation_x_y.push_back(
-      j.at("allowedDeviationXY").get<double>());
-  }
-
-  if (j.contains("allowedDeviationTheta"))
-  {
-    msg.allowed_deviation_theta.push_back(
-      j.at("allowedDeviationTheta").get<double>());
-  }
+  msg.position_initialized = j.at("positionInitialized").get<bool>();
 
   if (j.contains("mapDescription"))
   {
     msg.map_description.push_back(j.at("mapDescription").get<std::string>());
   }
+
+  if (j.contains("localizationScore"))
+  {
+    msg.localization_score.push_back(j.at("localizationScore").get<double>());
+  }
+
+  if (j.contains("deviationRange"))
+  {
+    msg.deviation_range.push_back(j.at("deviationRange").get<double>());
+  }
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__NODE_POSITION_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__AGV_POSITION_HPP_

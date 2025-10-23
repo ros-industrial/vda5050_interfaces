@@ -16,64 +16,72 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__VISUALIZATION_HPP_
-#define VDA5050_MSGS__JSON_UTILS__VISUALIZATION_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__BATTERY_STATE_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__BATTERY_STATE_HPP_
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/header.hpp"
-#include "vda5050_msgs/msg/visualization.hpp"
+#include "vda5050_interfaces/msg/battery_state.hpp"
 
-#include "vda5050_msgs/json_utils/agv_position.hpp"
-#include "vda5050_msgs/json_utils/velocity.hpp"
-
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::Visualization object to a
+/// \brief Convert a vda5050_interfaces::msg::BatteryState object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const Visualization& msg)
+void to_json(nlohmann::json& j, const BatteryState& msg)
 {
-  to_json(j, msg.header);
+  j["batteryCharge"] = msg.battery_charge;
+  j["charging"] = msg.charging;
 
-  if (!msg.agv_position.empty())
+  if (!msg.battery_voltage.empty())
   {
-    j["agvPosition"] = msg.agv_position.front();
+    j["batteryVoltage"] = msg.battery_voltage.front();
   }
 
-  if (!msg.velocity.empty())
+  if (!msg.battery_health.empty())
   {
-    j["velocity"] = msg.velocity.front();
+    j["batteryHealth"] = msg.battery_health.front();
+  }
+
+  if (!msg.reach.empty())
+  {
+    j["reach"] = msg.reach.front();
   }
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::Visualization object from a
+/// \brief Populate a vda5050_interfaces::msg::BatteryState object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, Visualization& msg)
+void from_json(const nlohmann::json& j, BatteryState& msg)
 {
-  from_json(j, msg.header);
+  msg.battery_charge = j.at("batteryCharge").get<double>();
+  msg.charging = j.at("charging").get<bool>();
 
-  if (j.contains("agvPosition"))
+  if (j.contains("batteryVoltage"))
   {
-    msg.agv_position.push_back(j.at("agvPosition").get<AGVPosition>());
+    msg.battery_voltage.push_back(j.at("batteryVoltage").get<double>());
   }
 
-  if (j.contains("velocity"))
+  if (j.contains("batteryHealth"))
   {
-    msg.velocity.push_back(j.at("velocity").get<Velocity>());
+    msg.battery_health.push_back(j.at("batteryHealth").get<int8_t>());
+  }
+
+  if (j.contains("reach"))
+  {
+    msg.reach.push_back(j.at("reach").get<uint32_t>());
   }
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__VISUALIZATION_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__BATTERY_STATE_HPP_

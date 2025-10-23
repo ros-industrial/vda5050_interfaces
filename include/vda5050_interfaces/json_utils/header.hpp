@@ -16,24 +16,24 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__HEADER_HPP_
-#define VDA5050_MSGS__JSON_UTILS__HEADER_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__HEADER_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__HEADER_HPP_
 
 #include <limits>
 #include <string>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/header.hpp"
+#include "vda5050_interfaces/msg/header.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 constexpr const char* ISO8601_FORMAT = "%Y-%m-%dT%H:%M:%S";
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::Header object to a
+/// \brief Convert a vda5050_interfaces::msg::Header object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
@@ -69,7 +69,7 @@ void to_json(nlohmann::json& j, const Header& msg)
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::Header object from a
+/// \brief Populate a vda5050_interfaces::msg::Header object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized header data
@@ -143,6 +143,6 @@ void from_json(const nlohmann::json& j, Header& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__HEADER_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__HEADER_HPP_

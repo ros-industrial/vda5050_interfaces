@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>vda5050_msgs</name>
+  <name>vda5050_interfaces</name>
   <version>0.0.0</version>
   <description>ROS 2 messages and JSON utilities for the VDA 5050 message schema</description>
   <maintainer email="saurabh_kamat@artc.a-star.edu.sg">Saurabh Kamat</maintainer>

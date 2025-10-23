@@ -16,24 +16,24 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__INFO_HPP_
-#define VDA5050_MSGS__JSON_UTILS__INFO_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__INFO_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__INFO_HPP_
 
 #include <string>
 #include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/info_reference.hpp"
-#include "vda5050_msgs/msg/info.hpp"
-#include "vda5050_msgs/msg/info_reference.hpp"
+#include "vda5050_interfaces/json_utils/info_reference.hpp"
+#include "vda5050_interfaces/msg/info.hpp"
+#include "vda5050_interfaces/msg/info_reference.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::Info object to a
+/// \brief Convert a vda5050_interfaces::msg::Info object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
@@ -67,7 +67,7 @@ void to_json(nlohmann::json& j, const Info& msg)
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::Info object from a
+/// \brief Populate a vda5050_interfaces::msg::Info object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
@@ -102,6 +102,6 @@ void from_json(const nlohmann::json& j, Info& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__INFO_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__INFO_HPP_

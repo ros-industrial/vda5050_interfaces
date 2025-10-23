@@ -16,52 +16,49 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__LOAD_DIMENSIONS_HPP_
-#define VDA5050_MSGS__JSON_UTILS__LOAD_DIMENSIONS_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__TRAJECTORY_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__TRAJECTORY_HPP_
+
+#include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/load_dimensions.hpp"
+#include "vda5050_interfaces/msg/control_point.hpp"
+#include "vda5050_interfaces/msg/trajectory.hpp"
 
-namespace vda5050_msgs {
+#include "vda5050_interfaces/json_utils/control_point.hpp"
+
+namespace vda5050_interfaces {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::LoadDimensions object to a
+/// \brief Convert a vda5050_interfaces::msg::Trajectory object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const LoadDimensions& msg)
+void to_json(nlohmann::json& j, const Trajectory& msg)
 {
-  j["length"] = msg.length;
-  j["width"] = msg.width;
-
-  if (!msg.height.empty())
-  {
-    j["height"] = msg.height.front();
-  }
+  j["knotVector"] = msg.knot_vector;
+  j["controlPoints"] = msg.control_points;
+  j["degree"] = msg.degree;
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::LoadDimensions object from a
+/// \brief Populate a vda5050_interfaces::msg::Trajectory object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, LoadDimensions& msg)
+void from_json(const nlohmann::json& j, Trajectory& msg)
 {
-  msg.length = j.at("length").get<double>();
-  msg.width = j.at("width").get<double>();
-
-  if (j.contains("height"))
-  {
-    msg.height.push_back(j.at("height").get<double>());
-  }
+  msg.knot_vector = j.at("knotVector").get<std::vector<double>>();
+  msg.control_points = j.at("controlPoints").get<std::vector<ControlPoint>>();
+  msg.degree = j.at("degree").get<double>();
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__LOAD_DIMENSIONS_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__TRAJECTORY_HPP_

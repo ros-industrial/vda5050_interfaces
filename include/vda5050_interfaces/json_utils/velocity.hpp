@@ -16,69 +16,66 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__EDGE_STATE_HPP_
-#define VDA5050_MSGS__JSON_UTILS__EDGE_STATE_HPP_
-
-#include <string>
+#ifndef VDA5050_INTERFACES__JSON_UTILS__VELOCITY_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__VELOCITY_HPP_
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/edge_state.hpp"
-#include "vda5050_msgs/msg/trajectory.hpp"
+#include "vda5050_interfaces/msg/velocity.hpp"
 
-#include "vda5050_msgs/json_utils/trajectory.hpp"
-
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::EdgeState object to a
+/// \brief Convert a vda5050_interfaces::msg::Velocity object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const EdgeState& msg)
+void to_json(nlohmann::json& j, const Velocity& msg)
 {
-  j["edgeId"] = msg.edge_id;
-  j["sequenceId"] = msg.sequence_id;
-  j["released"] = msg.released;
-
-  if (!msg.edge_description.empty())
+  if (!msg.vx.empty())
   {
-    j["edgeDescription"] = msg.edge_description.front();
+    j["vx"] = msg.vx.front();
   }
 
-  if (!msg.trajectory.empty())
+  if (!msg.vy.empty())
   {
-    j["trajectory"] = msg.trajectory.front();
+    j["vy"] = msg.vy.front();
+  }
+
+  if (!msg.omega.empty())
+  {
+    j["omega"] = msg.omega.front();
   }
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::EdgeState object from a
+/// \brief Populate a vda5050_interfaces::msg::Velocity object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, EdgeState& msg)
+void from_json(const nlohmann::json& j, Velocity& msg)
 {
-  msg.edge_id = j.at("edgeId").get<std::string>();
-  msg.sequence_id = j.at("sequenceId").get<uint32_t>();
-  msg.released = j.at("released").get<bool>();
-
-  if (j.contains("edgeDescription"))
+  if (j.contains("vx"))
   {
-    msg.edge_description.push_back(j.at("edgeDescription").get<std::string>());
+    msg.vx.push_back(j.at("vx").get<double>());
   }
 
-  if (j.contains("trajectory"))
+  if (j.contains("vy"))
   {
-    msg.trajectory.push_back(j.at("trajectory").get<Trajectory>());
+    msg.vy.push_back(j.at("vy").get<double>());
+  }
+
+  if (j.contains("omega"))
+  {
+    msg.omega.push_back(j.at("omega").get<double>());
   }
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__EDGE_STATE_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__VELOCITY_HPP_

@@ -16,42 +16,42 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__STATE_HPP_
-#define VDA5050_MSGS__JSON_UTILS__STATE_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__STATE_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__STATE_HPP_
 
 #include <string>
 #include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/header.hpp"
-#include "vda5050_msgs/msg/state.hpp"
+#include "vda5050_interfaces/msg/header.hpp"
+#include "vda5050_interfaces/msg/state.hpp"
 
-#include "vda5050_msgs/json_utils/action_state.hpp"
-#include "vda5050_msgs/json_utils/agv_position.hpp"
-#include "vda5050_msgs/json_utils/battery_state.hpp"
-#include "vda5050_msgs/json_utils/bounding_box_reference.hpp"
-#include "vda5050_msgs/json_utils/control_point.hpp"
-#include "vda5050_msgs/json_utils/edge_state.hpp"
-#include "vda5050_msgs/json_utils/error.hpp"
-#include "vda5050_msgs/json_utils/error_reference.hpp"
-#include "vda5050_msgs/json_utils/header.hpp"
-#include "vda5050_msgs/json_utils/info.hpp"
-#include "vda5050_msgs/json_utils/info_reference.hpp"
-#include "vda5050_msgs/json_utils/load.hpp"
-#include "vda5050_msgs/json_utils/load_dimensions.hpp"
-#include "vda5050_msgs/json_utils/node_position.hpp"
-#include "vda5050_msgs/json_utils/node_state.hpp"
-#include "vda5050_msgs/json_utils/safety_state.hpp"
-#include "vda5050_msgs/json_utils/trajectory.hpp"
-#include "vda5050_msgs/json_utils/velocity.hpp"
+#include "vda5050_interfaces/json_utils/action_state.hpp"
+#include "vda5050_interfaces/json_utils/agv_position.hpp"
+#include "vda5050_interfaces/json_utils/battery_state.hpp"
+#include "vda5050_interfaces/json_utils/bounding_box_reference.hpp"
+#include "vda5050_interfaces/json_utils/control_point.hpp"
+#include "vda5050_interfaces/json_utils/edge_state.hpp"
+#include "vda5050_interfaces/json_utils/error.hpp"
+#include "vda5050_interfaces/json_utils/error_reference.hpp"
+#include "vda5050_interfaces/json_utils/header.hpp"
+#include "vda5050_interfaces/json_utils/info.hpp"
+#include "vda5050_interfaces/json_utils/info_reference.hpp"
+#include "vda5050_interfaces/json_utils/load.hpp"
+#include "vda5050_interfaces/json_utils/load_dimensions.hpp"
+#include "vda5050_interfaces/json_utils/node_position.hpp"
+#include "vda5050_interfaces/json_utils/node_state.hpp"
+#include "vda5050_interfaces/json_utils/safety_state.hpp"
+#include "vda5050_interfaces/json_utils/trajectory.hpp"
+#include "vda5050_interfaces/json_utils/velocity.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::State object to a
+/// \brief Convert a vda5050_interfaces::msg::State object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
@@ -131,7 +131,7 @@ void to_json(nlohmann::json& j, const State& msg)
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::State object from a
+/// \brief Populate a vda5050_interfaces::msg::State object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
@@ -213,6 +213,6 @@ void from_json(const nlohmann::json& j, State& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__STATE_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__STATE_HPP_

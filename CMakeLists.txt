@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(vda5050_msgs)
+project(vda5050_interfaces)
 
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
@@ -50,8 +50,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 
 install(
-  DIRECTORY include/vda5050_msgs/json_utils
-  DESTINATION include/vda5050_msgs/vda5050_msgs
+  DIRECTORY include/vda5050_interfaces/json_utils
+  DESTINATION include/vda5050_interfaces/vda5050_interfaces
 )
 
 ament_export_dependencies(

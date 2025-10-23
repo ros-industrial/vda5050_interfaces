@@ -16,49 +16,48 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__TRAJECTORY_HPP_
-#define VDA5050_MSGS__JSON_UTILS__TRAJECTORY_HPP_
-
-#include <vector>
+#ifndef VDA5050_INTERFACES__JSON_UTILS__CONTROL_POINT_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__CONTROL_POINT_HPP_
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/control_point.hpp"
-#include "vda5050_msgs/msg/trajectory.hpp"
+#include "vda5050_interfaces/msg/control_point.hpp"
 
-#include "vda5050_msgs/json_utils/control_point.hpp"
-
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_msgs::msg::Trajectory object to a
+/// \brief Convert a vda5050_interfaces::msg::ControlPoint object to a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const Trajectory& msg)
+void to_json(nlohmann::json& j, const ControlPoint& msg)
 {
-  j["knotVector"] = msg.knot_vector;
-  j["controlPoints"] = msg.control_points;
-  j["degree"] = msg.degree;
+  j["x"] = msg.x;
+  j["y"] = msg.y;
+  j["weight"] = msg.weight;
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_msgs::msg::Trajectory object from a
+/// \brief Populate a vda5050_interfaces::msg::ControlPoint object from a
 /// nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, Trajectory& msg)
+void from_json(const nlohmann::json& j, ControlPoint& msg)
 {
-  msg.knot_vector = j.at("knotVector").get<std::vector<double>>();
-  msg.control_points = j.at("controlPoints").get<std::vector<ControlPoint>>();
-  msg.degree = j.at("degree").get<double>();
+  msg.x = j.at("x").get<double>();
+  msg.y = j.at("y").get<double>();
+
+  if (j.contains("weight"))
+  {
+    msg.weight = j.at("weight").get<double>();
+  }
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__TRAJECTORY_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__CONTROL_POINT_HPP_
