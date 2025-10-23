@@ -40,7 +40,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize infoLevel
-void to_json(nlohmann::json& j, const Info& msg)
+inline void to_json(nlohmann::json& j, const Info& msg)
 {
   j["infoType"] = msg.info_type;
 
@@ -74,7 +74,7 @@ void to_json(nlohmann::json& j, const Info& msg)
 /// \param msg Reference to the message object to populate
 ///
 /// \throws std::runtime_error If failed to deserialize infoLevel
-void from_json(const nlohmann::json& j, Info& msg)
+inline void from_json(const nlohmann::json& j, Info& msg)
 {
   msg.info_type = j.at("infoType").get<std::string>();
 

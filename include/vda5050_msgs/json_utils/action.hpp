@@ -37,7 +37,7 @@ namespace msg {
 /// \param msg Reference to the messge object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize blockingType
-void to_json(nlohmann::json& j, const Action& msg)
+inline void to_json(nlohmann::json& j, const Action& msg)
 {
   j["actionType"] = msg.action_type;
   j["actionId"] = msg.action_id;
@@ -72,7 +72,7 @@ void to_json(nlohmann::json& j, const Action& msg)
 /// \param msg Reference to the Action message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize blockingType
-void from_json(const nlohmann::json& j, Action& msg)
+inline void from_json(const nlohmann::json& j, Action& msg)
 {
   msg.action_type = j.at("actionType").get<std::string>();
   msg.action_id = j.at("actionId").get<std::string>();

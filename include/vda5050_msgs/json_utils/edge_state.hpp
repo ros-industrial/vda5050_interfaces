@@ -38,7 +38,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const EdgeState& msg)
+inline void to_json(nlohmann::json& j, const EdgeState& msg)
 {
   j["edgeId"] = msg.edge_id;
   j["sequenceId"] = msg.sequence_id;
@@ -61,7 +61,7 @@ void to_json(nlohmann::json& j, const EdgeState& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, EdgeState& msg)
+inline void from_json(const nlohmann::json& j, EdgeState& msg)
 {
   msg.edge_id = j.at("edgeId").get<std::string>();
   msg.sequence_id = j.at("sequenceId").get<uint32_t>();

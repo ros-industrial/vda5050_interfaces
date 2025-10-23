@@ -33,7 +33,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const LoadDimensions& msg)
+inline void to_json(nlohmann::json& j, const LoadDimensions& msg)
 {
   j["length"] = msg.length;
   j["width"] = msg.width;
@@ -50,7 +50,7 @@ void to_json(nlohmann::json& j, const LoadDimensions& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, LoadDimensions& msg)
+inline void from_json(const nlohmann::json& j, LoadDimensions& msg)
 {
   msg.length = j.at("length").get<double>();
   msg.width = j.at("width").get<double>();

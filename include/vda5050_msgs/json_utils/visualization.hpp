@@ -37,7 +37,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const Visualization& msg)
+inline void to_json(nlohmann::json& j, const Visualization& msg)
 {
   to_json(j, msg.header);
 
@@ -58,7 +58,7 @@ void to_json(nlohmann::json& j, const Visualization& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, Visualization& msg)
+inline void from_json(const nlohmann::json& j, Visualization& msg)
 {
   from_json(j, msg.header);
 

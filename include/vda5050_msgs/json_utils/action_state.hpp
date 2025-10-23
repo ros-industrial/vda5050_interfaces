@@ -37,7 +37,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize actionStatus
-void to_json(nlohmann::json& j, const ActionState& msg)
+inline void to_json(nlohmann::json& j, const ActionState& msg)
 {
   j["actionId"] = msg.action_id;
 
@@ -80,7 +80,7 @@ void to_json(nlohmann::json& j, const ActionState& msg)
 /// \param msg Reference to the message object to populate
 ///
 /// \throws std::runtime_error If failed to deserialize actionStatus
-void from_json(const nlohmann::json& j, ActionState& msg)
+inline void from_json(const nlohmann::json& j, ActionState& msg)
 {
   msg.action_id = j.at("actionId").get<std::string>();
 

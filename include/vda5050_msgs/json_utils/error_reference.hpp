@@ -35,7 +35,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const ErrorReference& msg)
+inline void to_json(nlohmann::json& j, const ErrorReference& msg)
 {
   j["referenceKey"] = msg.reference_key;
   j["referenceValue"] = msg.reference_value;
@@ -47,7 +47,7 @@ void to_json(nlohmann::json& j, const ErrorReference& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, ErrorReference& msg)
+inline void from_json(const nlohmann::json& j, ErrorReference& msg)
 {
   msg.reference_key = j.at("referenceKey").get<std::string>();
   msg.reference_value = j.at("referenceValue").get<std::string>();

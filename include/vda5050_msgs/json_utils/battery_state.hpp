@@ -33,7 +33,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const BatteryState& msg)
+inline void to_json(nlohmann::json& j, const BatteryState& msg)
 {
   j["batteryCharge"] = msg.battery_charge;
   j["charging"] = msg.charging;
@@ -60,7 +60,7 @@ void to_json(nlohmann::json& j, const BatteryState& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, BatteryState& msg)
+inline void from_json(const nlohmann::json& j, BatteryState& msg)
 {
   msg.battery_charge = j.at("batteryCharge").get<double>();
   msg.charging = j.at("charging").get<bool>();

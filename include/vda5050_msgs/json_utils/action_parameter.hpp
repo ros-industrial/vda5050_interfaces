@@ -34,7 +34,7 @@ namespace msg {
 ///
 /// \param j Reference to a JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const ActionParameter& msg)
+inline void to_json(nlohmann::json& j, const ActionParameter& msg)
 {
   j["key"] = msg.key;
   j["value"] = msg.value;
@@ -45,7 +45,7 @@ void to_json(nlohmann::json& j, const ActionParameter& msg)
 ///
 /// \param j Reference to the JSON object containing serialized ActionParameter data
 /// \param msg Reference to the ActionParameter message to populate
-void from_json(const nlohmann::json& j, ActionParameter& msg)
+inline void from_json(const nlohmann::json& j, ActionParameter& msg)
 {
   msg.key = j.at("key").get<std::string>();
   msg.value = j.at("value").get<ActionParameterValue>();

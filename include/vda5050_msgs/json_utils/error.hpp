@@ -39,7 +39,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize errorLevel
-void to_json(nlohmann::json& j, const Error& msg)
+inline void to_json(nlohmann::json& j, const Error& msg)
 {
   j["errorType"] = msg.error_type;
 
@@ -73,7 +73,7 @@ void to_json(nlohmann::json& j, const Error& msg)
 /// \param msg Reference to the message object to populate
 ///
 /// \throws std::runtime_error If failed to deserialize errorLevel
-void from_json(const nlohmann::json& j, Error& msg)
+inline void from_json(const nlohmann::json& j, Error& msg)
 {
   msg.error_type = j.at("errorType").get<std::string>();
 

@@ -36,7 +36,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const InstantActions& msg)
+inline void to_json(nlohmann::json& j, const InstantActions& msg)
 {
   to_json(j, msg.header);
 
@@ -48,7 +48,7 @@ void to_json(nlohmann::json& j, const InstantActions& msg)
 ///
 /// \param j Reference to the JSON object containing serialized InstantAction data
 /// \param msg Reference to the InstantAction object to be populated
-void from_json(const nlohmann::json& j, InstantActions& msg)
+inline void from_json(const nlohmann::json& j, InstantActions& msg)
 {
   from_json(j, msg.header);
 
