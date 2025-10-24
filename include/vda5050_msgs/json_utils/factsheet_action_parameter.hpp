@@ -41,9 +41,9 @@ void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
   j["key"] = msg.key;
 
   if (
-    msg.value_data_type == "BOOL" || msg.value_data_type == "NUMBER" ||
-    msg.value_data_type == "INTEGER" || msg.value_data_type == "FLOAT" ||
-    msg.value_data_type == "OBJECT" || msg.value_data_type == "ARRAY")
+    msg.value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_BOOL || msg.value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_NUMBER ||
+    msg.value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_INTEGER || msg.value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_FLOAT ||
+    msg.value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_OBJECT || msg.value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_ARRAY)
   {
     j["valueDataType"] = msg.value_data_type;
   }
@@ -76,9 +76,9 @@ void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
 
   auto value_data_type = j.at("valueDataType").get<std::string>();
   if (
-    value_data_type == "BOOL" || value_data_type == "NUMBER" ||
-    value_data_type == "INTEGER" || value_data_type == "FLOAT" ||
-    value_data_type == "OBJECT" || value_data_type == "ARRAY")
+    value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_BOOL || value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_NUMBER ||
+    value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_INTEGER || value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_FLOAT ||
+    value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_OBJECT || value_data_type == FactsheetActionParameter::VALUE_DATA_TYPE_ARRAY)
   {
     msg.value_data_type = value_data_type;
   }
