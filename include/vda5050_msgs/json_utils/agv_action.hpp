@@ -71,7 +71,7 @@ void to_json(nlohmann::json& j, const AGVAction& msg)
   {
     for (std::string type : msg.blocking_types)
     {
-      if (type != "NONE" && type != "SOFT" && type != "HARD")
+      if (type != AGVAction::BLOCKING_TYPES_NONE && type != AGVAction::BLOCKING_TYPE_SOFT && type != AGVAction::BLOCKING_TYPES_HARD)
       {
         throw std::runtime_error(
           "Serialization error: Unexpected type in blocking_types");
@@ -128,7 +128,7 @@ void from_json(const nlohmann::json& j, AGVAction& msg)
     auto blocking_types = j.at("blockingTypes").get<std::vector<std::string>>();
     for (std::string type : blocking_types)
     {
-      if (type != "NONE" && type != "SOFT" && type != "HARD")
+      if (type != AGVAction::BLOCKING_TYPES_NONE && type != AGVAction::BLOCKING_TYPE_SOFT && type != AGVAction::BLOCKING_TYPES_HARD)
       {
         throw std::runtime_error(
           "JSON parsing error: Unexpected type in blocking_types");
