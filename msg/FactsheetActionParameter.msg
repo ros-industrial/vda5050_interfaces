@@ -1,5 +1,4 @@
-# NOTE: This message is different from ActionParameter.msg used in Order.msg 
-# TODO: (sauk2) should we rename ActionParameter.msg (in the Order message) to OrderActionParameter.msg for consistency with how we're naming it here?
+# NOTE: This message is different from ActionParameter.msg used in Order.msg
 # Parameters that an action has.
 
 # Key string for the parameter
