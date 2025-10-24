@@ -57,7 +57,8 @@ void to_json(nlohmann::json& j, const ActionParameterValue& msg)
 }
 
 //=============================================================================
-/// \brief Populate a vda5050_interfaces::msg::ActionParameterValue object from a nlohmann::json object
+/// \brief Populate a vda5050_interfaces::msg::ActionParameterValue object from
+/// a nlohmann::json object
 ///
 /// \param j Reference to the JSON object containing serialized parameter value data
 /// \param msg Reference to the ActionParameterValue message to populate
