@@ -125,10 +125,10 @@ using vda5050_msgs::msg::WheelDefinition;
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<
-  Action, ActionParameter, ActionParameterValue, ActionState, AGVAction,
-  AGVGeometry, AGVPosition, BatteryState, BoundingBoxReference, Connection,
-  ControlPoint, EdgeState, Envelope2d, Envelope3d, Error, ErrorReference,
-  Factsheet, ActionParameterFactsheet, Header, Info, InfoReference,
+  Action, ActionParameter, ActionParameterFactsheet, ActionParameterValue,
+  ActionState, AGVAction, AGVGeometry, AGVPosition, BatteryState,
+  BoundingBoxReference, Connection, ControlPoint, EdgeState, Envelope2d,
+  Envelope3d, Error, ErrorReference, Factsheet, Header, Info, InfoReference,
   InstantActions, Load, LoadDimensions, LoadSet, LoadSpecification,
   MaxArrayLens, MaxStringLens, Network, Node, NodePosition, NodeState,
   OptionalParameters, Order, PhysicalParameters, PolygonPoint, Position,
