@@ -34,7 +34,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the Envelope3d message object to serialize
-void to_json(nlohmann::json& j, const Envelope3d& msg)
+inline void to_json(nlohmann::json& j, const Envelope3d& msg)
 {
   j["set"] = msg.set;
   j["format"] = msg.format;
@@ -60,7 +60,7 @@ void to_json(nlohmann::json& j, const Envelope3d& msg)
 ///
 /// \param j Reference to the JSON object containing serialized Envelope3d data
 /// \param msg Reference to the Envelope3d message to populate
-void from_json(const nlohmann::json& j, Envelope3d& msg)
+inline void from_json(const nlohmann::json& j, Envelope3d& msg)
 {
   msg.set = j.at("set").get<std::string>();
   msg.format = j.at("format").get<std::string>();

@@ -37,7 +37,7 @@ namespace msg {
 /// \param msg Reference to the TypeSpecification message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize agv_kinematic or agv_class field
-void to_json(nlohmann::json& j, const TypeSpecification& msg)
+inline void to_json(nlohmann::json& j, const TypeSpecification& msg)
 {
   j["seriesName"] = msg.series_name;
 
@@ -80,7 +80,7 @@ void to_json(nlohmann::json& j, const TypeSpecification& msg)
 /// \param msg Reference to the TypeSpecification message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize agv_kinematic or agv_class field
-void from_json(const nlohmann::json& j, TypeSpecification& msg)
+inline void from_json(const nlohmann::json& j, TypeSpecification& msg)
 {
   msg.series_name = j.at("seriesName").get<std::string>();
 

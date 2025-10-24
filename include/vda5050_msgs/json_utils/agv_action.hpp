@@ -38,7 +38,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize action_scopes or blocking_types
-void to_json(nlohmann::json& j, const AGVAction& msg)
+inline void to_json(nlohmann::json& j, const AGVAction& msg)
 {
   j["actionType"] = msg.action_type;
 
@@ -89,7 +89,7 @@ void to_json(nlohmann::json& j, const AGVAction& msg)
 /// \param msg Reference to the AGVAction message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize action_scopes or blocking_types
-void from_json(const nlohmann::json& j, AGVAction& msg)
+inline void from_json(const nlohmann::json& j, AGVAction& msg)
 {
   msg.action_type = j.at("actionType").get<std::string>();
 

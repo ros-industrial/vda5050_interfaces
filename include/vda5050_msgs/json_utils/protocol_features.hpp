@@ -36,7 +36,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the ProtocolFeatures message object to serialize
-void to_json(nlohmann::json& j, const ProtocolFeatures& msg)
+inline void to_json(nlohmann::json& j, const ProtocolFeatures& msg)
 {
   j["optionalParameters"] = msg.optional_parameters;
   j["agvActions"] = msg.agv_actions;
@@ -47,7 +47,7 @@ void to_json(nlohmann::json& j, const ProtocolFeatures& msg)
 ///
 /// \param j Reference to the JSON object containing serialized ProtocolFeatures data
 /// \param msg Reference to the ProtocolFeatures message to populate
-void from_json(const nlohmann::json& j, ProtocolFeatures& msg)
+inline void from_json(const nlohmann::json& j, ProtocolFeatures& msg)
 {
   msg.optional_parameters =
     j.at("optionalParameters").get<std::vector<OptionalParameters>>();

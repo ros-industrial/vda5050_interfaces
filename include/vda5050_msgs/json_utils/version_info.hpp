@@ -34,7 +34,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the VersionInfo message object to serialize
-void to_json(nlohmann::json& j, const VersionInfo& msg)
+inline void to_json(nlohmann::json& j, const VersionInfo& msg)
 {
   j["key"] = msg.key;
   j["value"] = msg.value;
@@ -45,7 +45,7 @@ void to_json(nlohmann::json& j, const VersionInfo& msg)
 ///
 /// \param j Reference to the JSON object containing serialized VersionInfo data
 /// \param msg Reference to the VersionInfo message to populate
-void from_json(const nlohmann::json& j, VersionInfo& msg)
+inline void from_json(const nlohmann::json& j, VersionInfo& msg)
 {
   msg.key = j.at("key").get<std::string>();
   msg.value = j.at("value").get<std::string>();

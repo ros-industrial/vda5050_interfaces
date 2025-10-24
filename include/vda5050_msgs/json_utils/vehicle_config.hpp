@@ -35,7 +35,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the VehicleConfig message object to serialize
-void to_json(nlohmann::json& j, const VehicleConfig& msg)
+inline void to_json(nlohmann::json& j, const VehicleConfig& msg)
 {
   if (!msg.versions.empty())
   {
@@ -53,7 +53,7 @@ void to_json(nlohmann::json& j, const VehicleConfig& msg)
 ///
 /// \param j Reference to the JSON object containing serialized VehicleConfig data
 /// \param msg Reference to the VehicleConfig message to populate
-void from_json(const nlohmann::json& j, VehicleConfig& msg)
+inline void from_json(const nlohmann::json& j, VehicleConfig& msg)
 {
   if (j.contains("versions"))
   {

@@ -35,7 +35,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the ProtocolLimits message object to serialize
-void to_json(nlohmann::json& j, const ProtocolLimits& msg)
+inline void to_json(nlohmann::json& j, const ProtocolLimits& msg)
 {
   j["maxStringLens"] = msg.max_string_lens;
   j["maxArrayLens"] = msg.max_array_lens;
@@ -47,7 +47,7 @@ void to_json(nlohmann::json& j, const ProtocolLimits& msg)
 ///
 /// \param j Reference to the JSON object containing serialized ProtocolLimits data
 /// \param msg Reference to the ProtocolLimits message to populate
-void from_json(const nlohmann::json& j, ProtocolLimits& msg)
+inline void from_json(const nlohmann::json& j, ProtocolLimits& msg)
 {
   msg.max_string_lens = j.at("maxStringLens").get<MaxStringLens>();
   msg.max_array_lens = j.at("maxArrayLens").get<MaxArrayLens>();

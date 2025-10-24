@@ -37,7 +37,7 @@ namespace msg {
 /// \param msg Reference to the WheelDefinition message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize type field
-void to_json(nlohmann::json& j, const WheelDefinition& msg)
+inline void to_json(nlohmann::json& j, const WheelDefinition& msg)
 {
   if (
     msg.type == "DRIVE" || msg.type == "CASTER" || msg.type == "FIXED" ||
@@ -71,7 +71,7 @@ void to_json(nlohmann::json& j, const WheelDefinition& msg)
 /// \param msg Reference to the WheelDefinition message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize type field
-void from_json(const nlohmann::json& j, WheelDefinition& msg)
+inline void from_json(const nlohmann::json& j, WheelDefinition& msg)
 {
   auto type = j.at("type").get<std::string>();
   if (

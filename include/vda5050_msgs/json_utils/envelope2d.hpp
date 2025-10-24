@@ -36,7 +36,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the Envelope2d message object to serialize
-void to_json(nlohmann::json& j, const Envelope2d& msg)
+inline void to_json(nlohmann::json& j, const Envelope2d& msg)
 {
   j["set"] = msg.set;
   j["polygonPoints"] = msg.polygon_points;
@@ -52,7 +52,7 @@ void to_json(nlohmann::json& j, const Envelope2d& msg)
 ///
 /// \param j Reference to the JSON object containing serialized Envelope2d data
 /// \param msg Reference to the Envelope2d message to populate
-void from_json(const nlohmann::json& j, Envelope2d& msg)
+inline void from_json(const nlohmann::json& j, Envelope2d& msg)
 {
   msg.set = j.at("set").get<std::string>();
   msg.polygon_points = j.at("polygonPoints").get<std::vector<PolygonPoint>>();

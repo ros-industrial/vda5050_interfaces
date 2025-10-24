@@ -39,7 +39,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the Factsheet message object to serialize
-void to_json(nlohmann::json& j, const Factsheet& msg)
+inline void to_json(nlohmann::json& j, const Factsheet& msg)
 {
   to_json(j, msg.header);
   j["typeSpecification"] = msg.type_specification;
@@ -56,7 +56,7 @@ void to_json(nlohmann::json& j, const Factsheet& msg)
 ///
 /// \param j Reference to the JSON object containing serialized Factsheet data
 /// \param msg Reference to the Factsheet message to populate
-void from_json(const nlohmann::json& j, Factsheet& msg)
+inline void from_json(const nlohmann::json& j, Factsheet& msg)
 {
   from_json(j, msg.header);
   msg.type_specification = j.at("typeSpecification").get<TypeSpecification>();

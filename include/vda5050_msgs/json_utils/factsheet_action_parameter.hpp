@@ -36,7 +36,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize value_data_type
-void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
+inline void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
 {
   j["key"] = msg.key;
 
@@ -70,7 +70,7 @@ void to_json(nlohmann::json& j, const FactsheetActionParameter& msg)
 /// \param msg Reference to the FactsheetActionParameter message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize value_data_type
-void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
+inline void from_json(const nlohmann::json& j, FactsheetActionParameter& msg)
 {
   msg.key = j.at("key").get<std::string>();
 

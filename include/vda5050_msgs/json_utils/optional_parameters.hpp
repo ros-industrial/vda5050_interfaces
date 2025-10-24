@@ -36,7 +36,7 @@ namespace msg {
 /// \param msg Reference to the OptionalParameters message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize support field
-void to_json(nlohmann::json& j, const OptionalParameters& msg)
+inline void to_json(nlohmann::json& j, const OptionalParameters& msg)
 {
   j["parameter"] = msg.parameter;
 
@@ -62,7 +62,7 @@ void to_json(nlohmann::json& j, const OptionalParameters& msg)
 /// \param msg Reference to the OptionalParameters message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize support field
-void from_json(const nlohmann::json& j, OptionalParameters& msg)
+inline void from_json(const nlohmann::json& j, OptionalParameters& msg)
 {
   msg.parameter = j.at("parameter").get<std::string>();
 

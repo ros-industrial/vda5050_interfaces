@@ -32,7 +32,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the MaxArrayLens message object to serialize
-void to_json(nlohmann::json& j, const MaxArrayLens& msg)
+inline void to_json(nlohmann::json& j, const MaxArrayLens& msg)
 {
   j["orderNodes"] = msg.order_nodes;
   j["orderEdges"] = msg.order_edges;
@@ -57,7 +57,7 @@ void to_json(nlohmann::json& j, const MaxArrayLens& msg)
 ///
 /// \param j Reference to the JSON object containing serialized MaxArrayLens data
 /// \param msg Reference to the MaxArrayLens message to populate
-void from_json(const nlohmann::json& j, MaxArrayLens& msg)
+inline void from_json(const nlohmann::json& j, MaxArrayLens& msg)
 {
   msg.order_nodes = j.at("orderNodes").get<uint32_t>();
   msg.order_edges = j.at("orderEdges").get<uint32_t>();

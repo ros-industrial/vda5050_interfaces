@@ -36,7 +36,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the LoadSpecification message object to serialize
-void to_json(nlohmann::json& j, const LoadSpecification& msg)
+inline void to_json(nlohmann::json& j, const LoadSpecification& msg)
 {
   if (!msg.load_positions.empty())
   {
@@ -54,7 +54,7 @@ void to_json(nlohmann::json& j, const LoadSpecification& msg)
 ///
 /// \param j Reference to the JSON object containing serialized LoadSpecification data
 /// \param msg Reference to the LoadSpecification message to populate
-void from_json(const nlohmann::json& j, LoadSpecification& msg)
+inline void from_json(const nlohmann::json& j, LoadSpecification& msg)
 {
   if (j.contains("loadPositions"))
   {

@@ -32,7 +32,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the Timing message object to serialize
-void to_json(nlohmann::json& j, const Timing& msg)
+inline void to_json(nlohmann::json& j, const Timing& msg)
 {
   j["minOrderInterval"] = msg.min_order_interval;
   j["minStateInterval"] = msg.min_state_interval;
@@ -53,7 +53,7 @@ void to_json(nlohmann::json& j, const Timing& msg)
 ///
 /// \param j Reference to the JSON object containing serialized Timing data
 /// \param msg Reference to the Timing message to populate
-void from_json(const nlohmann::json& j, Timing& msg)
+inline void from_json(const nlohmann::json& j, Timing& msg)
 {
   msg.min_order_interval = j.at("minOrderInterval").get<double>();
   msg.min_state_interval = j.at("minStateInterval").get<double>();

@@ -32,7 +32,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the MaxStringLens message object to serialize
-void to_json(nlohmann::json& j, const MaxStringLens& msg)
+inline void to_json(nlohmann::json& j, const MaxStringLens& msg)
 {
   if (!msg.msg_len.empty())
   {
@@ -75,7 +75,7 @@ void to_json(nlohmann::json& j, const MaxStringLens& msg)
 ///
 /// \param j Reference to the JSON object containing serialized MaxStringLens data
 /// \param msg Reference to the MaxStringLens message to populate
-void from_json(const nlohmann::json& j, MaxStringLens& msg)
+inline void from_json(const nlohmann::json& j, MaxStringLens& msg)
 {
   if (j.contains("msgLen"))
   {
