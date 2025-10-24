@@ -44,7 +44,7 @@ void to_json(nlohmann::json& j, const AGVAction& msg)
 
   for (std::string scope : msg.action_scopes)
   {
-    if (scope != "INSTANT" && scope != "NODE" && scope != "EDGE")
+    if (scope != AGVAction::ACTION_SCOPES_INSTANT && scope != AGVAction::ACTION_SCOPES_NODE && scope != AGVAction::ACTION_SCOPES_EDGE)
     {
       throw std::runtime_error(
         "Serialization error: Unexpected scope in action_scopes");
@@ -96,7 +96,7 @@ void from_json(const nlohmann::json& j, AGVAction& msg)
   auto action_scopes = j.at("actionScopes").get<std::vector<std::string>>();
   for (std::string scope : action_scopes)
   {
-    if (scope != "INSTANT" && scope != "NODE" && scope != "EDGE")
+    if (scope != AGVAction::ACTION_SCOPES_INSTANT && scope != AGVAction::ACTION_SCOPES_NODE && scope != AGVAction::ACTION_SCOPES_EDGE)
     {
       throw std::runtime_error(
         "JSON parsing error: Unexpected scope in action_scopes");
