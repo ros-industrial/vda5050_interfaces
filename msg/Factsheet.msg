@@ -1,5 +1,5 @@
 # Factsheet message
-# Contains the AGV's capabilities, limits, features, and configuration 
+# Contains the AGV's capabilities, limits, features, and configuration
 # as required by the VDA5050 specification.
 
 # Message header that contains the common fields required across all messages
