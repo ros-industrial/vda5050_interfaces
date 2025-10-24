@@ -1,4 +1,4 @@
-# AGV envelope curves in 2D. 
+# AGV envelope curves in 2D.
 
 # Name of the envelope curve set
 # 
