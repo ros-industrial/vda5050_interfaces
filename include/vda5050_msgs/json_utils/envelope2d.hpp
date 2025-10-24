@@ -50,7 +50,7 @@ void to_json(nlohmann::json& j, const Envelope2d& msg)
 // ============================================================================
 /// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Envelope2d object
 ///
-///\param j Reference to the JSON object containing serialized Envelope2d data
+/// \param j Reference to the JSON object containing serialized Envelope2d data
 /// \param msg Reference to the Envelope2d message to populate
 void from_json(const nlohmann::json& j, Envelope2d& msg)
 {
