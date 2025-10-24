@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__ENVELOPE_2D_HPP_
-#define VDA5050_MSGS__JSON_UTILS__ENVELOPE_2D_HPP_
+#ifndef VDA5050_MSGS__JSON_UTILS__ENVELOPE2D_HPP_
+#define VDA5050_MSGS__JSON_UTILS__ENVELOPE2D_HPP_
 
 #include <string>
 #include <vector>
@@ -66,4 +66,4 @@ void from_json(const nlohmann::json& j, Envelope2d& msg)
 }  // namespace msg
 }  // namespace vda5050_msgs
 
-#endif  // VDA5050_MSGS__JSON_UTILS__ENVELOPE_2D_HPP_
+#endif  // VDA5050_MSGS__JSON_UTILS__ENVELOPE2D_HPP_
