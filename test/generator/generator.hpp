@@ -26,6 +26,7 @@
 
 #include "vda5050_msgs/msg/action.hpp"
 #include "vda5050_msgs/msg/action_parameter.hpp"
+#include "vda5050_msgs/msg/action_parameter_factsheet.hpp"
 #include "vda5050_msgs/msg/action_parameter_value.hpp"
 #include "vda5050_msgs/msg/action_state.hpp"
 #include "vda5050_msgs/msg/agv_action.hpp"
@@ -42,7 +43,6 @@
 #include "vda5050_msgs/msg/error.hpp"
 #include "vda5050_msgs/msg/error_reference.hpp"
 #include "vda5050_msgs/msg/factsheet.hpp"
-#include "vda5050_msgs/msg/factsheet_action_parameter.hpp"
 #include "vda5050_msgs/msg/header.hpp"
 #include "vda5050_msgs/msg/info.hpp"
 #include "vda5050_msgs/msg/info_reference.hpp"
@@ -614,9 +614,8 @@ public:
     {
       msg.action_type = generate_random_string();
       msg.action_scopes = generate_random_action_scopes();
-      msg.factsheet_action_parameters =
-        generate_random_vector<ActionParameterFactsheet>(
-          generate_random_size());
+      msg.action_parameters = generate_random_vector<ActionParameterFactsheet>(
+        generate_random_size());
       msg.result_description.push_back(generate_random_string());
       msg.action_description.push_back(generate_random_string());
       msg.blocking_types = generate_random_agv_action_blocking_types();
