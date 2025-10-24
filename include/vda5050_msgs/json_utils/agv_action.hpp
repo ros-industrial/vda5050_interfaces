@@ -24,7 +24,7 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/factsheet_action_parameter.hpp"
+#include "vda5050_msgs/json_utils/action_parameter_factsheet.hpp"
 #include "vda5050_msgs/msg/agv_action.hpp"
 
 namespace vda5050_msgs {
@@ -44,7 +44,10 @@ inline void to_json(nlohmann::json& j, const AGVAction& msg)
 
   for (std::string scope : msg.action_scopes)
   {
-    if (scope != AGVAction::ACTION_SCOPES_INSTANT && scope != AGVAction::ACTION_SCOPES_NODE && scope != AGVAction::ACTION_SCOPES_EDGE)
+    if (
+      scope != AGVAction::ACTION_SCOPES_INSTANT &&
+      scope != AGVAction::ACTION_SCOPES_NODE &&
+      scope != AGVAction::ACTION_SCOPES_EDGE)
     {
       throw std::runtime_error(
         "Serialization error: Unexpected scope in action_scopes");
@@ -52,9 +55,9 @@ inline void to_json(nlohmann::json& j, const AGVAction& msg)
   }
   j["actionScopes"] = msg.action_scopes;
 
-  if (!msg.factsheet_action_parameters.empty())
+  if (!msg.action_parameters.empty())
   {
-    j["factsheetActionParameters"] = msg.action_parameter_factsheet;
+    j["actionParameters"] = msg.action_parameters;
   }
 
   if (!msg.result_description.empty())
@@ -71,7 +74,10 @@ inline void to_json(nlohmann::json& j, const AGVAction& msg)
   {
     for (std::string type : msg.blocking_types)
     {
-      if (type != AGVAction::BLOCKING_TYPES_NONE && type != AGVAction::BLOCKING_TYPE_SOFT && type != AGVAction::BLOCKING_TYPES_HARD)
+      if (
+        type != AGVAction::BLOCKING_TYPES_NONE &&
+        type != AGVAction::BLOCKING_TYPE_SOFT &&
+        type != AGVAction::BLOCKING_TYPES_HARD)
       {
         throw std::runtime_error(
           "Serialization error: Unexpected type in blocking_types");
@@ -96,7 +102,10 @@ inline void from_json(const nlohmann::json& j, AGVAction& msg)
   auto action_scopes = j.at("actionScopes").get<std::vector<std::string>>();
   for (std::string scope : action_scopes)
   {
-    if (scope != AGVAction::ACTION_SCOPES_INSTANT && scope != AGVAction::ACTION_SCOPES_NODE && scope != AGVAction::ACTION_SCOPES_EDGE)
+    if (
+      scope != AGVAction::ACTION_SCOPES_INSTANT &&
+      scope != AGVAction::ACTION_SCOPES_NODE &&
+      scope != AGVAction::ACTION_SCOPES_EDGE)
     {
       throw std::runtime_error(
         "JSON parsing error: Unexpected scope in action_scopes");
@@ -104,11 +113,10 @@ inline void from_json(const nlohmann::json& j, AGVAction& msg)
   }
   msg.action_scopes = action_scopes;
 
-  if (j.contains("factsheetActionParameters"))
+  if (j.contains("actionParameters"))
   {
-    msg.action_parameter_factsheet =
-      j.at("factsheetActionParameters")
-        .get<std::vector<FactsheetActionParameter>>();
+    msg.action_parameters =
+      j.at("actionParameters").get<std::vector<ActionParameterFactsheet>>();
   }
 
   if (j.contains("resultDescription"))
@@ -128,7 +136,10 @@ inline void from_json(const nlohmann::json& j, AGVAction& msg)
     auto blocking_types = j.at("blockingTypes").get<std::vector<std::string>>();
     for (std::string type : blocking_types)
     {
-      if (type != AGVAction::BLOCKING_TYPES_NONE && type != AGVAction::BLOCKING_TYPE_SOFT && type != AGVAction::BLOCKING_TYPES_HARD)
+      if (
+        type != AGVAction::BLOCKING_TYPES_NONE &&
+        type != AGVAction::BLOCKING_TYPE_SOFT &&
+        type != AGVAction::BLOCKING_TYPES_HARD)
       {
         throw std::runtime_error(
           "JSON parsing error: Unexpected type in blocking_types");

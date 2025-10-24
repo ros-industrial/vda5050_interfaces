@@ -29,7 +29,7 @@ string ACTION_SCOPES_EDGE="EDGE"
 # NOTE: This message is different from the one used in the Order message.
 #
 # Field type: Optional
-ActionParameterFactsheet[] action_parameter_factsheet
+ActionParameterFactsheet[] action_parameters
 
 # Free-form text: description of the result.
 #
