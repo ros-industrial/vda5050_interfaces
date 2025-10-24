@@ -77,6 +77,7 @@
 
 using vda5050_msgs::msg::Action;
 using vda5050_msgs::msg::ActionParameter;
+using vda5050_msgs::msg::ActionParameterFactsheet;
 using vda5050_msgs::msg::ActionParameterValue;
 using vda5050_msgs::msg::ActionState;
 using vda5050_msgs::msg::AGVAction;
@@ -93,7 +94,6 @@ using vda5050_msgs::msg::Envelope3d;
 using vda5050_msgs::msg::Error;
 using vda5050_msgs::msg::ErrorReference;
 using vda5050_msgs::msg::Factsheet;
-using vda5050_msgs::msg::FactsheetActionParameter;
 using vda5050_msgs::msg::Header;
 using vda5050_msgs::msg::Info;
 using vda5050_msgs::msg::InfoReference;
@@ -391,12 +391,12 @@ public:
   std::string generate_random_value_data_type()
   {
     std::vector<std::string> states = {
-      FactsheetActionParameter::VALUE_DATA_TYPE_ARRAY,
-      FactsheetActionParameter::VALUE_DATA_TYPE_BOOL,
-      FactsheetActionParameter::VALUE_DATA_TYPE_FLOAT,
-      FactsheetActionParameter::VALUE_DATA_TYPE_INTEGER,
-      FactsheetActionParameter::VALUE_DATA_TYPE_NUMBER,
-      FactsheetActionParameter::VALUE_DATA_TYPE_OBJECT};
+      ActionParameterFactsheet::VALUE_DATA_TYPE_ARRAY,
+      ActionParameterFactsheet::VALUE_DATA_TYPE_BOOL,
+      ActionParameterFactsheet::VALUE_DATA_TYPE_FLOAT,
+      ActionParameterFactsheet::VALUE_DATA_TYPE_INTEGER,
+      ActionParameterFactsheet::VALUE_DATA_TYPE_NUMBER,
+      ActionParameterFactsheet::VALUE_DATA_TYPE_OBJECT};
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }
@@ -615,7 +615,7 @@ public:
       msg.action_type = generate_random_string();
       msg.action_scopes = generate_random_action_scopes();
       msg.factsheet_action_parameters =
-        generate_random_vector<FactsheetActionParameter>(
+        generate_random_vector<ActionParameterFactsheet>(
           generate_random_size());
       msg.result_description.push_back(generate_random_string());
       msg.action_description.push_back(generate_random_string());
@@ -663,7 +663,7 @@ public:
       msg.load_specification = generate<LoadSpecification>();
       msg.vehicle_config = generate<VehicleConfig>();
     }
-    else if constexpr (std::is_same_v<T, FactsheetActionParameter>)
+    else if constexpr (std::is_same_v<T, ActionParameterFactsheet>)
     {
       msg.key = generate_random_string();
       msg.value_data_type = generate_random_value_data_type();

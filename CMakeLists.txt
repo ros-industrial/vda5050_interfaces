@@ -17,6 +17,7 @@ find_package(nlohmann_json REQUIRED)
 set(msg_files
   "msg/Action.msg"
   "msg/ActionParameter.msg"
+  "msg/ActionParameterFactsheet.msg"
   "msg/ActionParameterValue.msg"
   "msg/ActionState.msg"
   "msg/AGVAction.msg"
@@ -33,7 +34,6 @@ set(msg_files
   "msg/Error.msg"
   "msg/ErrorReference.msg"
   "msg/Factsheet.msg"
-  "msg/FactsheetActionParameter.msg"
   "msg/Header.msg"
   "msg/InstantActions.msg"
   "msg/Info.msg"

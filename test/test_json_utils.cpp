@@ -74,6 +74,7 @@
 
 using vda5050_msgs::msg::Action;
 using vda5050_msgs::msg::ActionParameter;
+using vda5050_msgs::msg::ActionParameterFactsheet;
 using vda5050_msgs::msg::ActionParameterValue;
 using vda5050_msgs::msg::ActionState;
 using vda5050_msgs::msg::AGVAction;
@@ -90,7 +91,6 @@ using vda5050_msgs::msg::Envelope3d;
 using vda5050_msgs::msg::Error;
 using vda5050_msgs::msg::ErrorReference;
 using vda5050_msgs::msg::Factsheet;
-using vda5050_msgs::msg::FactsheetActionParameter;
 using vda5050_msgs::msg::Header;
 using vda5050_msgs::msg::Info;
 using vda5050_msgs::msg::InfoReference;
@@ -128,7 +128,7 @@ using SerializableTypes = ::testing::Types<
   Action, ActionParameter, ActionParameterValue, ActionState, AGVAction,
   AGVGeometry, AGVPosition, BatteryState, BoundingBoxReference, Connection,
   ControlPoint, EdgeState, Envelope2d, Envelope3d, Error, ErrorReference,
-  Factsheet, FactsheetActionParameter, Header, Info, InfoReference,
+  Factsheet, ActionParameterFactsheet, Header, Info, InfoReference,
   InstantActions, Load, LoadDimensions, LoadSet, LoadSpecification,
   MaxArrayLens, MaxStringLens, Network, Node, NodePosition, NodeState,
   OptionalParameters, Order, PhysicalParameters, PolygonPoint, Position,

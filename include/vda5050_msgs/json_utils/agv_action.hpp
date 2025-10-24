@@ -54,7 +54,7 @@ void to_json(nlohmann::json& j, const AGVAction& msg)
 
   if (!msg.factsheet_action_parameters.empty())
   {
-    j["factsheetActionParameters"] = msg.factsheet_action_parameters;
+    j["factsheetActionParameters"] = msg.action_parameter_factsheet;
   }
 
   if (!msg.result_description.empty())
@@ -106,7 +106,7 @@ void from_json(const nlohmann::json& j, AGVAction& msg)
 
   if (j.contains("factsheetActionParameters"))
   {
-    msg.factsheet_action_parameters =
+    msg.action_parameter_factsheet =
       j.at("factsheetActionParameters")
         .get<std::vector<FactsheetActionParameter>>();
   }

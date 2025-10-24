@@ -1,5 +1,7 @@
-# NOTE: This message is different from ActionParameter.msg used in Order.msg
-# Parameters that an action has.
+# NOTE: This message is different from ActionParameter.msg used in Order.msg.
+# For more details, refer to page 54 of VDA5050 Recommendation v2.0.0.
+# ActionParameter message specifically used in Factsheet.msg.
+# Describes the array of parameters that an action has.
 
 # Key string for the parameter
 #
