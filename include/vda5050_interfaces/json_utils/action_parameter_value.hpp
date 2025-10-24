@@ -30,7 +30,8 @@ namespace vda5050_interfaces {
 namespace msg {
 
 //=============================================================================
-/// \brief Convert a vda5050_interfaces::msg::ActionParameterValue object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::ActionParameterValue object to a
+/// nlohmann::json object
 ///
 /// \param j Reference to a JSON object to be populated
 /// \param msg Reference to the message object to serialize
