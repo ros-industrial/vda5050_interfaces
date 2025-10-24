@@ -38,7 +38,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const Order& msg)
+inline void to_json(nlohmann::json& j, const Order& msg)
 {
   to_json(j, msg.header);
 
@@ -58,7 +58,7 @@ void to_json(nlohmann::json& j, const Order& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, Order& msg)
+inline void from_json(const nlohmann::json& j, Order& msg)
 {
   from_json(j, msg.header);
 

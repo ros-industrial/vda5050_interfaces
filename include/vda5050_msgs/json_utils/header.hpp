@@ -40,7 +40,7 @@ constexpr const char* ISO8601_FORMAT = "%Y-%m-%dT%H:%M:%S";
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize timestamp
-void to_json(nlohmann::json& j, const Header& msg)
+inline void to_json(nlohmann::json& j, const Header& msg)
 {
   using std::chrono::duration_cast;
   using std::chrono::milliseconds;
@@ -76,7 +76,7 @@ void to_json(nlohmann::json& j, const Header& msg)
 /// \param msg Reference to the Header message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize timestamp
-void from_json(const nlohmann::json& j, Header& msg)
+inline void from_json(const nlohmann::json& j, Header& msg)
 {
   using std::chrono::duration_cast;
   using std::chrono::milliseconds;

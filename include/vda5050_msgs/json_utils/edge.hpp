@@ -38,7 +38,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize orientationType
-void to_json(nlohmann::json& j, const Edge& msg)
+inline void to_json(nlohmann::json& j, const Edge& msg)
 {
   j["edgeId"] = msg.edge_id;
   j["sequenceId"] = msg.sequence_id;
@@ -117,7 +117,7 @@ void to_json(nlohmann::json& j, const Edge& msg)
 /// \param msg Reference to the message object to populate
 ///
 /// \throws std::runtime_error If failed to deserialize orientationType
-void from_json(const nlohmann::json& j, Edge& msg)
+inline void from_json(const nlohmann::json& j, Edge& msg)
 {
   msg.edge_id = j.at("edgeId").get<std::string>();
   msg.sequence_id = j.at("sequenceId").get<int32_t>();

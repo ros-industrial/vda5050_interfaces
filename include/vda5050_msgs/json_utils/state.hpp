@@ -58,7 +58,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize operatingMode
-void to_json(nlohmann::json& j, const State& msg)
+inline void to_json(nlohmann::json& j, const State& msg)
 {
   to_json(j, msg.header);
 
@@ -138,7 +138,7 @@ void to_json(nlohmann::json& j, const State& msg)
 /// \param msg Reference to the message object to populate
 ///
 /// \throws std::runtime_error If failed to deserialize operatingMode
-void from_json(const nlohmann::json& j, State& msg)
+inline void from_json(const nlohmann::json& j, State& msg)
 {
   from_json(j, msg.header);
 

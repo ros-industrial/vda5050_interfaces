@@ -38,7 +38,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize connectionState
-void to_json(nlohmann::json& j, const Connection& msg)
+inline void to_json(nlohmann::json& j, const Connection& msg)
 {
   to_json(j, msg.header);
 
@@ -64,7 +64,7 @@ void to_json(nlohmann::json& j, const Connection& msg)
 /// \param msg Reference to the Connection message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize connectionState
-void from_json(const nlohmann::json& j, Connection& msg)
+inline void from_json(const nlohmann::json& j, Connection& msg)
 {
   from_json(j, msg.header);
 
