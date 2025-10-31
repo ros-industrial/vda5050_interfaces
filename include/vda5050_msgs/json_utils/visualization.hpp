@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
  * Advanced Remanufacturing and Technology Centre
  * A*STAR Research Entities (Co. Registration No. 199702110H)
@@ -21,11 +21,10 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/header.hpp"
-#include "vda5050_msgs/msg/visualization.hpp"
-
 #include "vda5050_msgs/json_utils/agv_position.hpp"
 #include "vda5050_msgs/json_utils/velocity.hpp"
+#include "vda5050_msgs/msg/header.hpp"
+#include "vda5050_msgs/msg/visualization.hpp"
 
 namespace vda5050_msgs {
 
