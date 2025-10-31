@@ -16,24 +16,24 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__LOAD_SET_HPP_
-#define VDA5050_MSGS__JSON_UTILS__LOAD_SET_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__LOAD_SET_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__LOAD_SET_HPP_
 
 #include <string>
 #include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/bounding_box_reference.hpp"
-#include "vda5050_msgs/json_utils/load_dimensions.hpp"
-#include "vda5050_msgs/msg/load_set.hpp"
+#include "vda5050_interfaces/json_utils/bounding_box_reference.hpp"
+#include "vda5050_interfaces/json_utils/load_dimensions.hpp"
+#include "vda5050_interfaces/msg/load_set.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::LoadSet object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::LoadSet object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the LoadSet message object to serialize
@@ -124,7 +124,7 @@ inline void to_json(nlohmann::json& j, const LoadSet& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::LoadSet object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::LoadSet object
 ///
 /// \param j Reference to the JSON object containing serialized LoadSet data
 /// \param msg Reference to the LoadSet message to populate
@@ -224,6 +224,6 @@ inline void from_json(const nlohmann::json& j, LoadSet& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__LOAD_SET_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__LOAD_SET_HPP_

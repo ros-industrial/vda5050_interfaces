@@ -16,23 +16,23 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__AGV_ACTION_HPP_
-#define VDA5050_MSGS__JSON_UTILS__AGV_ACTION_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__AGV_ACTION_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__AGV_ACTION_HPP_
 
 #include <string>
 #include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/action_parameter_factsheet.hpp"
-#include "vda5050_msgs/msg/agv_action.hpp"
+#include "vda5050_interfaces/json_utils/action_parameter_factsheet.hpp"
+#include "vda5050_interfaces/msg/agv_action.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::AGVAction object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::AGVAction object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
@@ -89,7 +89,7 @@ inline void to_json(nlohmann::json& j, const AGVAction& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::AGVAction object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::AGVAction object
 ///
 /// \param j Reference to the JSON object containing serialized AGVAction data
 /// \param msg Reference to the AGVAction message to populate
@@ -150,6 +150,6 @@ inline void from_json(const nlohmann::json& j, AGVAction& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__AGV_ACTION_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__AGV_ACTION_HPP_

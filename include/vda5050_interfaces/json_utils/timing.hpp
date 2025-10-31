@@ -16,19 +16,19 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__TIMING_HPP_
-#define VDA5050_MSGS__JSON_UTILS__TIMING_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__TIMING_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__TIMING_HPP_
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/timing.hpp"
+#include "vda5050_interfaces/msg/timing.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::Timing object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::Timing object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the Timing message object to serialize
@@ -49,7 +49,7 @@ inline void to_json(nlohmann::json& j, const Timing& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Timing object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::Timing object
 ///
 /// \param j Reference to the JSON object containing serialized Timing data
 /// \param msg Reference to the Timing message to populate
@@ -72,6 +72,6 @@ inline void from_json(const nlohmann::json& j, Timing& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__TIMING_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__TIMING_HPP_

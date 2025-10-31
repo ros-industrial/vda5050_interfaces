@@ -16,21 +16,21 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__ENVELOPE3D_HPP_
-#define VDA5050_MSGS__JSON_UTILS__ENVELOPE3D_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__ENVELOPE3D_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__ENVELOPE3D_HPP_
 
 #include <string>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/envelope3d.hpp"
+#include "vda5050_interfaces/msg/envelope3d.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::Envelope3d object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::Envelope3d object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the Envelope3d message object to serialize
@@ -56,7 +56,7 @@ inline void to_json(nlohmann::json& j, const Envelope3d& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Envelope3d object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::Envelope3d object
 ///
 /// \param j Reference to the JSON object containing serialized Envelope3d data
 /// \param msg Reference to the Envelope3d message to populate
@@ -82,6 +82,6 @@ inline void from_json(const nlohmann::json& j, Envelope3d& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__ENVELOPE3D_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__ENVELOPE3D_HPP_

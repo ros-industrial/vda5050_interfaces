@@ -16,19 +16,19 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_
-#define VDA5050_MSGS__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/physical_parameters.hpp"
+#include "vda5050_interfaces/msg/physical_parameters.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::PhysicalParameters object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::PhysicalParameters object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the PhysicalParameters message object to serialize
@@ -55,7 +55,7 @@ inline void to_json(nlohmann::json& j, const PhysicalParameters& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::PhysicalParameters object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::PhysicalParameters object
 ///
 /// \param j Reference to the JSON object containing serialized PhysicalParameters data
 /// \param msg Reference to the PhysicalParameters message to populate
@@ -82,6 +82,6 @@ inline void from_json(const nlohmann::json& j, PhysicalParameters& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__PHYSICAL_PARAMETERS_HPP_

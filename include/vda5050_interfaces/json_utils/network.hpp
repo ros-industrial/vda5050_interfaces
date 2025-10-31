@@ -16,22 +16,22 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__NETWORK_HPP_
-#define VDA5050_MSGS__JSON_UTILS__NETWORK_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__NETWORK_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__NETWORK_HPP_
 
 #include <string>
 #include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/network.hpp"
+#include "vda5050_interfaces/msg/network.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::Network object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::Network object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the Network message object to serialize
@@ -64,7 +64,7 @@ inline void to_json(nlohmann::json& j, const Network& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Network object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::Network object
 ///
 /// \param j Reference to the JSON object containing serialized Network data
 /// \param msg Reference to the Network message to populate
@@ -97,6 +97,6 @@ inline void from_json(const nlohmann::json& j, Network& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__NETWORK_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__NETWORK_HPP_

@@ -16,23 +16,23 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__PROTOCOL_FEATURES_HPP_
-#define VDA5050_MSGS__JSON_UTILS__PROTOCOL_FEATURES_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__PROTOCOL_FEATURES_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__PROTOCOL_FEATURES_HPP_
 
 #include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/json_utils/agv_action.hpp"
-#include "vda5050_msgs/json_utils/optional_parameters.hpp"
-#include "vda5050_msgs/msg/protocol_features.hpp"
+#include "vda5050_interfaces/json_utils/agv_action.hpp"
+#include "vda5050_interfaces/json_utils/optional_parameters.hpp"
+#include "vda5050_interfaces/msg/protocol_features.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::ProtocolFeatures object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::ProtocolFeatures object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the ProtocolFeatures message object to serialize
@@ -43,7 +43,7 @@ inline void to_json(nlohmann::json& j, const ProtocolFeatures& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::ProtocolFeatures object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::ProtocolFeatures object
 ///
 /// \param j Reference to the JSON object containing serialized ProtocolFeatures data
 /// \param msg Reference to the ProtocolFeatures message to populate
@@ -55,6 +55,6 @@ inline void from_json(const nlohmann::json& j, ProtocolFeatures& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__PROTOCOL_FEATURES_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__PROTOCOL_FEATURES_HPP_

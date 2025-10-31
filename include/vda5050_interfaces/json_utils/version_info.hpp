@@ -16,21 +16,21 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__VERSION_INFO_HPP_
-#define VDA5050_MSGS__JSON_UTILS__VERSION_INFO_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__VERSION_INFO_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__VERSION_INFO_HPP_
 
 #include <string>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/version_info.hpp"
+#include "vda5050_interfaces/msg/version_info.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::VersionInfo object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::VersionInfo object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the VersionInfo message object to serialize
@@ -41,7 +41,7 @@ inline void to_json(nlohmann::json& j, const VersionInfo& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::VersionInfo object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::VersionInfo object
 ///
 /// \param j Reference to the JSON object containing serialized VersionInfo data
 /// \param msg Reference to the VersionInfo message to populate
@@ -52,6 +52,6 @@ inline void from_json(const nlohmann::json& j, VersionInfo& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__VERSION_INFO_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__VERSION_INFO_HPP_

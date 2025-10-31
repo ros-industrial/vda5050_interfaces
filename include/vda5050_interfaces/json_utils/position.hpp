@@ -16,19 +16,19 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__POSITION_HPP_
-#define VDA5050_MSGS__JSON_UTILS__POSITION_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__POSITION_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__POSITION_HPP_
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/position.hpp"
+#include "vda5050_interfaces/msg/position.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::Position object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::Position object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the Position message object to serialize
@@ -44,7 +44,7 @@ inline void to_json(nlohmann::json& j, const Position& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::Position object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::Position object
 ///
 /// \param j Reference to the JSON object containing serialized Position data
 /// \param msg Reference to the Position message to populate
@@ -60,6 +60,6 @@ inline void from_json(const nlohmann::json& j, Position& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__POSITION_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__POSITION_HPP_

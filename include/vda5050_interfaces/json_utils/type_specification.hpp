@@ -16,22 +16,22 @@
  * limitations under the License.
  */
 
-#ifndef VDA5050_MSGS__JSON_UTILS__TYPE_SPECIFICATION_HPP_
-#define VDA5050_MSGS__JSON_UTILS__TYPE_SPECIFICATION_HPP_
+#ifndef VDA5050_INTERFACES__JSON_UTILS__TYPE_SPECIFICATION_HPP_
+#define VDA5050_INTERFACES__JSON_UTILS__TYPE_SPECIFICATION_HPP_
 
 #include <string>
 #include <vector>
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_msgs/msg/type_specification.hpp"
+#include "vda5050_interfaces/msg/type_specification.hpp"
 
-namespace vda5050_msgs {
+namespace vda5050_interfaces {
 
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_msgs::msg::TypeSpecification object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::TypeSpecification object to a nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the TypeSpecification message object to serialize
@@ -74,7 +74,7 @@ inline void to_json(nlohmann::json& j, const TypeSpecification& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_msgs::msg::TypeSpecification object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::TypeSpecification object
 ///
 /// \param j Reference to the JSON object containing serialized TypeSpecification data
 /// \param msg Reference to the TypeSpecification message to populate
@@ -122,6 +122,6 @@ inline void from_json(const nlohmann::json& j, TypeSpecification& msg)
 }
 
 }  // namespace msg
-}  // namespace vda5050_msgs
+}  // namespace vda5050_interfaces
 
-#endif  // VDA5050_MSGS__JSON_UTILS__TYPE_SPECIFICATION_HPP_
+#endif  // VDA5050_INTERFACES__JSON_UTILS__TYPE_SPECIFICATION_HPP_
