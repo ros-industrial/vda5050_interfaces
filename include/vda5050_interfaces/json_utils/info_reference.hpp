@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
  * Advanced Remanufacturing and Technology Centre
  * A*STAR Research Entities (Co. Registration No. 199702110H)
@@ -35,7 +35,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const InfoReference& msg)
+inline void to_json(nlohmann::json& j, const InfoReference& msg)
 {
   j["referenceKey"] = msg.reference_key;
   j["referenceValue"] = msg.reference_value;
@@ -47,7 +47,7 @@ void to_json(nlohmann::json& j, const InfoReference& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, InfoReference& msg)
+inline void from_json(const nlohmann::json& j, InfoReference& msg)
 {
   msg.reference_key = j.at("referenceKey").get<std::string>();
   msg.reference_value = j.at("referenceValue").get<std::string>();

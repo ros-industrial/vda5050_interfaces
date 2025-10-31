@@ -37,7 +37,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const Node& msg)
+inline void to_json(nlohmann::json& j, const Node& msg)
 {
   j["nodeId"] = msg.node_id;
   j["sequenceId"] = msg.sequence_id;
@@ -60,7 +60,7 @@ void to_json(nlohmann::json& j, const Node& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, Node& msg)
+inline void from_json(const nlohmann::json& j, Node& msg)
 {
   msg.node_id = j.at("nodeId").get<std::string>();
   msg.sequence_id = j.at("sequenceId").get<uint32_t>();

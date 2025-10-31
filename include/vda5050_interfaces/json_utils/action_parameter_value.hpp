@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
  * Advanced Remanufacturing and Technology Centre
  * A*STAR Research Entities (Co. Registration No. 199702110H)
@@ -37,7 +37,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize type
-void to_json(nlohmann::json& j, const ActionParameterValue& msg)
+inline void to_json(nlohmann::json& j, const ActionParameterValue& msg)
 {
   if (
     msg.type == ActionParameterValue::TYPE_ARRAY ||
@@ -64,7 +64,7 @@ void to_json(nlohmann::json& j, const ActionParameterValue& msg)
 /// \param msg Reference to the ActionParameterValue message to populate
 ///
 /// \throws std::runtime_error If failed to deserialize type
-void from_json(const nlohmann::json& j, ActionParameterValue& msg)
+inline void from_json(const nlohmann::json& j, ActionParameterValue& msg)
 {
   auto type = j.at("type").get<uint8_t>();
   if (

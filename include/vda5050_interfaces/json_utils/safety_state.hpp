@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
  * Advanced Remanufacturing and Technology Centre
  * A*STAR Research Entities (Co. Registration No. 199702110H)
@@ -37,7 +37,7 @@ namespace msg {
 /// \param msg Reference to the message object to serialize
 ///
 /// \throws std::runtime_error If failed to serialize eStop
-void to_json(nlohmann::json& j, const SafetyState& msg)
+inline void to_json(nlohmann::json& j, const SafetyState& msg)
 {
   if (
     msg.e_stop == SafetyState::E_STOP_AUTOACK ||
@@ -63,7 +63,7 @@ void to_json(nlohmann::json& j, const SafetyState& msg)
 /// \param msg Reference to the message object to populate
 ///
 /// \throws std::runtime_error If failed to deserialize eStop
-void from_json(const nlohmann::json& j, SafetyState& msg)
+inline void from_json(const nlohmann::json& j, SafetyState& msg)
 {
   auto e_stop = j.at("eStop").get<std::string>();
   if (

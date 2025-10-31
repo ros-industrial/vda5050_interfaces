@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright (C) 2025 ROS-Industrial Consortium Asia Pacific
  * Advanced Remanufacturing and Technology Centre
  * A*STAR Research Entities (Co. Registration No. 199702110H)
@@ -38,7 +38,7 @@ namespace msg {
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
-void to_json(nlohmann::json& j, const NodeState& msg)
+inline void to_json(nlohmann::json& j, const NodeState& msg)
 {
   j["nodeId"] = msg.node_id;
   j["sequenceId"] = msg.sequence_id;
@@ -61,7 +61,7 @@ void to_json(nlohmann::json& j, const NodeState& msg)
 ///
 /// \param j Reference to the JSON object containing serialized data
 /// \param msg Reference to the message object to populate
-void from_json(const nlohmann::json& j, NodeState& msg)
+inline void from_json(const nlohmann::json& j, NodeState& msg)
 {
   msg.node_id = j.at("nodeId").get<std::string>();
   msg.sequence_id = j.at("sequenceId").get<uint32_t>();
