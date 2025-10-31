@@ -30,7 +30,8 @@ namespace vda5050_interfaces {
 namespace msg {
 
 // ============================================================================
-/// \brief Convert a vda5050_interfaces::msg::ActionParameterFactsheet object to a nlohmann::json object
+/// \brief Convert a vda5050_interfaces::msg::ActionParameterFactsheet object to a
+/// nlohmann::json object
 ///
 /// \param j Reference to the JSON object to be populated
 /// \param msg Reference to the message object to serialize
@@ -67,7 +68,8 @@ inline void to_json(nlohmann::json& j, const ActionParameterFactsheet& msg)
 }
 
 // ============================================================================
-/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::ActionParameterFactsheet object
+/// \brief Convert a nlohmann::json object to a vda5050_interfaces::msg::ActionParameterFactsheet
+/// object
 ///
 /// \param j Reference to the JSON object containing serialized ActionParameterFactsheet data
 /// \param msg Reference to the ActionParameterFactsheet message to populate
