@@ -1,4 +1,4 @@
-name: Build and test vda5050_msgs
+name: Build and test vda5050_interfaces
 
 on:
   workflow_dispatch:
