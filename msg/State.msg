@@ -144,7 +144,7 @@ Error[] errors
 # specification when these messages are deleted
 #
 # Field type: Optional
-Info[] information
+Info[<=32] information
 
 # Safety state information of the AGV
 #

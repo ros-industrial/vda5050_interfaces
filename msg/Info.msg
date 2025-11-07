@@ -10,7 +10,7 @@ string info_type
 # Array of references to identify the source of the info
 #
 # Field type: Optional
-InfoReference[] info_references
+InfoReference[<=32] info_references
 
 # Verbose description of the info
 #
