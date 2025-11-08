@@ -20,6 +20,8 @@ jobs:
             ADDITIONAL_DEBS: clang lld
             CC: "clang"
             CXX: "clang++"
+    env:
+      ISOLATION: "shell"
     runs-on: ubuntu-latest
     container:
       image: ros:jazzy-ros-core
