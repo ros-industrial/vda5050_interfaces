@@ -16,8 +16,8 @@
  * limitations under the License.
  */
 
-#ifndef TEST__GENERATOR__GENERATOR_HPP_
-#define TEST__GENERATOR__GENERATOR_HPP_
+#ifndef GENERATOR__GENERATOR_HPP_
+#define GENERATOR__GENERATOR_HPP_
 
 #include <limits>
 #include <random>
@@ -1000,4 +1000,4 @@ private:
   uint8_t ORDER_VECTOR_SIZE_UPPER_BOUND = 10;
 };
 
-#endif  // TEST__GENERATOR__GENERATOR_HPP_
+#endif  // GENERATOR__GENERATOR_HPP_
