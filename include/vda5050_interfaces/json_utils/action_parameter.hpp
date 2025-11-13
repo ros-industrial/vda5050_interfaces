@@ -23,7 +23,6 @@
 
 #include <nlohmann/json.hpp>
 
-#include "vda5050_interfaces/json_utils/action_parameter_value.hpp"
 #include "vda5050_interfaces/msg/action_parameter.hpp"
 
 namespace vda5050_interfaces {
@@ -48,7 +47,7 @@ inline void to_json(nlohmann::json& j, const ActionParameter& msg)
 inline void from_json(const nlohmann::json& j, ActionParameter& msg)
 {
   msg.key = j.at("key").get<std::string>();
-  msg.value = j.at("value").get<ActionParameterValue>();
+  msg.value = j.at("value").get<std::string>();
 }
 
 }  // namespace msg

@@ -27,7 +27,6 @@
 #include "vda5050_interfaces/msg/action.hpp"
 #include "vda5050_interfaces/msg/action_parameter.hpp"
 #include "vda5050_interfaces/msg/action_parameter_factsheet.hpp"
-#include "vda5050_interfaces/msg/action_parameter_value.hpp"
 #include "vda5050_interfaces/msg/action_state.hpp"
 #include "vda5050_interfaces/msg/agv_action.hpp"
 #include "vda5050_interfaces/msg/agv_geometry.hpp"
@@ -78,7 +77,6 @@
 using vda5050_interfaces::msg::Action;
 using vda5050_interfaces::msg::ActionParameter;
 using vda5050_interfaces::msg::ActionParameterFactsheet;
-using vda5050_interfaces::msg::ActionParameterValue;
 using vda5050_interfaces::msg::ActionState;
 using vda5050_interfaces::msg::AGVAction;
 using vda5050_interfaces::msg::AGVGeometry;
@@ -320,17 +318,6 @@ public:
     std::vector<std::string> states = {
       Action::BLOCKING_TYPE_NONE, Action::BLOCKING_TYPE_SOFT,
       Action::BLOCKING_TYPE_HARD};
-    auto state_idx = generate_random_index(states.size());
-    return states[state_idx];
-  }
-
-  /// \brief Generate a random ActionParameterValue type
-  uint8_t generate_random_action_parameter_value_type()
-  {
-    std::vector<uint8_t> states = {
-      ActionParameterValue::TYPE_ARRAY, ActionParameterValue::TYPE_BOOL,
-      ActionParameterValue::TYPE_NUMBER, ActionParameterValue::TYPE_STRING,
-      ActionParameterValue::TYPE_OBJECT};
     auto state_idx = generate_random_index(states.size());
     return states[state_idx];
   }
@@ -843,15 +830,10 @@ public:
       msg.agv_position.push_back(generate<AGVPosition>());
       msg.velocity.push_back(generate<Velocity>());
     }
-    else if constexpr (std::is_same_v<T, ActionParameterValue>)
-    {
-      msg.type = generate_random_action_parameter_value_type();
-      msg.value = generate_random_string();
-    }
     else if constexpr (std::is_same_v<T, ActionParameter>)
     {
       msg.key = generate_random_string();
-      msg.value = generate<ActionParameterValue>();
+      msg.value = generate_random_string();
     }
     else if constexpr (std::is_same_v<T, Action>)
     {
@@ -866,16 +848,6 @@ public:
     {
       msg.header = generate<Header>();
       msg.actions = generate_random_vector<Action>(generate_random_size());
-    }
-    else if constexpr (std::is_same_v<T, ActionParameterValue>)
-    {
-      msg.type = generate_random_action_parameter_value_type();
-      msg.value = generate_random_string();
-    }
-    else if constexpr (std::is_same_v<T, ActionParameter>)
-    {
-      msg.key = generate_random_string();
-      msg.value = generate<ActionParameterValue>();
     }
     else if constexpr (std::is_same_v<T, Action>)
     {

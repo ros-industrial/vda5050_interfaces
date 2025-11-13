@@ -24,7 +24,6 @@
 #include "vda5050_interfaces/json_utils/action.hpp"
 #include "vda5050_interfaces/json_utils/action_parameter.hpp"
 #include "vda5050_interfaces/json_utils/action_parameter_factsheet.hpp"
-#include "vda5050_interfaces/json_utils/action_parameter_value.hpp"
 #include "vda5050_interfaces/json_utils/action_state.hpp"
 #include "vda5050_interfaces/json_utils/agv_action.hpp"
 #include "vda5050_interfaces/json_utils/agv_geometry.hpp"
@@ -75,7 +74,6 @@
 using vda5050_interfaces::msg::Action;
 using vda5050_interfaces::msg::ActionParameter;
 using vda5050_interfaces::msg::ActionParameterFactsheet;
-using vda5050_interfaces::msg::ActionParameterValue;
 using vda5050_interfaces::msg::ActionState;
 using vda5050_interfaces::msg::AGVAction;
 using vda5050_interfaces::msg::AGVGeometry;
@@ -125,16 +123,15 @@ using vda5050_interfaces::msg::WheelDefinition;
 
 // List of types to be tested for serialization round-trip
 using SerializableTypes = ::testing::Types<
-  Action, ActionParameter, ActionParameterFactsheet, ActionParameterValue,
-  ActionState, AGVAction, AGVGeometry, AGVPosition, BatteryState,
-  BoundingBoxReference, Connection, ControlPoint, EdgeState, Envelope2d,
-  Envelope3d, Error, ErrorReference, Factsheet, Header, Info, InfoReference,
-  InstantActions, Load, LoadDimensions, LoadSet, LoadSpecification,
-  MaxArrayLens, MaxStringLens, Network, Node, NodePosition, NodeState,
-  OptionalParameters, Order, PhysicalParameters, PolygonPoint, Position,
-  ProtocolFeatures, ProtocolLimits, SafetyState, State, Timing, Trajectory,
-  TypeSpecification, VehicleConfig, Velocity, VersionInfo, Visualization,
-  WheelDefinition>;
+  Action, ActionParameter, ActionParameterFactsheet, ActionState, AGVAction,
+  AGVGeometry, AGVPosition, BatteryState, BoundingBoxReference, Connection,
+  ControlPoint, EdgeState, Envelope2d, Envelope3d, Error, ErrorReference,
+  Factsheet, Header, Info, InfoReference, InstantActions, Load, LoadDimensions,
+  LoadSet, LoadSpecification, MaxArrayLens, MaxStringLens, Network, Node,
+  NodePosition, NodeState, OptionalParameters, Order, PhysicalParameters,
+  PolygonPoint, Position, ProtocolFeatures, ProtocolLimits, SafetyState, State,
+  Timing, Trajectory, TypeSpecification, VehicleConfig, Velocity, VersionInfo,
+  Visualization, WheelDefinition>;
 
 template <typename T>
 class SerializationTest : public ::testing::Test

@@ -18,7 +18,6 @@ set(msg_files
   "msg/Action.msg"
   "msg/ActionParameter.msg"
   "msg/ActionParameterFactsheet.msg"
-  "msg/ActionParameterValue.msg"
   "msg/ActionState.msg"
   "msg/AGVAction.msg"
   "msg/AGVGeometry.msg"
