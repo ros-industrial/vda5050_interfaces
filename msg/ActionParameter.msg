@@ -9,5 +9,5 @@ string key
 # The value of the parameter that belongs to the key
 #
 # Field Type: Required
-ActionParameterValue value
+string value
 
