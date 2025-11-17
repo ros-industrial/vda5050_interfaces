@@ -18,14 +18,14 @@ uint32 sequence_id
 string start_node_id
 
 # The nodeId of the end node for this edge.
-# 
+#
 # Field type: Required
 string end_node_id
 
 # Indicates if the edge is part of the base or horizon.
 # "true" indicates that edge belongs to the base.
 # "false" indicates that edge belongs to the horizon.
-# 
+#
 # Field type: Required
 bool released
 
@@ -75,10 +75,10 @@ float64[<=1] orientation
 # Defines if the orientation field is interpreted relative to the global
 # project specific map coordinate system or tangential to the edge.
 # If tangential to the edge, 0.0 = forwards, Pi = backwards.
-# 
+#
 # Default value: TANGENTIAL
 # Field type: Optional
-string orientation_type "TANGENTIAL"
+string[<=1] orientation_type ["TANGENTIAL"]
 
 # Enum values for orientation_type
 #
@@ -90,7 +90,7 @@ string ORIENTATION_TYPE_TANGENTIAL="TANGENTIAL"
 
 # Sets direction at junctions for line-guided or wire-guided vehicles.
 # To be defined initially (vehicle-individual).
-# Eg: straight, left, right. 
+# Eg: straight, left, right.
 #
 # Field type: Optional
 string[<=1] direction
