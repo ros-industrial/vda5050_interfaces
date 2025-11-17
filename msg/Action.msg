@@ -12,7 +12,7 @@ string action_type
 # Field Type: Required
 string action_id
 
-# Regulates if the action is allowed to be executed during movement and/or 
+# Regulates if the action is allowed to be executed during movement and/or
 # parallel to other actions.
 #
 # Field Type: Required
@@ -34,10 +34,10 @@ string BLOCKING_TYPE_HARD="HARD"
 # Field Type: Optional
 string[<=1] action_description
 
-# Array of actionParameter objects for the indicated action. 
+# Array of actionParameter objects for the indicated action.
 # If not defined, the action has no parameters
 # eg: deviceId, loadId, external Triggers
-# 
+#
 # Field Type: Optional
-ActionParameter[] action_parameters 
+ActionParameter[<=32] action_parameters
 
