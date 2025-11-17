@@ -849,15 +849,6 @@ public:
       msg.header = generate<Header>();
       msg.actions = generate_random_vector<Action>(generate_random_size());
     }
-    else if constexpr (std::is_same_v<T, Action>)
-    {
-      msg.action_type = generate_random_string();
-      msg.action_id = generate_random_string();
-      msg.blocking_type = generate_random_blocking_type();
-      msg.action_description.push_back(generate_random_string());
-      msg.action_parameters =
-        generate_random_vector<ActionParameter>(generate_random_size());
-    }
     else if constexpr (std::is_same_v<T, InstantActions>)
     {
       msg.header = generate<Header>();
