@@ -46,7 +46,7 @@ set(msg_files
   "msg/Node.msg"
   "msg/NodePosition.msg"
   "msg/NodeState.msg"
-  "msg/OptionalParameters.msg"
+  "msg/OptionalParameter.msg"
   "msg/Order.msg"
   "msg/PhysicalParameters.msg"
   "msg/PolygonPoint.msg"
