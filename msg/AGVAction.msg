@@ -16,13 +16,13 @@ string[] action_scopes
 # Enum values for allowed scopes in action_scopes.
 #
 # Instant: useable as an instant_action
-string ACTION_SCOPES_INSTANT="INSTANT"
+string ACTION_SCOPE_INSTANT="INSTANT"
 #
 # Node: useable on nodes
-string ACTION_SCOPES_NODE="NODE"
+string ACTION_SCOPE_NODE="NODE"
 #
 # Edge: useable on edges
-string ACTION_SCOPES_EDGE="EDGE"
+string ACTION_SCOPE_EDGE="EDGE"
 
 # Array of parameters an action has. If not defined, the action has no
 # parameters.
