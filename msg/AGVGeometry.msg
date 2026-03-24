@@ -11,10 +11,10 @@ WheelDefinition[] wheel_definitions
 # for different speed cases.
 #
 # Field type: Optional
-Envelope2d[] envelopes_2d
+Envelope2d[] envelopes2d
 
 # Array of AGV envelope curves in 3D.
 #
 # Field type: Optional
-Envelope3d[] envelopes_3d
+Envelope3d[] envelopes3d
 
