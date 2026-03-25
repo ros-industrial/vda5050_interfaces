@@ -59,7 +59,6 @@ set(msg_files
   "msg/Timing.msg"
   "msg/Trajectory.msg"
   "msg/TypeSpecification.msg"
-  "msg/VehicleConfig.msg"
   "msg/Velocity.msg"
   "msg/VersionInfo.msg"
   "msg/Visualization.msg"

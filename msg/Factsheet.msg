@@ -5,27 +5,27 @@
 # Message header that contains the common fields required across all messages
 #
 # Field type: Required
-Header header  
+Header header
 
 # Parameters that generally specify the class and the capabilities of the AGV
 #
 # Field type: Required
-TypeSpecification type_specification  
+TypeSpecification type_specification
 
 # Parameters that specify the basic physical properties of the AGV
 #
 # Field type: Required
-PhysicalParameters physical_parameters  
+PhysicalParameters physical_parameters
 
 # Limits for length of identifiers, arrays, strings, and similar in MQTT communication
 #
 # Field type: Required
-ProtocolLimits protocol_limits  
+ProtocolLimits protocol_limits
 
 # Supported features of VDA5050 protocol
 #
 # Field type: Required
-ProtocolFeatures protocol_features  
+ProtocolFeatures protocol_features
 
 # Detailed definition of AGV geometry
 #
@@ -35,11 +35,9 @@ AGVGeometry agv_geometry
 # Abstract specification of load capabilities
 #
 # Field type: Required
-LoadSpecification load_specification  
+LoadSpecification load_specification
 
-# Summary of current software and hardware versions on the vehicle 
-# and optional network information
-# 
-# Field type: Required
-VehicleConfig vehicle_config  
-
+# Detailed specification of localization
+#
+# Field type: Optional
+string[<=1] localization_parameters
