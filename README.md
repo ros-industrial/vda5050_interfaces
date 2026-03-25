@@ -1,11 +1,11 @@
 # vda5050_interfaces
 
-This package provides ROS 2 message definitions and JSON serialization/deserialization
-utlities for the [VDA 5050](https://www.vda.de/en/topics/automotive-industry/vda-5050)
+This package provides ROS 2 message definitions for the
+[VDA5050](https://www.vda.de/en/topics/automotive-industry/vda-5050)
 specification.
 
 > [!NOTE]
-> The message definitions in this package follow the **VDA 5050 version 2.0.0** specification.
+> The message definitions in this package follow the **VDA5050 version 2.0.0**.
 
 ## Supported Messages
 
@@ -24,9 +24,9 @@ All core messages include a shared header
 
 - `Header.msg`
 
-This message contains the common VDA5050 header fields (e.g., `header_id`,
+This message contains all the common VDA5050 header fields (e.g., `header_id`,
 `timestamp`, `version`, `manufacturer`, `serial_number`) and is embedded in
-each top-level message instead of duplcating the fields.
+each top-level message instead of duplicating the fields.
 
 Example:
 ```cpp
