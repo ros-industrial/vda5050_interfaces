@@ -43,7 +43,6 @@ set(msg_files
   "msg/LoadSpecification.msg"
   "msg/MaxArrayLens.msg"
   "msg/MaxStringLens.msg"
-  "msg/Network.msg"
   "msg/Node.msg"
   "msg/NodePosition.msg"
   "msg/NodeState.msg"
@@ -60,7 +59,6 @@ set(msg_files
   "msg/Trajectory.msg"
   "msg/TypeSpecification.msg"
   "msg/Velocity.msg"
-  "msg/VersionInfo.msg"
   "msg/Visualization.msg"
   "msg/WheelDefinition.msg"
 )
